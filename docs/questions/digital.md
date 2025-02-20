@@ -20,7 +20,7 @@ A **2-flop synchronizer** is used to avoid metastability when transferring signa
 ## 5. What is meant by "glitch" in combinational logic?
 A glitch is a **temporary unintended pulse** due to differing propagation delays in logic paths.
 
-AXI Interview Questions and Answers
+## AXI Interview Questions and Answers
 
 1. What are the key differences between AXI3 and AXI4?
 AXI4 introduces key improvements over AXI3:
