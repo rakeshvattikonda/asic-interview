@@ -1,6 +1,6 @@
 # Digital Filter Design Interview Questions
 
-These are some important interview questions on **digital filter design**, focusing on **FIR, IIR, and CIC filters**, with a **hardware perspective**, including **coefficients, responses, cutoffs, rolloff, phase, poles, and zeros**.
+These are some important interview questions on digital filter design, focusing on FIR, IIR, and CIC filters, with a hardware perspective, including coefficients, responses, cutoffs, rolloff, phase, poles, and zeros.
 
 ---
 
