@@ -13,7 +13,7 @@ A **clock divider** is a circuit that reduces the frequency of an input clock si
 A clock divider by 2 can be implemented using a **toggling flip-flop** on every clock edge.
 
 **Verilog Code:**
-```    
+```verilog    
 always @(posedge clk or negedge rst_n) begin  
     if (!rst_n)  
         clk_div2 <= 0;  
@@ -29,7 +29,7 @@ This implementation toggles the output (`clk_div2`) at **half the frequency** of
 Dividing the clock by an **odd number** requires a counter-based approach and an **edge detector**.
 
 **Verilog Code:**
-```  
+```verilog  
 always @(posedge clk or negedge rst_n) begin  
     if (!rst_n)  
         count <= 0;  

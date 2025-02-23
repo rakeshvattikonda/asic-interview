@@ -45,6 +45,7 @@ markdown_extensions:
   - pymdownx.arithmatex
   - pymdownx.tasklist
   - pymdownx.tilde
+  - pymdownx.inlinehilite
 
 plugins:
   - search
