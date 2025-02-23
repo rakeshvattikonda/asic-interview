@@ -30,7 +30,6 @@ nav:
   - Synthesis & STA: questions/synthesis.md
   - DFT: questions/dft.md
   - Mixed-Signal Design: questions/mixed_signal.md
-  - About: about.md
 
 markdown_extensions:
   - toc:
