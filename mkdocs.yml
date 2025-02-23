@@ -20,17 +20,16 @@ theme:
 
 extra_css:
   - stylesheets/custom.css
-  
+
 nav:
   - Home: index.md
   - Digital Design: questions/digital.md
+  - Protocols: questions/protocol.md  
   - Verification: questions/verification.md
   - Physical Design: questions/physical.md
   - Synthesis & STA: questions/synthesis.md
   - DFT: questions/dft.md
   - Mixed-Signal Design: questions/mixed_signal.md
-  - Low Power Design: questions/low_power.md
-  - Protocols: questions/protocol.md
   - About: about.md
 
 markdown_extensions:

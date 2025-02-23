@@ -28,7 +28,7 @@ Pipelining is a technique used to improve throughput by breaking a computation i
 - **Non-blocking (`<=`)**: Executes in parallel, mainly used in sequential logic.
 
 ### Example:
-```
+```verilog
 always @(posedge clk) begin
     a = b;  // Blocking assignment
     c <= d; // Non-blocking assignment
@@ -69,7 +69,7 @@ Clock gating is a technique used to disable the clock signal to inactive logic b
 
 ## 13. How do you implement an FSM (Finite State Machine) in RTL?
 FSMs can be implemented using `case` statements in Verilog:
-```
+```verilog
 always @(posedge clk) begin
     case (state)
         IDLE: if (start) state <= RUN;
@@ -84,7 +84,7 @@ end
 
 ## 15. How do you design a priority encoder in RTL?
 A priority encoder outputs the highest-priority active input:
-```
+```verilog
 always @(*) begin
     casez (in)
         4'b1???: out = 2'b11;
