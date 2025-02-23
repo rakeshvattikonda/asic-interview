@@ -221,6 +221,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="../../protocol/" class="md-tabs__link">
+        
+  
+    
+  
+  Protocols
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../../verification/" class="md-tabs__link">
         
   
@@ -295,40 +312,6 @@
     
   
   Mixed-Signal Design
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../low_power.md" class="md-tabs__link">
-        
-  
-    
-  
-  Low Power Design
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../protocol/" class="md-tabs__link">
-        
-  
-    
-  
-  Protocols
 
       </a>
     </li>
@@ -446,6 +429,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../protocol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protocols
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../verification/" class="md-nav__link">
         
   
@@ -535,48 +539,6 @@
   
   <span class="md-ellipsis">
     Mixed-Signal Design
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../low_power.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Low Power Design
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../protocol/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Protocols
     
   </span>
   
@@ -921,10 +883,10 @@
 <li><strong>Non-blocking (<code>&lt;=</code>)</strong>: Executes in parallel, mainly used in sequential logic.</li>
 </ul>
 <h3 id="example">Example:<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>always @(posedge clk) begin
-    a = b;  // Blocking assignment
-    c &lt;= d; // Non-blocking assignment
-end
+<p><div class="highlight"><pre><span></span><code><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">  </span><span class="c1">// Blocking assignment</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="c1">// Non-blocking assignment</span>
+<span class="k">end</span>
 </code></pre></div>
 Non-blocking assignments prevent race conditions in sequential logic.</p>
 <h2 id="6-how-does-a-latch-differ-from-a-flip-flop-in-rtl-design">6. How does a latch differ from a flip-flop in RTL design?<a class="headerlink" href="#6-how-does-a-latch-differ-from-a-flip-flop-in-rtl-design" title="Permanent link">&para;</a></h2>
@@ -963,12 +925,12 @@ Non-blocking assignments prevent race conditions in sequential logic.</p>
 </ul>
 <h2 id="13-how-do-you-implement-an-fsm-finite-state-machine-in-rtl">13. How do you implement an FSM (Finite State Machine) in RTL?<a class="headerlink" href="#13-how-do-you-implement-an-fsm-finite-state-machine-in-rtl" title="Permanent link">&para;</a></h2>
 <p>FSMs can be implemented using <code>case</code> statements in Verilog:
-<div class="highlight"><pre><span></span><code>always @(posedge clk) begin
-    case (state)
-        IDLE: if (start) state &lt;= RUN;
-        RUN: if (stop) state &lt;= IDLE;
-    endcase
-end
+<div class="highlight"><pre><span></span><code><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="w">        </span><span class="nl">IDLE:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">RUN</span><span class="p">;</span>
+<span class="w">        </span><span class="nl">RUN:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stop</span><span class="p">)</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">endcase</span>
+<span class="k">end</span>
 </code></pre></div></p>
 <h2 id="14-what-are-the-different-types-of-fsms-mealy-vs-moore">14. What are the different types of FSMs (Mealy vs. Moore)?<a class="headerlink" href="#14-what-are-the-different-types-of-fsms-mealy-vs-moore" title="Permanent link">&para;</a></h2>
 <ul>
@@ -977,15 +939,15 @@ end
 </ul>
 <h2 id="15-how-do-you-design-a-priority-encoder-in-rtl">15. How do you design a priority encoder in RTL?<a class="headerlink" href="#15-how-do-you-design-a-priority-encoder-in-rtl" title="Permanent link">&para;</a></h2>
 <p>A priority encoder outputs the highest-priority active input:
-<div class="highlight"><pre><span></span><code>always @(*) begin
-    casez (in)
-        4&#39;b1???: out = 2&#39;b11;
-        4&#39;b01??: out = 2&#39;b10;
-        4&#39;b001?: out = 2&#39;b01;
-        4&#39;b0001: out = 2&#39;b00;
-        default: out = 2&#39;bxx;
-    endcase
-end
+<div class="highlight"><pre><span></span><code><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="k">casez</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span>
+<span class="w">        </span><span class="mh">4</span><span class="mb">&#39;b1</span><span class="o">???:</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b11</span><span class="p">;</span>
+<span class="w">        </span><span class="mh">4</span><span class="mb">&#39;b01</span><span class="o">??:</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b10</span><span class="p">;</span>
+<span class="w">        </span><span class="mh">4</span><span class="mb">&#39;b001</span><span class="o">?:</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b01</span><span class="p">;</span>
+<span class="w">        </span><span class="mh">4</span><span class="mb">&#39;b0001</span><span class="o">:</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b00</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="p">&#39;</span><span class="n">bxx</span><span class="p">;</span>
+<span class="w">    </span><span class="k">endcase</span>
+<span class="k">end</span>
 </code></pre></div></p>
 <h2 id="16-what-are-the-different-types-of-adders-used-in-rtl">16. What are the different types of adders used in RTL?<a class="headerlink" href="#16-what-are-the-different-types-of-adders-used-in-rtl" title="Permanent link">&para;</a></h2>
 <ul>
