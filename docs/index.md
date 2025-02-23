@@ -1,7 +1,7 @@
 # 👋 Hello!
-# Welcome to ASIC Interview Questions! 🚀
+# Welcome to asic-interview website! 🚀
 
-The field of Very Large Scale Integration (VLSI) plays a crucial role in modern semiconductor technology, shaping the design of chips used in consumer electronics, computing, and communication systems. With companies constantly pushing the boundaries of performance, power efficiency, and cost, there is a growing demand for skilled VLSI engineers. However, securing a role in this competitive field requires thorough preparation, not just in technical concepts but also in problem-solving and communication skills.
+The field of Very Large Scale Integration (VLSI) plays a crucial role in modern semiconductor technology, shaping the design of chips used in consumer electronics, computing, and communication systems. With companies constantly pushing the boundaries of performance, power efficiency, and cost, there is a growing demand for **skilled VLSI engineers**. However, securing a role in this competitive field requires thorough preparation, not just in technical concepts but also in problem-solving and communication skills.
 
 ## 💡 Why This Website?
 
