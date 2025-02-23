@@ -14,14 +14,14 @@ The long hours of technical discussions, the stress of solving problems on the s
 
 Throughout my career, I have encountered a wide range of interview questions—some highly practical and industry-focused, others purely theoretical, and a few that seemed designed just to test how candidates handle pressure rather than their actual engineering skills. This website aims to prepare you for all types of questions, including:
 
-- **Practical, real-world VLSI challenges** that test how well you can apply knowledge to actual **design problems**.
-- **Theoretical and textbook-style questions** that focus on **fundamental concepts**.
-- **Tricky and uncommon problems** that might appear in some interviews but are **rarely encountered in actual chip design work**.
-- **Behavioral and problem-solving questions** that assess your approach to **debugging, teamwork, and decision-making**.
+- Practical, real-world VLSI challenges that test how well you can apply knowledge to actual design problems.
+- Theoretical and textbook-style questions that focus on fundamental concepts.
+- Tricky and uncommon problems that might appear in some interviews but are rarely encountered in actual chip design work.
+- Behavioral and problem-solving questions that assess your approach to debugging, teamwork, and decision-making.
 
 ## 🏗️ Website Structure
 
-This website is structured into **multiple sections**, covering essential topics such as:
+This website is structured into multiple sections, covering essential topics such as:
 
 - **RTL coding**  
 - **Logic design**  
@@ -31,14 +31,14 @@ This website is structured into **multiple sections**, covering essential topics
 - **Debugging methodologies**  
 - **Logical reasoning**  
 
-You can **navigate through the chapters** based on your **interests** or the specific areas you need to **improve**.
+You can navigate through the chapters based on your interests or the specific areas you need to improve.
 
 ## 🚀 The Goal
 
 My goal is not just to help you answer questions correctly but to equip you with the right mindset and approach to tackle interviews with confidence. By the time you finish this website, you will:
 
-✅ Have a **solid grasp of VLSI interview topics**  
-✅ Be **better prepared** to handle **interview pressure**  
-✅ Develop the **adaptability** needed to succeed in the **ever-evolving semiconductor industry**  
+✅ Have a solid grasp of VLSI interview topics  
+✅ Be better prepared to handle interview pressure  
+✅ Develop the adaptability needed to succeed in the ever-evolving semiconductor industry  
 
-**Stay focused, keep learning, and approach each interview as an opportunity to grow**—your **perseverance will pay off**. 💪
+Stay focused, keep learning, and approach each interview as an opportunity to grow—your perseverance will pay off. 💪
