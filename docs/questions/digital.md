@@ -1,5 +1,12 @@
 # Digital Design Interview Questions
 
+## Subtopics:
+- [Verilog Syntax Questions](digital/verilog-syntax.md)
+- [Logic Design Questions](digital/logic-design.md)
+- [Clocking, Clock Dividers, and Reset Questions](digital/clocking.md)
+- [Clock Domain Crossing (CDC) Questions](digital/cdc.md)
+- [Power-Related Questions](digital/power.md)
+- [Digital Filter Questions (FIR, IIR and CIC)](digital/digital_filters.md)
 ## 1. What is setup and hold time?
 Setup time is the minimum time **before** the clock edge that data must be stable.  
 Hold time is the minimum time **after** the clock edge that data must remain stable.

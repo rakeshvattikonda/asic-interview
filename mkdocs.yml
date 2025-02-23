@@ -27,6 +27,7 @@ nav:
   - DFT: questions/dft.md
   - Mixed-Signal Design: questions/mixed_signal.md
   - Low Power Design: questions/low_power.md
+  - Protocols: questions/protocol.md
   - About: about.md
 
 markdown_extensions:
