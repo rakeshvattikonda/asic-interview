@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://yourwebsite.com/questions/digital/clocking/">
       
       
+        <link rel="prev" href="../logic-design/">
+      
+      
+        <link rel="next" href="../digital-filters/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Clock Divider Interview Questions and Answers - ASIC Interview Questions</title>
+        <title>Clocking, Clock Dividers, and Reset Questions - ASIC Interview Questions</title>
       
     
     
@@ -104,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Clock Divider Interview Questions and Answers
+              Clocking, Clock Dividers, and Reset Questions
             
           </span>
         </div>
@@ -202,17 +206,20 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
-        
   
     
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
   
   Digital Design
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -388,11 +395,29 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+  
+    
+    
+    
+      
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
   
   <span class="md-ellipsis">
     Digital Design
@@ -400,7 +425,282 @@
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Digital Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logic-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logic Design Questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Clocking, Clock Dividers, and Reset Questions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Clocking, Clock Dividers, and Reset Questions
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-a-clock-divider-and-why-is-it-used-in-rtl-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is a clock divider, and why is it used in RTL design?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-do-you-implement-a-clock-divider-by-2-using-verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. How do you implement a clock divider by 2 using Verilog?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-how-do-you-implement-a-clock-divider-by-an-odd-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. How do you implement a clock divider by an odd number?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-the-difference-between-a-clock-divider-using-counters-and-a-clock-divider-using-toggling-flip-flops" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is the difference between a clock divider using counters and a clock divider using toggling flip-flops?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-do-you-ensure-glitch-free-clock-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. How do you ensure glitch-free clock division?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-the-impact-of-using-a-clock-divider-on-timing-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is the impact of using a clock divider on timing closure?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-how-do-you-handle-duty-cycle-correction-in-clock-dividers" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. How do you handle duty cycle correction in clock dividers?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-how-do-you-implement-a-fractional-clock-divider-in-rtl" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. How do you implement a fractional clock divider in RTL?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-how-do-you-verify-a-clock-divider-circuit-in-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. How do you verify a clock divider circuit in simulation?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-what-is-the-effect-of-clock-division-on-metastability" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. What is the effect of clock division on metastability?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cdc.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clock Domain Crossing (CDC) Questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../power.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Power-Related Questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-filters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Digital Filter Questions (FIR, IIR and CIC)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
