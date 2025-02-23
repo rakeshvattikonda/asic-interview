@@ -17,6 +17,7 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
+    - navigation.expand
 
 extra_css:
   - stylesheets/custom.css
