@@ -28,10 +28,12 @@ Pipelining is a technique used to improve throughput by breaking a computation i
 - **Non-blocking (`<=`)**: Executes in parallel, mainly used in sequential logic.
 
 ### Example:
+```
 always @(posedge clk) begin
     a = b;  // Blocking assignment
     c <= d; // Non-blocking assignment
 end
+```
 Non-blocking assignments prevent race conditions in sequential logic.
 
 ## 6. How does a latch differ from a flip-flop in RTL design?
