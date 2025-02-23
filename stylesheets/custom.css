@@ -1,0 +1,22 @@
+/* Customize code block appearance */
+.md-typeset code {
+    font-size: 14px;
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+/* Improve readability for Verilog code */
+.language-verilog {
+    background-color: #272822 !important;
+    color: #f8f8f2 !important;
+    font-family: "Roboto Mono", monospace;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Hide Table of Contents on the right */
+.md-sidebar--secondary {
+    display: none;
+}

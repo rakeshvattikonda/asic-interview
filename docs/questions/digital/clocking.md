@@ -75,7 +75,7 @@ This ensures a correct frequency division even when the divisor is **odd**.
 - **Odd Divisors**: Require additional logic to **balance high/low times**.
 - **Duty Cycle Correction Circuit**:
 
-```  
+```verilog  
 always @(posedge clk or negedge rst_n) begin  
     if (!rst_n)  
         clk_out <= 0;  
@@ -92,7 +92,7 @@ By adjusting when the clock toggles, the duty cycle is corrected.
 A **fractional clock divider** allows non-integer division by alternating between different clock periods.
 
 **Verilog Code:**
-```  
+```verilog  
 always @(posedge clk or negedge rst_n) begin  
     if (!rst_n)  
         count <= 0;  
@@ -135,7 +135,7 @@ Example Simulation Waveform:
 To **prevent metastability**, use **double-register synchronizers** when transferring signals across divided clocks:
 
 **Verilog Code:**
-```  
+```verilog  
 always @(posedge clk_div or negedge rst_n) begin  
     if (!rst_n) begin  
         sync_reg1 <= 0;  

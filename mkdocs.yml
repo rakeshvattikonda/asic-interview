@@ -18,6 +18,9 @@ theme:
     - search.suggest
     - search.highlight
 
+extra_css:
+  - stylesheets/custom.css
+  
 nav:
   - Home: index.md
   - Digital Design: questions/digital.md
