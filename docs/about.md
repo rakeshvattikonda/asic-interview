@@ -2,17 +2,17 @@
 
 Welcome to **asic-interview.io**!
 
-The field of **Very Large Scale Integration (VLSI)** plays a crucial role in modern semiconductor technology, shaping the design of chips used in **consumer electronics, computing, and communication systems**. With companies constantly pushing the boundaries of **performance, power efficiency, and cost**, there is a growing demand for skilled VLSI engineers. However, securing a role in this competitive field requires **thorough preparation**, not just in technical concepts but also in **problem-solving and communication skills**.
+The field of Very Large Scale Integration (VLSI) plays a crucial role in modern semiconductor technology, shaping the design of chips used in consumer electronics, computing, and communication systems. With companies constantly pushing the boundaries of performance, power efficiency, and cost, there is a growing demand for skilled VLSI engineers. However, securing a role in this competitive field requires thorough preparation, not just in technical concepts but also in problem-solving and communication skills.
 
 ## 💡 Why This Website?
 
-I decided to create this website because I have seen **talented engineers struggle during interviews**—not due to a lack of knowledge, but because they were **unprepared for the format, the depth of questioning, and the mental pressure** that comes with technical interviews. Many candidates feel **nervous or overwhelmed** in their first few interviews. I have been there myself. 
+I decided to create this website because I have seen talented engineers struggle during interviews—not due to a lack of knowledge, but because they were unprepared for the format, the depth of questioning, and the mental pressure that comes with technical interviews. Many candidates feel nervous or overwhelmed in their first few interviews. I have been there myself. 
 
-The **long hours of technical discussions**, the **stress of solving problems on the spot**, and the **challenge of explaining complex ideas concisely** can be **mentally exhausting**. But like anything else, **practice builds confidence**. Over time, I learned how to **approach these interviews strategically, stay composed, and articulate my thoughts effectively**.
+The long hours of technical discussions, the stress of solving problems on the spot, and the challenge of explaining complex ideas concisely can be mentally exhausting. But like anything else, practice builds confidence. Over time, I learned how to approach these interviews strategically, stay composed, and articulate my thoughts effectively.
 
 ## 🎯 What You Will Find Here
 
-Throughout my career, I have encountered a wide range of interview questions—some **highly practical and industry-focused**, others **purely theoretical**, and a few that seemed designed just to **test how candidates handle pressure** rather than their actual engineering skills. This website aims to prepare you for **all types of questions**, including:
+Throughout my career, I have encountered a wide range of interview questions—some highly practical and industry-focused, others purely theoretical, and a few that seemed designed just to test how candidates handle pressure rather than their actual engineering skills. This website aims to prepare you for all types of questions, including:
 
 - **Practical, real-world VLSI challenges** that test how well you can apply knowledge to actual **design problems**.
 - **Theoretical and textbook-style questions** that focus on **fundamental concepts**.
@@ -35,7 +35,7 @@ You can **navigate through the chapters** based on your **interests** or the spe
 
 ## 🚀 The Goal
 
-My goal is not just to help you **answer questions correctly** but to **equip you with the right mindset** and approach to **tackle interviews with confidence**. By the time you finish this website, you will:
+My goal is not just to help you answer questions correctly but to equip you with the right mindset and approach to tackle interviews with confidence. By the time you finish this website, you will:
 
 ✅ Have a **solid grasp of VLSI interview topics**  
 ✅ Be **better prepared** to handle **interview pressure**  
