@@ -919,10 +919,11 @@
 <li><strong>Non-blocking (<code>&lt;=</code>)</strong>: Executes in parallel, mainly used in sequential logic.</li>
 </ul>
 <h3 id="example">Example:<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
-<p>always @(posedge clk) begin
+<p><div class="highlight"><pre><span></span><code>always @(posedge clk) begin
     a = b;  // Blocking assignment
     c &lt;= d; // Non-blocking assignment
 end
+</code></pre></div>
 Non-blocking assignments prevent race conditions in sequential logic.</p>
 <h2 id="6-how-does-a-latch-differ-from-a-flip-flop-in-rtl-design">6. How does a latch differ from a flip-flop in RTL design?<a class="headerlink" href="#6-how-does-a-latch-differ-from-a-flip-flop-in-rtl-design" title="Permanent link">&para;</a></h2>
 <ul>

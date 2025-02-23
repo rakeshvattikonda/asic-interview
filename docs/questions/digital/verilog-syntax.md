@@ -69,18 +69,22 @@ Clock gating is a technique used to disable the clock signal to inactive logic b
 
 ## 13. How do you implement an FSM (Finite State Machine) in RTL?
 FSMs can be implemented using `case` statements in Verilog:
+```
 always @(posedge clk) begin
     case (state)
         IDLE: if (start) state <= RUN;
         RUN: if (stop) state <= IDLE;
     endcase
 end
+```
+
 ## 14. What are the different types of FSMs (Mealy vs. Moore)?
 - **Moore FSM**: Outputs depend only on the current state.
 - **Mealy FSM**: Outputs depend on the current state and inputs.
 
 ## 15. How do you design a priority encoder in RTL?
 A priority encoder outputs the highest-priority active input:
+```
 always @(*) begin
     casez (in)
         4'b1???: out = 2'b11;
@@ -90,6 +94,8 @@ always @(*) begin
         default: out = 2'bxx;
     endcase
 end
+```
+
 ## 16. What are the different types of adders used in RTL?
 - **Ripple Carry Adder**: Simple but slow.
 - **Carry Lookahead Adder**: Faster carry computation.
@@ -114,7 +120,10 @@ Asynchronous FIFOs help in clock domain crossings, buffering data safely between
 
 ## 22. Explain how a multiplexer (MUX) is implemented in RTL.
 A 4-to-1 multiplexer in Verilog:
+```
 assign out = sel[1] ? (sel[0] ? d3 : d2) : (sel[0] ? d1 : d0);
+```
+
 ## 23. How do you optimize area and power in RTL design?
 - Reduce logic duplication.
 - Use clock gating and power gating.
