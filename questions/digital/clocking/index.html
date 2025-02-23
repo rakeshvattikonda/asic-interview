@@ -750,14 +750,15 @@
 <hr />
 <h2 id="2-how-do-you-implement-a-clock-divider-by-2-using-verilog">2. How do you implement a clock divider by 2 using Verilog?<a class="headerlink" href="#2-how-do-you-implement-a-clock-divider-by-2-using-verilog" title="Permanent link">&para;</a></h2>
 <p>A clock divider by 2 can be implemented using a <strong>toggling flip-flop</strong> on every clock edge.</p>
-<p><strong>Verilog Code:</strong></p>
-<p>always @(posedge clk or negedge rst_n) begin<br />
-    if (!rst_n)<br />
-        clk_div2 &lt;= 0;<br />
-    else<br />
-        clk_div2 &lt;= ~clk_div2;<br />
-end  </p>
-<p>This implementation toggles the output (<code>clk_div2</code>) at <strong>half the frequency</strong> of the input clock.</p>
+<p><strong>Verilog Code:</strong>
+<div class="highlight"><pre><span></span><code>always @(posedge clk or negedge rst_n) begin  
+    if (!rst_n)  
+        clk_div2 &lt;= 0;  
+    else  
+        clk_div2 &lt;= ~clk_div2;  
+end  
+</code></pre></div>
+This implementation toggles the output (<code>clk_div2</code>) at <strong>half the frequency</strong> of the input clock.</p>
 <hr />
 <h2 id="3-how-do-you-implement-a-clock-divider-by-an-odd-number">3. How do you implement a clock divider by an odd number?<a class="headerlink" href="#3-how-do-you-implement-a-clock-divider-by-an-odd-number" title="Permanent link">&para;</a></h2>
 <p>Dividing the clock by an <strong>odd number</strong> requires a counter-based approach and an <strong>edge detector</strong>.</p>
