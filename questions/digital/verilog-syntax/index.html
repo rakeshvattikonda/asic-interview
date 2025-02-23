@@ -961,12 +961,13 @@ Non-blocking assignments prevent race conditions in sequential logic.</p>
 </ul>
 <h2 id="13-how-do-you-implement-an-fsm-finite-state-machine-in-rtl">13. How do you implement an FSM (Finite State Machine) in RTL?<a class="headerlink" href="#13-how-do-you-implement-an-fsm-finite-state-machine-in-rtl" title="Permanent link">&para;</a></h2>
 <p>FSMs can be implemented using <code>case</code> statements in Verilog:
-always @(posedge clk) begin
+<div class="highlight"><pre><span></span><code>always @(posedge clk) begin
     case (state)
         IDLE: if (start) state &lt;= RUN;
         RUN: if (stop) state &lt;= IDLE;
     endcase
-end</p>
+end
+</code></pre></div></p>
 <h2 id="14-what-are-the-different-types-of-fsms-mealy-vs-moore">14. What are the different types of FSMs (Mealy vs. Moore)?<a class="headerlink" href="#14-what-are-the-different-types-of-fsms-mealy-vs-moore" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Moore FSM</strong>: Outputs depend only on the current state.</li>
@@ -974,15 +975,16 @@ end</p>
 </ul>
 <h2 id="15-how-do-you-design-a-priority-encoder-in-rtl">15. How do you design a priority encoder in RTL?<a class="headerlink" href="#15-how-do-you-design-a-priority-encoder-in-rtl" title="Permanent link">&para;</a></h2>
 <p>A priority encoder outputs the highest-priority active input:
-always @(*) begin
+<div class="highlight"><pre><span></span><code>always @(*) begin
     casez (in)
-        4'b1???: out = 2'b11;
-        4'b01??: out = 2'b10;
-        4'b001?: out = 2'b01;
-        4'b0001: out = 2'b00;
-        default: out = 2'bxx;
+        4&#39;b1???: out = 2&#39;b11;
+        4&#39;b01??: out = 2&#39;b10;
+        4&#39;b001?: out = 2&#39;b01;
+        4&#39;b0001: out = 2&#39;b00;
+        default: out = 2&#39;bxx;
     endcase
-end</p>
+end
+</code></pre></div></p>
 <h2 id="16-what-are-the-different-types-of-adders-used-in-rtl">16. What are the different types of adders used in RTL?<a class="headerlink" href="#16-what-are-the-different-types-of-adders-used-in-rtl" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Ripple Carry Adder</strong>: Simple but slow.</li>
@@ -1007,7 +1009,8 @@ end</p>
 <p>Asynchronous FIFOs help in clock domain crossings, buffering data safely between two different clock domains.</p>
 <h2 id="22-explain-how-a-multiplexer-mux-is-implemented-in-rtl">22. Explain how a multiplexer (MUX) is implemented in RTL.<a class="headerlink" href="#22-explain-how-a-multiplexer-mux-is-implemented-in-rtl" title="Permanent link">&para;</a></h2>
 <p>A 4-to-1 multiplexer in Verilog:
-assign out = sel[1] ? (sel[0] ? d3 : d2) : (sel[0] ? d1 : d0);</p>
+<div class="highlight"><pre><span></span><code>assign out = sel[1] ? (sel[0] ? d3 : d2) : (sel[0] ? d1 : d0);
+</code></pre></div></p>
 <h2 id="23-how-do-you-optimize-area-and-power-in-rtl-design">23. How do you optimize area and power in RTL design?<a class="headerlink" href="#23-how-do-you-optimize-area-and-power-in-rtl-design" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Reduce logic duplication.</li>
