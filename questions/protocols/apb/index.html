@@ -1455,7 +1455,7 @@
 </ul>
 <hr />
 <h2 id="6-how-does-apb-fit-into-an-soc-explain-an-apb-system">6. How does APB fit into an SoC? Explain an APB system.<a class="headerlink" href="#6-how-does-apb-fit-into-an-soc-explain-an-apb-system" title="Permanent link">&para;</a></h2>
-<p>APB is used to connect low-bandwidth peripherals to a <strong>high-performance system bus</strong>. Since APB does not support pipelining or burst transfers, it is <strong>typically connected via an AHB-to-APB or AXI-to-APB bridge</strong>.</p>
+<p>APB is used to connect low-bandwidth peripherals to a high-performance system bus**. Since APB does not support pipelining or burst transfers, it is typically connected via an AHB-to-APB or AXI-to-APB bridge.</p>
 <h3 id="components-of-an-apb-system">Components of an APB system:<a class="headerlink" href="#components-of-an-apb-system" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>AHB/APB Bridge</strong>: Converts AHB (or AXI) transactions into APB transactions.</li>
@@ -1464,10 +1464,10 @@
 </ul>
 <h3 id="apb-transfer-flow">APB Transfer Flow:<a class="headerlink" href="#apb-transfer-flow" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>AHB/AXI Master initiates a request.</strong></li>
-<li><strong>AHB/APB Bridge converts the request to APB format.</strong></li>
-<li><strong>Address Decoder activates the correct <code>PSEL</code> signal for the slave.</strong></li>
-<li><strong>APB transaction completes using <code>PENABLE</code>, <code>PREADY</code>, <code>PWDATA</code>, and <code>PRDATA</code>.</strong></li>
+<li>AHB/AXI Master initiates a request.**</li>
+<li>AHB/APB Bridge converts the request to APB format.</li>
+<li>Address Decoder activates the correct <code>PSEL</code> signal for the slave.</li>
+<li>APB transaction completes using <code>PENABLE</code>, <code>PREADY</code>, <code>PWDATA</code>, and <code>PRDATA</code>.</li>
 </ol>
 <p>📌 <strong>Example APB System Diagram:</strong><br />
 <img alt="APB System" src="images/apb_system.png" /></p>
@@ -1540,7 +1540,7 @@
 <li>The <strong>APB bridge decodes the address (<code>PADDR</code>)</strong> and sets <code>PSEL</code> accordingly.</li>
 </ul>
 <hr />
-<h2 id="20-what-are-the-main-differences-between-apb3-and-apb4">20. What are the main differences between <strong>APB3 and APB4</strong>?<a class="headerlink" href="#20-what-are-the-main-differences-between-apb3-and-apb4" title="Permanent link">&para;</a></h2>
+<h2 id="20-what-are-the-main-differences-between-apb3-and-apb4">20. What are the main differences between APB3 and APB4?<a class="headerlink" href="#20-what-are-the-main-differences-between-apb3-and-apb4" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>APB3</strong> lacks the <code>PSTRB</code> and <code>PPROT</code> signals.</li>
 <li><strong>APB4</strong> adds <strong>byte strobes (<code>PSTRB</code>)</strong> for finer control.</li>
