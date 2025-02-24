@@ -60,7 +60,7 @@ APB (Advanced Peripheral Bus) is a **low-power, low-bandwidth** bus used in the 
 ---
 
 ## 6. How does APB fit into an SoC? Explain an APB system.
-APB is used to connect low-bandwidth peripherals to a **high-performance system bus**. Since APB does not support pipelining or burst transfers, it is **typically connected via an AHB-to-APB or AXI-to-APB bridge**.
+APB is used to connect low-bandwidth peripherals to a high-performance system bus**. Since APB does not support pipelining or burst transfers, it is typically connected via an AHB-to-APB or AXI-to-APB bridge.
 
 ### Components of an APB system:
 - **AHB/APB Bridge**: Converts AHB (or AXI) transactions into APB transactions.
@@ -68,10 +68,10 @@ APB is used to connect low-bandwidth peripherals to a **high-performance system 
 - **APB Slaves**: Peripheral devices like UART, GPIO, I2C, SPI, timers, etc.
 
 ### APB Transfer Flow:
-1. **AHB/AXI Master initiates a request.**
-2. **AHB/APB Bridge converts the request to APB format.**
-3. **Address Decoder activates the correct `PSEL` signal for the slave.**
-4. **APB transaction completes using `PENABLE`, `PREADY`, `PWDATA`, and `PRDATA`.**
+1. AHB/AXI Master initiates a request.**
+2. AHB/APB Bridge converts the request to APB format.
+3. Address Decoder activates the correct `PSEL` signal for the slave.
+4. APB transaction completes using `PENABLE`, `PREADY`, `PWDATA`, and `PRDATA`.
 
 📌 **Example APB System Diagram:**  
 ![APB System](images/apb_system.png)
@@ -146,7 +146,7 @@ APB is used to connect low-bandwidth peripherals to a **high-performance system 
 
 ---
 
-## 20. What are the main differences between **APB3 and APB4**?
+## 20. What are the main differences between APB3 and APB4?
 - **APB3** lacks the `PSTRB` and `PPROT` signals.
 - **APB4** adds **byte strobes (`PSTRB`)** for finer control.
 

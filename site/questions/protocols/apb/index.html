@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://yourwebsite.com/questions/protocols/noc/">
+        <link rel="canonical" href="https://yourwebsite.com/questions/protocols/apb/">
       
       
-        <link rel="prev" href="../axi/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../verification/">
+        <link rel="next" href="../axi/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>NOC (Network On Chip) - ASIC Interview Questions</title>
+        <title>APB (Advanced Peripheral Bus) - ASIC Interview Questions</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#noc-network-on-chip-interview-questions-and-answers" class="md-skip">
+        <a href="#apb-advanced-peripheral-bus-interview-questions-and-answers" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NOC (Network On Chip)
+              APB (Advanced Peripheral Bus)
             
           </span>
         </div>
@@ -642,10 +642,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../apb/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    APB (Advanced Peripheral Bus)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -655,6 +676,230 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-the-apb-bus-and-where-is-it-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is the APB bus, and where is it used?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-are-the-key-signals-in-apb" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What are the key signals in APB?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-the-apb-write-transaction-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What is the APB write transaction sequence?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-the-apb-read-transaction-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is the APB read transaction sequence?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-does-apb-differ-from-ahb-and-axi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. How does APB differ from AHB and AXI?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-how-does-apb-fit-into-an-soc-explain-an-apb-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. How does APB fit into an SoC? Explain an APB system.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. How does APB fit into an SoC? Explain an APB system.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#components-of-an-apb-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components of an APB system:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apb-transfer-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      APB Transfer Flow:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-what-is-the-role-of-pready-in-apb" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. What is the role of PREADY in APB?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-why-does-apb-have-two-phases-address-enable" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Why does APB have two phases (Address + Enable)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-what-happens-if-penable-is-asserted-before-psel" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. What happens if PENABLE is asserted before PSEL?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-what-happens-if-pready-is-always-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. What happens if PREADY is always high?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-what-is-the-function-of-pslverr-in-apb" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. What is the function of PSLVERR in APB?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-can-apb-handle-multiple-outstanding-transactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Can APB handle multiple outstanding transactions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-how-does-apb-handle-clock-domain-crossings" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. How does APB handle clock domain crossings?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-why-is-apb-not-pipelined" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Why is APB not pipelined?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-what-is-the-impact-of-penable-deassertion" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. What is the impact of PENABLE deassertion?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-can-pwrite-change-during-a-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Can PWRITE change during a transaction?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-what-happens-if-the-slave-never-asserts-pready" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. What happens if the slave never asserts PREADY?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-how-can-a-master-abort-an-apb-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. How can a master abort an APB transaction?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-how-is-an-apb-slave-selected" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. How is an APB slave selected?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-what-are-the-main-differences-between-apb3-and-apb4" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. What are the main differences between APB3 and APB4?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -774,31 +1019,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    NOC (Network On Chip)
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../noc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -808,194 +1032,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-what-is-noc-network-on-chip-and-why-is-it-used-in-modern-soc-designs" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. What is NoC (Network-on-Chip), and why is it used in modern SoC designs?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-why-is-noc-better-than-traditional-interconnect" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Why is NoC better than traditional interconnect?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Why is NoC better than traditional interconnect?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#traditional-interconnect" class="md-nav__link">
-    <span class="md-ellipsis">
-      Traditional Interconnect
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#noc-network-on-chip" class="md-nav__link">
-    <span class="md-ellipsis">
-      NoC (Network-on-Chip)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#advantages-of-noc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Advantages of NoC:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-what-are-the-main-advantages-of-using-noc-over-traditional-bus-based-communication-in-soc-designs" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. What are the main advantages of using NoC over traditional bus-based communication in SoC designs?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-what-are-the-different-topologies-used-in-noc-designs-and-how-do-you-choose-the-best-one-for-a-given-application" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. What are the different topologies used in NoC designs, and how do you choose the best one for a given application?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-explain-the-concept-of-routing-in-noc-what-are-the-different-types-of-routing-algorithms" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Explain the concept of routing in NoC. What are the different types of routing algorithms?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-how-does-congestion-control-work-in-noc-and-how-would-you-handle-congestion-in-your-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. How does congestion control work in NoC, and how would you handle congestion in your design?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-what-is-the-difference-between-circuit-switched-and-packet-switched-networks-which-one-is-used-in-noc-and-why" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. What is the difference between circuit-switched and packet-switched networks? Which one is used in NoC, and why?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-how-would-you-optimize-power-consumption-in-noc-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. How would you optimize power consumption in NoC design?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-what-is-the-role-of-the-network-interface-ni-in-noc-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. What is the role of the network interface (NI) in NoC design?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-what-are-virtual-channels-in-noc-and-how-do-they-help-in-avoiding-deadlocks" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. What are virtual channels in NoC, and how do they help in avoiding deadlocks?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-what-are-the-trade-offs-between-latency-and-throughput-in-noc-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. What are the trade-offs between latency and throughput in NoC design?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-how-would-you-design-a-router-for-an-noc-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. How would you design a router for an NoC architecture?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-how-do-you-ensure-reliability-in-noc-especially-with-multiple-data-flows" class="md-nav__link">
-    <span class="md-ellipsis">
-      13. How do you ensure reliability in NoC, especially with multiple data flows?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14-what-are-common-communication-protocols-used-in-noc-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      14. What are common communication protocols used in NoC systems?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-how-do-you-verify-a-noc-design" class="md-nav__link">
-    <span class="md-ellipsis">
-      15. How do you verify a NoC design?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1140,46 +1176,73 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-what-is-noc-network-on-chip-and-why-is-it-used-in-modern-soc-designs" class="md-nav__link">
+  <a href="#1-what-is-the-apb-bus-and-where-is-it-used" class="md-nav__link">
     <span class="md-ellipsis">
-      1. What is NoC (Network-on-Chip), and why is it used in modern SoC designs?
+      1. What is the APB bus, and where is it used?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-why-is-noc-better-than-traditional-interconnect" class="md-nav__link">
+  <a href="#2-what-are-the-key-signals-in-apb" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Why is NoC better than traditional interconnect?
+      2. What are the key signals in APB?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Why is NoC better than traditional interconnect?">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-the-apb-write-transaction-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. What is the APB write transaction sequence?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-the-apb-read-transaction-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. What is the APB read transaction sequence?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-does-apb-differ-from-ahb-and-axi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. How does APB differ from AHB and AXI?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-how-does-apb-fit-into-an-soc-explain-an-apb-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. How does APB fit into an SoC? Explain an APB system.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. How does APB fit into an SoC? Explain an APB system.">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#traditional-interconnect" class="md-nav__link">
+  <a href="#components-of-an-apb-system" class="md-nav__link">
     <span class="md-ellipsis">
-      Traditional Interconnect
+      Components of an APB system:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#noc-network-on-chip" class="md-nav__link">
+  <a href="#apb-transfer-flow" class="md-nav__link">
     <span class="md-ellipsis">
-      NoC (Network-on-Chip)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#advantages-of-noc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Advantages of NoC:
+      APB Transfer Flow:
     </span>
   </a>
   
@@ -1191,117 +1254,126 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-what-are-the-main-advantages-of-using-noc-over-traditional-bus-based-communication-in-soc-designs" class="md-nav__link">
+  <a href="#7-what-is-the-role-of-pready-in-apb" class="md-nav__link">
     <span class="md-ellipsis">
-      3. What are the main advantages of using NoC over traditional bus-based communication in SoC designs?
+      7. What is the role of PREADY in APB?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-what-are-the-different-topologies-used-in-noc-designs-and-how-do-you-choose-the-best-one-for-a-given-application" class="md-nav__link">
+  <a href="#8-why-does-apb-have-two-phases-address-enable" class="md-nav__link">
     <span class="md-ellipsis">
-      4. What are the different topologies used in NoC designs, and how do you choose the best one for a given application?
+      8. Why does APB have two phases (Address + Enable)?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-explain-the-concept-of-routing-in-noc-what-are-the-different-types-of-routing-algorithms" class="md-nav__link">
+  <a href="#9-what-happens-if-penable-is-asserted-before-psel" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Explain the concept of routing in NoC. What are the different types of routing algorithms?
+      9. What happens if PENABLE is asserted before PSEL?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-how-does-congestion-control-work-in-noc-and-how-would-you-handle-congestion-in-your-design" class="md-nav__link">
+  <a href="#10-what-happens-if-pready-is-always-high" class="md-nav__link">
     <span class="md-ellipsis">
-      6. How does congestion control work in NoC, and how would you handle congestion in your design?
+      10. What happens if PREADY is always high?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-what-is-the-difference-between-circuit-switched-and-packet-switched-networks-which-one-is-used-in-noc-and-why" class="md-nav__link">
+  <a href="#11-what-is-the-function-of-pslverr-in-apb" class="md-nav__link">
     <span class="md-ellipsis">
-      7. What is the difference between circuit-switched and packet-switched networks? Which one is used in NoC, and why?
+      11. What is the function of PSLVERR in APB?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-how-would-you-optimize-power-consumption-in-noc-design" class="md-nav__link">
+  <a href="#12-can-apb-handle-multiple-outstanding-transactions" class="md-nav__link">
     <span class="md-ellipsis">
-      8. How would you optimize power consumption in NoC design?
+      12. Can APB handle multiple outstanding transactions?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-what-is-the-role-of-the-network-interface-ni-in-noc-design" class="md-nav__link">
+  <a href="#13-how-does-apb-handle-clock-domain-crossings" class="md-nav__link">
     <span class="md-ellipsis">
-      9. What is the role of the network interface (NI) in NoC design?
+      13. How does APB handle clock domain crossings?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-what-are-virtual-channels-in-noc-and-how-do-they-help-in-avoiding-deadlocks" class="md-nav__link">
+  <a href="#14-why-is-apb-not-pipelined" class="md-nav__link">
     <span class="md-ellipsis">
-      10. What are virtual channels in NoC, and how do they help in avoiding deadlocks?
+      14. Why is APB not pipelined?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-what-are-the-trade-offs-between-latency-and-throughput-in-noc-design" class="md-nav__link">
+  <a href="#15-what-is-the-impact-of-penable-deassertion" class="md-nav__link">
     <span class="md-ellipsis">
-      11. What are the trade-offs between latency and throughput in NoC design?
+      15. What is the impact of PENABLE deassertion?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-how-would-you-design-a-router-for-an-noc-architecture" class="md-nav__link">
+  <a href="#16-can-pwrite-change-during-a-transaction" class="md-nav__link">
     <span class="md-ellipsis">
-      12. How would you design a router for an NoC architecture?
+      16. Can PWRITE change during a transaction?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#13-how-do-you-ensure-reliability-in-noc-especially-with-multiple-data-flows" class="md-nav__link">
+  <a href="#17-what-happens-if-the-slave-never-asserts-pready" class="md-nav__link">
     <span class="md-ellipsis">
-      13. How do you ensure reliability in NoC, especially with multiple data flows?
+      17. What happens if the slave never asserts PREADY?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#14-what-are-common-communication-protocols-used-in-noc-systems" class="md-nav__link">
+  <a href="#18-how-can-a-master-abort-an-apb-transaction" class="md-nav__link">
     <span class="md-ellipsis">
-      14. What are common communication protocols used in NoC systems?
+      18. How can a master abort an APB transaction?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#15-how-do-you-verify-a-noc-design" class="md-nav__link">
+  <a href="#19-how-is-an-apb-slave-selected" class="md-nav__link">
     <span class="md-ellipsis">
-      15. How do you verify a NoC design?
+      19. How is an APB slave selected?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-what-are-the-main-differences-between-apb3-and-apb4" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. What are the main differences between APB3 and APB4?
     </span>
   </a>
   
@@ -1326,121 +1398,153 @@
   
 
 
-<h1 id="noc-network-on-chip-interview-questions-and-answers">NoC (Network-on-Chip) Interview Questions and Answers<a class="headerlink" href="#noc-network-on-chip-interview-questions-and-answers" title="Permanent link">&para;</a></h1>
-<h2 id="1-what-is-noc-network-on-chip-and-why-is-it-used-in-modern-soc-designs">1. What is NoC (Network-on-Chip), and why is it used in modern SoC designs?<a class="headerlink" href="#1-what-is-noc-network-on-chip-and-why-is-it-used-in-modern-soc-designs" title="Permanent link">&para;</a></h2>
-<p>NoC is a communication architecture for connecting different blocks (such as processors, memory, and peripherals) in a System-on-Chip (SoC) using packet-switched networks. Unlike traditional bus-based systems, NoC provides scalable, high-throughput, and low-latency communication, which is crucial for modern SoCs, especially those with multiple cores or heterogeneous processing units.</p>
+<h1 id="apb-advanced-peripheral-bus-interview-questions-and-answers">APB (Advanced Peripheral Bus) Interview Questions and Answers<a class="headerlink" href="#apb-advanced-peripheral-bus-interview-questions-and-answers" title="Permanent link">&para;</a></h1>
+<h2 id="1-what-is-the-apb-bus-and-where-is-it-used">1. What is the APB bus, and where is it used?<a class="headerlink" href="#1-what-is-the-apb-bus-and-where-is-it-used" title="Permanent link">&para;</a></h2>
+<p>APB (Advanced Peripheral Bus) is a <strong>low-power, low-bandwidth</strong> bus used in the <strong>AMBA (Advanced Microcontroller Bus Architecture)</strong> for connecting <strong>peripheral devices</strong> like UART, SPI, I2C, GPIO, and timers. It provides <strong>simple interface logic</strong> compared to high-performance buses like AHB and AXI.</p>
 <hr />
-<h2 id="2-why-is-noc-better-than-traditional-interconnect">2. Why is NoC better than traditional interconnect?<a class="headerlink" href="#2-why-is-noc-better-than-traditional-interconnect" title="Permanent link">&para;</a></h2>
-<h3 id="traditional-interconnect">Traditional Interconnect<a class="headerlink" href="#traditional-interconnect" title="Permanent link">&para;</a></h3>
-<p>In a chip (such as a computer or a smartphone), an interconnect is a communication network that allows different parts of the chip (processors, memory, and peripherals) to exchange data. Traditional interconnects, like buses, can become bottlenecks as the number of processing elements increases.</p>
-<h3 id="noc-network-on-chip">NoC (Network-on-Chip)<a class="headerlink" href="#noc-network-on-chip" title="Permanent link">&para;</a></h3>
-<p>NoC replaces traditional interconnects with a <strong>packet-switched communication network</strong>, providing a scalable and efficient way for multiple processing elements to communicate.</p>
-<h3 id="advantages-of-noc">Advantages of NoC:<a class="headerlink" href="#advantages-of-noc" title="Permanent link">&para;</a></h3>
+<h2 id="2-what-are-the-key-signals-in-apb">2. What are the key signals in APB?<a class="headerlink" href="#2-what-are-the-key-signals-in-apb" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Scalability:</strong> Handles a large number of components efficiently, unlike buses that slow down with more cores.</li>
-<li><strong>Efficient Communication:</strong> Data can travel through multiple paths, avoiding congestion.</li>
-<li><strong>Low Latency:</strong> Reduces delays with optimized routing.</li>
-<li><strong>Better Reliability:</strong> If one path fails, NoC can reroute traffic.</li>
-<li><strong>Energy Efficiency:</strong> Reduces power consumption by optimizing data transfer paths.</li>
+<li><strong>PCLK</strong>: APB clock signal.</li>
+<li><strong>PSEL</strong>: Select signal for enabling communication with a slave.</li>
+<li><strong>PADDR</strong>: Address signal to select a register in the slave.</li>
+<li><strong>PWRITE</strong>: Determines if the operation is a <strong>read (0)</strong> or <strong>write (1)</strong>.</li>
+<li><strong>PWDATA</strong>: Write data bus.</li>
+<li><strong>PRDATA</strong>: Read data bus.</li>
+<li><strong>PENABLE</strong>: Indicates the second phase of the APB transfer.</li>
+<li><strong>PREADY</strong>: Indicates if the slave is ready to complete the transfer.</li>
+<li><strong>PSLVERR</strong>: Signals an error response from the slave.</li>
 </ul>
 <hr />
-<h2 id="3-what-are-the-main-advantages-of-using-noc-over-traditional-bus-based-communication-in-soc-designs">3. What are the main advantages of using NoC over traditional bus-based communication in SoC designs?<a class="headerlink" href="#3-what-are-the-main-advantages-of-using-noc-over-traditional-bus-based-communication-in-soc-designs" title="Permanent link">&para;</a></h2>
+<h2 id="3-what-is-the-apb-write-transaction-sequence">3. What is the APB write transaction sequence?<a class="headerlink" href="#3-what-is-the-apb-write-transaction-sequence" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Address Phase</strong>:</li>
+<li>Master asserts <code>PSEL</code>, <code>PWRITE</code>, and provides <code>PADDR</code> and <code>PWDATA</code>.</li>
+<li><strong>Enable Phase</strong>:</li>
+<li>Master asserts <code>PENABLE</code> and waits for <code>PREADY</code> from the slave.</li>
+<li><strong>Completion</strong>:</li>
+<li>If <code>PREADY=1</code>, the transfer completes, and <code>PENABLE</code> is deasserted.</li>
+</ol>
+<p>📌 <strong>APB Write Transfer Timing Diagram:</strong><br />
+<img alt="APB Write Transfer" src="images/apb_write.png" /></p>
+<hr />
+<h2 id="4-what-is-the-apb-read-transaction-sequence">4. What is the APB read transaction sequence?<a class="headerlink" href="#4-what-is-the-apb-read-transaction-sequence" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Address Phase</strong>:</li>
+<li>Master asserts <code>PSEL</code>, <code>PWRITE=0</code>, and provides <code>PADDR</code>.</li>
+<li><strong>Enable Phase</strong>:</li>
+<li>Master asserts <code>PENABLE</code> and waits for <code>PREADY</code> from the slave.</li>
+<li><strong>Completion</strong>:</li>
+<li>If <code>PREADY=1</code>, the transfer completes, and <code>PRDATA</code> contains valid read data.</li>
+</ol>
+<p>📌 <strong>APB Read Transfer Timing Diagram:</strong><br />
+<img alt="APB Read Transfer" src="images/apb_read.png" /></p>
+<hr />
+<h2 id="5-how-does-apb-differ-from-ahb-and-axi">5. How does APB differ from AHB and AXI?<a class="headerlink" href="#5-how-does-apb-differ-from-ahb-and-axi" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Scalability:</strong> NoC efficiently manages communication in large SoCs, while buses become inefficient with more cores.</li>
-<li><strong>Low Latency:</strong> Point-to-point communication reduces contention and improves performance.</li>
-<li><strong>Higher Bandwidth:</strong> NoC supports multiple simultaneous communication paths.</li>
-<li><strong>Flexibility:</strong> NoC topologies (e.g., mesh, torus) can be optimized based on design requirements.</li>
+<li><strong>AHB (Advanced High-performance Bus)</strong>:</li>
+<li>Supports burst transfers.</li>
+<li>Pipelined structure.</li>
+<li>Single master with multiple slaves.</li>
+<li><strong>AXI (Advanced eXtensible Interface)</strong>:</li>
+<li>Supports <strong>out-of-order</strong> and <strong>parallel transactions</strong>.</li>
+<li>Separate <strong>read/write channels</strong>.</li>
+<li>Higher bandwidth.</li>
+<li><strong>APB (Advanced Peripheral Bus)</strong>:</li>
+<li><strong>No burst support</strong> (single transaction per clock cycle).</li>
+<li><strong>Simple, low-power interface</strong> for peripherals.</li>
 </ul>
 <hr />
-<h2 id="4-what-are-the-different-topologies-used-in-noc-designs-and-how-do-you-choose-the-best-one-for-a-given-application">4. What are the different topologies used in NoC designs, and how do you choose the best one for a given application?<a class="headerlink" href="#4-what-are-the-different-topologies-used-in-noc-designs-and-how-do-you-choose-the-best-one-for-a-given-application" title="Permanent link">&para;</a></h2>
-<p>Common NoC topologies include:</p>
+<h2 id="6-how-does-apb-fit-into-an-soc-explain-an-apb-system">6. How does APB fit into an SoC? Explain an APB system.<a class="headerlink" href="#6-how-does-apb-fit-into-an-soc-explain-an-apb-system" title="Permanent link">&para;</a></h2>
+<p>APB is used to connect low-bandwidth peripherals to a <strong>high-performance system bus</strong>. Since APB does not support pipelining or burst transfers, it is <strong>typically connected via an AHB-to-APB or AXI-to-APB bridge</strong>.</p>
+<h3 id="components-of-an-apb-system">Components of an APB system:<a class="headerlink" href="#components-of-an-apb-system" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Mesh:</strong> Simple and widely used for general-purpose NoCs.</li>
-<li><strong>Torus:</strong> Similar to mesh but with wraparound connections to reduce long paths.</li>
-<li><strong>Fat-tree:</strong> Provides hierarchical routing with high reliability.</li>
-<li><strong>Star:</strong> Centralized topology that simplifies routing but may introduce bottlenecks.</li>
+<li><strong>AHB/APB Bridge</strong>: Converts AHB (or AXI) transactions into APB transactions.</li>
+<li><strong>Address Decoder</strong>: Selects the appropriate APB slave based on <code>PADDR</code>.</li>
+<li><strong>APB Slaves</strong>: Peripheral devices like UART, GPIO, I2C, SPI, timers, etc.</li>
 </ul>
-<p>The choice depends on:
-- Number of cores.
-- Performance requirements.
-- Area constraints.
-- Cost vs. speed trade-offs.</p>
+<h3 id="apb-transfer-flow">APB Transfer Flow:<a class="headerlink" href="#apb-transfer-flow" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>AHB/AXI Master initiates a request.</strong></li>
+<li><strong>AHB/APB Bridge converts the request to APB format.</strong></li>
+<li><strong>Address Decoder activates the correct <code>PSEL</code> signal for the slave.</strong></li>
+<li><strong>APB transaction completes using <code>PENABLE</code>, <code>PREADY</code>, <code>PWDATA</code>, and <code>PRDATA</code>.</strong></li>
+</ol>
+<p>📌 <strong>Example APB System Diagram:</strong><br />
+<img alt="APB System" src="images/apb_system.png" /></p>
 <hr />
-<h2 id="5-explain-the-concept-of-routing-in-noc-what-are-the-different-types-of-routing-algorithms">5. Explain the concept of routing in NoC. What are the different types of routing algorithms?<a class="headerlink" href="#5-explain-the-concept-of-routing-in-noc-what-are-the-different-types-of-routing-algorithms" title="Permanent link">&para;</a></h2>
-<p>Routing in NoC involves directing packets from the source to the destination node.</p>
-<p>Types of routing algorithms:
-- <strong>Deterministic Routing:</strong> Predefined path (e.g., XY routing in mesh topology).
-- <strong>Adaptive Routing:</strong> Dynamically selects the path based on congestion or failures.
-- <strong>Minimal Routing:</strong> Selects the shortest path based on the number of hops.
-- <strong>Non-minimal Routing:</strong> Allows longer paths to avoid congestion or deadlocks.</p>
-<hr />
-<h2 id="6-how-does-congestion-control-work-in-noc-and-how-would-you-handle-congestion-in-your-design">6. How does congestion control work in NoC, and how would you handle congestion in your design?<a class="headerlink" href="#6-how-does-congestion-control-work-in-noc-and-how-would-you-handle-congestion-in-your-design" title="Permanent link">&para;</a></h2>
-<p>Congestion control prevents network overload and delays. Techniques include:</p>
+<h2 id="7-what-is-the-role-of-pready-in-apb">7. What is the role of PREADY in APB?<a class="headerlink" href="#7-what-is-the-role-of-pready-in-apb" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Traffic Shaping:</strong> Regulating data flow to prevent excessive network load.</li>
-<li><strong>Virtual Channels:</strong> Multiple logical channels within a physical link to reduce contention.</li>
-<li><strong>Backpressure:</strong> Signaling sources to temporarily stop transmitting during congestion.</li>
-<li><strong>Load Balancing:</strong> Distributing traffic across multiple available paths.</li>
+<li><strong>PREADY = 0</strong> → Slave needs more time to process the request.</li>
+<li><strong>PREADY = 1</strong> → Slave completes the transaction.</li>
 </ul>
 <hr />
-<h2 id="7-what-is-the-difference-between-circuit-switched-and-packet-switched-networks-which-one-is-used-in-noc-and-why">7. What is the difference between circuit-switched and packet-switched networks? Which one is used in NoC, and why?<a class="headerlink" href="#7-what-is-the-difference-between-circuit-switched-and-packet-switched-networks-which-one-is-used-in-noc-and-why" title="Permanent link">&para;</a></h2>
+<h2 id="8-why-does-apb-have-two-phases-address-enable">8. Why does APB have two phases (Address + Enable)?<a class="headerlink" href="#8-why-does-apb-have-two-phases-address-enable" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Circuit-switched:</strong> Establishes a dedicated path before communication. Less efficient in dynamic traffic environments.</li>
-<li><strong>Packet-switched:</strong> Data is divided into packets, which are routed independently.</li>
-</ul>
-<p><strong>NoC uses packet-switched networks</strong> because they allow dynamic, scalable data transfers without requiring dedicated connections.</p>
-<hr />
-<h2 id="8-how-would-you-optimize-power-consumption-in-noc-design">8. How would you optimize power consumption in NoC design?<a class="headerlink" href="#8-how-would-you-optimize-power-consumption-in-noc-design" title="Permanent link">&para;</a></h2>
-<p>Power-saving techniques include:
-- <strong>Clock Gating:</strong> Disables clocking in idle components.
-- <strong>Voltage Scaling:</strong> Uses dynamic voltage and frequency scaling (DVFS) to reduce power during low activity periods.
-- <strong>Power-Aware Routing:</strong> Avoids congested or heavily utilized links to reduce power consumption.
-- <strong>Low-Power Circuit Design:</strong> Uses energy-efficient routers and buffers.</p>
-<hr />
-<h2 id="9-what-is-the-role-of-the-network-interface-ni-in-noc-design">9. What is the role of the network interface (NI) in NoC design?<a class="headerlink" href="#9-what-is-the-role-of-the-network-interface-ni-in-noc-design" title="Permanent link">&para;</a></h2>
-<p>The <strong>Network Interface (NI)</strong> connects processing elements (e.g., CPU cores, memory controllers) to the NoC. It performs:
-- <strong>Packetization:</strong> Converts core data into network packets.
-- <strong>De-packetization:</strong> Converts received packets back into data for the core.
-- <strong>Flow Control &amp; Arbitration:</strong> Manages data flow and ensures fair access.</p>
-<hr />
-<h2 id="10-what-are-virtual-channels-in-noc-and-how-do-they-help-in-avoiding-deadlocks">10. What are virtual channels in NoC, and how do they help in avoiding deadlocks?<a class="headerlink" href="#10-what-are-virtual-channels-in-noc-and-how-do-they-help-in-avoiding-deadlocks" title="Permanent link">&para;</a></h2>
-<p>Virtual channels are multiple logical communication channels that share the same physical link. They:
-- Prevent circular dependencies, reducing deadlocks.
-- Improve network utilization by separating different traffic types.
-- Increase throughput by reducing contention on shared paths.</p>
-<hr />
-<h2 id="11-what-are-the-trade-offs-between-latency-and-throughput-in-noc-design">11. What are the trade-offs between latency and throughput in NoC design?<a class="headerlink" href="#11-what-are-the-trade-offs-between-latency-and-throughput-in-noc-design" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Latency:</strong> Time for a packet to travel from source to destination.</li>
-<li><strong>Throughput:</strong> Total data transmitted per unit time.</li>
-</ul>
-<p>Optimizing for <strong>low latency</strong> may require reserving dedicated paths, while maximizing <strong>throughput</strong> could increase contention, leading to higher delays.</p>
-<hr />
-<h2 id="12-how-would-you-design-a-router-for-an-noc-architecture">12. How would you design a router for an NoC architecture?<a class="headerlink" href="#12-how-would-you-design-a-router-for-an-noc-architecture" title="Permanent link">&para;</a></h2>
-<p>A NoC router consists of:
-- <strong>Input Buffers:</strong> Temporary storage for incoming packets.
-- <strong>Arbitration Logic:</strong> Determines priority when multiple packets compete for the same output port.
-- <strong>Routing Logic:</strong> Determines the next hop for a packet.
-- <strong>Output Buffers:</strong> Holds packets before forwarding.</p>
-<hr />
-<h2 id="13-how-do-you-ensure-reliability-in-noc-especially-with-multiple-data-flows">13. How do you ensure reliability in NoC, especially with multiple data flows?<a class="headerlink" href="#13-how-do-you-ensure-reliability-in-noc-especially-with-multiple-data-flows" title="Permanent link">&para;</a></h2>
-<p>Reliability techniques:
-- <strong>Error Detection and Correction (ECC).</strong>
-- <strong>Redundant Paths:</strong> If one link fails, data can take another route.
-- <strong>Retransmission Mechanisms:</strong> Packets are retransmitted if errors are detected.</p>
-<hr />
-<h2 id="14-what-are-common-communication-protocols-used-in-noc-systems">14. What are common communication protocols used in NoC systems?<a class="headerlink" href="#14-what-are-common-communication-protocols-used-in-noc-systems" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>AXI (Advanced eXtensible Interface):</strong> Used in ARM-based NoCs.</li>
-<li><strong>OCP (Open Core Protocol):</strong> Standard for multi-core and embedded systems.</li>
-<li><strong>STBus:</strong> Proprietary protocol from STMicroelectronics.</li>
+<li><strong>Address Phase</strong> allows setup of signals.</li>
+<li><strong>Enable Phase</strong> ensures data stability.</li>
+<li>This prevents timing hazards and simplifies slave logic.</li>
 </ul>
 <hr />
-<h2 id="15-how-do-you-verify-a-noc-design">15. How do you verify a NoC design?<a class="headerlink" href="#15-how-do-you-verify-a-noc-design" title="Permanent link">&para;</a></h2>
-<p>Verification techniques:
-- <strong>Functional Simulation:</strong> Ensures correctness under normal conditions.
-- <strong>Formal Verification:</strong> Checks for deadlocks and correctness of routing.
-- <strong>Performance Simulation:</strong> Measures throughput, latency, and congestion.</p>
+<h2 id="9-what-happens-if-penable-is-asserted-before-psel">9. What happens if <code>PENABLE</code> is asserted before <code>PSEL</code>?<a class="headerlink" href="#9-what-happens-if-penable-is-asserted-before-psel" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The transaction is <strong>invalid</strong>, as <code>PSEL</code> must be set first.</li>
+</ul>
+<hr />
+<h2 id="10-what-happens-if-pready-is-always-high">10. What happens if <code>PREADY</code> is always high?<a class="headerlink" href="#10-what-happens-if-pready-is-always-high" title="Permanent link">&para;</a></h2>
+<ul>
+<li>APB transfers will always complete in <strong>one clock cycle</strong>.</li>
+</ul>
+<hr />
+<h2 id="11-what-is-the-function-of-pslverr-in-apb">11. What is the function of <code>PSLVERR</code> in APB?<a class="headerlink" href="#11-what-is-the-function-of-pslverr-in-apb" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If <code>PSLVERR=1</code>, it indicates <strong>an error response</strong> from the slave.</li>
+</ul>
+<hr />
+<h2 id="12-can-apb-handle-multiple-outstanding-transactions">12. Can APB handle multiple outstanding transactions?<a class="headerlink" href="#12-can-apb-handle-multiple-outstanding-transactions" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>No</strong>, APB only supports <strong>one active transaction at a time</strong>.</li>
+</ul>
+<hr />
+<h2 id="13-how-does-apb-handle-clock-domain-crossings">13. How does APB handle clock domain crossings?<a class="headerlink" href="#13-how-does-apb-handle-clock-domain-crossings" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Usually <strong>synchronizers</strong> or <strong>bridges</strong> (e.g., AHB to APB bridge) are used.</li>
+</ul>
+<hr />
+<h2 id="14-why-is-apb-not-pipelined">14. Why is APB not pipelined?<a class="headerlink" href="#14-why-is-apb-not-pipelined" title="Permanent link">&para;</a></h2>
+<ul>
+<li>APB follows a <strong>simple two-phase protocol</strong>, making it <strong>easier to implement</strong> and <strong>lower in power</strong>.</li>
+</ul>
+<hr />
+<h2 id="15-what-is-the-impact-of-penable-deassertion">15. What is the impact of <code>PENABLE</code> deassertion?<a class="headerlink" href="#15-what-is-the-impact-of-penable-deassertion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If <code>PENABLE=0</code>, the transfer is <strong>not completed</strong>.</li>
+</ul>
+<hr />
+<h2 id="16-can-pwrite-change-during-a-transaction">16. Can <code>PWRITE</code> change during a transaction?<a class="headerlink" href="#16-can-pwrite-change-during-a-transaction" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>No</strong>, <code>PWRITE</code> must remain stable once the transfer starts.</li>
+</ul>
+<hr />
+<h2 id="17-what-happens-if-the-slave-never-asserts-pready">17. What happens if the slave never asserts <code>PREADY</code>?<a class="headerlink" href="#17-what-happens-if-the-slave-never-asserts-pready" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The master <strong>waits indefinitely</strong>, causing a <strong>hang</strong>.</li>
+</ul>
+<hr />
+<h2 id="18-how-can-a-master-abort-an-apb-transaction">18. How can a master abort an APB transaction?<a class="headerlink" href="#18-how-can-a-master-abort-an-apb-transaction" title="Permanent link">&para;</a></h2>
+<ul>
+<li>By <strong>deasserting <code>PSEL</code></strong>, the transfer is canceled.</li>
+</ul>
+<hr />
+<h2 id="19-how-is-an-apb-slave-selected">19. How is an APB slave selected?<a class="headerlink" href="#19-how-is-an-apb-slave-selected" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The <strong>APB bridge decodes the address (<code>PADDR</code>)</strong> and sets <code>PSEL</code> accordingly.</li>
+</ul>
+<hr />
+<h2 id="20-what-are-the-main-differences-between-apb3-and-apb4">20. What are the main differences between <strong>APB3 and APB4</strong>?<a class="headerlink" href="#20-what-are-the-main-differences-between-apb3-and-apb4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>APB3</strong> lacks the <code>PSTRB</code> and <code>PPROT</code> signals.</li>
+<li><strong>APB4</strong> adds <strong>byte strobes (<code>PSTRB</code>)</strong> for finer control.</li>
+</ul>
 <hr />
 
 
