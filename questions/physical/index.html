@@ -1145,138 +1145,163 @@
 
 <h1 id="physical-design-pd-interview-questions-and-answers">Physical Design (PD) Interview Questions and Answers<a class="headerlink" href="#physical-design-pd-interview-questions-and-answers" title="Permanent link">&para;</a></h1>
 <h2 id="1-what-are-the-key-stages-in-the-physical-design-flow">1. What are the key stages in the Physical Design flow?<a class="headerlink" href="#1-what-are-the-key-stages-in-the-physical-design-flow" title="Permanent link">&para;</a></h2>
-<p>The Physical Design flow consists of the following major stages:
-- <strong>Floorplanning</strong>: Placement of macros, standard cells, and power planning.
-- <strong>Placement</strong>: Arranging standard cells while optimizing timing and congestion.
-- <strong>Clock Tree Synthesis (CTS)</strong>: Creating a balanced clock network to minimize skew and insertion delay.
-- <strong>Routing</strong>: Connecting all the components while meeting design rules.
-- <strong>Signoff</strong>: Running static timing analysis (STA), power analysis, and DRC/LVS checks before tape-out.</p>
+<p>The Physical Design flow consists of the following major stages:</p>
+<ul>
+<li>Floorplanning: Placement of macros, standard cells, and power planning.</li>
+<li>Placement: Arranging standard cells while optimizing timing and congestion.</li>
+<li>Clock Tree Synthesis (CTS): Creating a balanced clock network to minimize skew and insertion delay.</li>
+<li>Routing: Connecting all the components while meeting design rules.</li>
+<li>Signoff: Running static timing analysis (STA), power analysis, and DRC/LVS checks before tape-out.</li>
+</ul>
 <hr />
 <h2 id="2-what-is-the-difference-between-pre-cts-and-post-cts-placement">2. What is the difference between pre-CTS and post-CTS placement?<a class="headerlink" href="#2-what-is-the-difference-between-pre-cts-and-post-cts-placement" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Pre-CTS Placement</strong>: Cells are placed based on estimated timing without a clock tree.</li>
-<li><strong>Post-CTS Placement</strong>: Cells are optimized after the clock tree is built, improving timing and reducing clock skew.</li>
+<li>Pre-CTS placement: Cells are placed based on estimated timing without a clock tree.</li>
+<li>Post-CTS placement: Cells are optimized after the clock tree is built, improving timing and reducing clock skew.</li>
 </ul>
 <hr />
 <h2 id="3-what-is-the-impact-of-congestion-in-physical-design-and-how-is-it-resolved">3. What is the impact of congestion in physical design, and how is it resolved?<a class="headerlink" href="#3-what-is-the-impact-of-congestion-in-physical-design-and-how-is-it-resolved" title="Permanent link">&para;</a></h2>
-<p>Congestion occurs when too many wires need routing in a limited area. It leads to:
-- <strong>Routing failures</strong>
-- <strong>Higher delay and timing violations</strong>
-- <strong>Increased power consumption</strong></p>
-<p><strong>Congestion resolution techniques:</strong>
-- Spread cells during <strong>placement</strong>.
-- Use <strong>metal-layer routing optimally</strong>.
-- Adjust macro placement and power planning.
-- Enable <strong>cell padding</strong> and congestion-aware placement.</p>
+<p>Congestion occurs when too many wires need routing in a limited area. It can cause routing failures, higher delay, and increased power consumption.</p>
+<p>Ways to resolve congestion:</p>
+<ul>
+<li>Spread cells during placement.</li>
+<li>Use metal-layer routing optimally.</li>
+<li>Adjust macro placement and power planning.</li>
+<li>Enable cell padding and congestion-aware placement.</li>
+</ul>
 <hr />
 <h2 id="4-what-is-ocv-on-chip-variation-and-how-does-it-affect-timing">4. What is OCV (On-Chip Variation), and how does it affect timing?<a class="headerlink" href="#4-what-is-ocv-on-chip-variation-and-how-does-it-affect-timing" title="Permanent link">&para;</a></h2>
-<p>OCV accounts for <strong>process variations</strong> across a chip, leading to <strong>timing uncertainty</strong>. It is modeled by:
-- <strong>Setup analysis</strong>: Slow corner (max delay).
-- <strong>Hold analysis</strong>: Fast corner (min delay).</p>
-<p>OCV variations are mitigated using <strong>derating factors</strong> and <strong>advanced techniques like AOCV &amp; POCV</strong>.</p>
+<p>OCV accounts for process variations across a chip, leading to timing uncertainty. It is modeled by:</p>
+<ul>
+<li>Setup analysis: Slow corner (max delay).</li>
+<li>Hold analysis: Fast corner (min delay).</li>
+</ul>
+<p>OCV variations are mitigated using derating factors and advanced techniques like AOCV and POCV.</p>
 <hr />
 <h2 id="5-what-is-clock-skew-and-how-is-it-minimized">5. What is clock skew, and how is it minimized?<a class="headerlink" href="#5-what-is-clock-skew-and-how-is-it-minimized" title="Permanent link">&para;</a></h2>
-<p><strong>Clock skew</strong> is the difference in clock arrival times at different registers. It is minimized by:
-- <strong>Balanced clock tree synthesis (CTS)</strong>.
-- <strong>Using clock buffers with matched delays</strong>.
-- <strong>Using skew-aware placement and CTS constraints</strong>.</p>
+<p>Clock skew is the difference in clock arrival times at different registers. It is minimized by:</p>
+<ul>
+<li>Balanced clock tree synthesis (CTS).</li>
+<li>Using clock buffers with matched delays.</li>
+<li>Using skew-aware placement and CTS constraints.</li>
+</ul>
 <hr />
 <h2 id="6-what-are-the-different-routing-layers-in-an-asic">6. What are the different routing layers in an ASIC?<a class="headerlink" href="#6-what-are-the-different-routing-layers-in-an-asic" title="Permanent link">&para;</a></h2>
-<p>ASIC routing uses multiple metal layers:
-- <strong>Lower metal layers (M1-M3)</strong>: Local interconnects (high resistance).
-- <strong>Mid-level metal layers (M4-M6)</strong>: Used for signal routing.
-- <strong>Higher metal layers (M7-M12)</strong>: Used for power and global routing.</p>
+<p>ASIC routing uses multiple metal layers:</p>
+<ul>
+<li>Lower metal layers (M1-M3): Local interconnects with high resistance.</li>
+<li>Mid-level metal layers (M4-M6): Used for signal routing.</li>
+<li>Higher metal layers (M7-M12): Used for power and global routing.</li>
+</ul>
 <hr />
 <h2 id="7-what-is-ir-drop-and-how-is-it-analyzed">7. What is IR drop, and how is it analyzed?<a class="headerlink" href="#7-what-is-ir-drop-and-how-is-it-analyzed" title="Permanent link">&para;</a></h2>
-<p><strong>IR drop</strong> occurs when there is voltage loss due to resistance in power delivery. It affects <strong>timing and functionality</strong>.</p>
+<p>IR drop occurs when there is voltage loss due to resistance in power delivery, affecting timing and functionality.</p>
 <ul>
-<li><strong>Static IR Drop</strong>: Average power consumption.</li>
-<li><strong>Dynamic IR Drop</strong>: Transient power fluctuations.</li>
+<li>Static IR drop: Average power consumption.</li>
+<li>Dynamic IR drop: Transient power fluctuations.</li>
 </ul>
-<p>Mitigated by <strong>power grid optimization, decoupling capacitors, and thick metal layers</strong>.</p>
+<p>IR drop is mitigated by power grid optimization, decoupling capacitors, and thick metal layers.</p>
 <hr />
 <h2 id="8-what-are-antenna-violations-in-physical-design">8. What are antenna violations in physical design?<a class="headerlink" href="#8-what-are-antenna-violations-in-physical-design" title="Permanent link">&para;</a></h2>
-<p>Antenna violations occur during <strong>metal etching</strong>, where long interconnects accumulate excess charge, potentially damaging transistors.</p>
-<p><strong>Fixes:</strong>
-- <strong>Diode insertion</strong> at sensitive gates.
-- <strong>Breaking long nets</strong> using vias.</p>
+<p>Antenna violations occur during metal etching, where long interconnects accumulate excess charge, potentially damaging transistors.</p>
+<p>Ways to fix antenna violations:</p>
+<ul>
+<li>Insert diodes at sensitive gates.</li>
+<li>Break long nets using vias.</li>
+</ul>
 <hr />
 <h2 id="9-what-is-the-difference-between-global-and-detailed-routing">9. What is the difference between global and detailed routing?<a class="headerlink" href="#9-what-is-the-difference-between-global-and-detailed-routing" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Global Routing</strong>: Creates rough paths for signals and assigns layers.</li>
-<li><strong>Detailed Routing</strong>: Determines exact wire paths and assigns tracks.</li>
+<li>Global routing: Creates rough paths for signals and assigns layers.</li>
+<li>Detailed routing: Determines exact wire paths and assigns tracks.</li>
 </ul>
 <hr />
 <h2 id="10-what-are-the-key-objectives-of-floorplanning">10. What are the key objectives of floorplanning?<a class="headerlink" href="#10-what-are-the-key-objectives-of-floorplanning" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Macro placement</strong> to optimize data flow.</li>
-<li><strong>Power planning</strong> to avoid IR drop.</li>
-<li><strong>Congestion minimization</strong> by strategic placement.</li>
-<li><strong>Aspect ratio optimization</strong> for efficient layout.</li>
+<li>Macro placement to optimize data flow.</li>
+<li>Power planning to avoid IR drop.</li>
+<li>Congestion minimization by strategic placement.</li>
+<li>Aspect ratio optimization for efficient layout.</li>
 </ul>
 <hr />
 <h2 id="11-how-does-congestion-impact-timing-in-physical-design">11. How does congestion impact timing in physical design?<a class="headerlink" href="#11-how-does-congestion-impact-timing-in-physical-design" title="Permanent link">&para;</a></h2>
-<p>Congestion causes <strong>longer wire detours</strong>, increasing:
-- <strong>Wire resistance (R) and capacitance (C)</strong>
-- <strong>Signal delay</strong>
-- <strong>Setup violations</strong></p>
-<p><strong>Fix</strong>: Use congestion-aware placement and routing techniques.</p>
+<p>Congestion causes longer wire detours, increasing wire resistance, capacitance, and signal delay, leading to setup violations.</p>
+<p>To fix congestion:</p>
+<ul>
+<li>Use congestion-aware placement and routing techniques.</li>
+</ul>
 <hr />
 <h2 id="12-what-is-metal-density-and-why-is-it-important">12. What is metal density, and why is it important?<a class="headerlink" href="#12-what-is-metal-density-and-why-is-it-important" title="Permanent link">&para;</a></h2>
-<p>Metal density refers to the <strong>distribution of metal layers</strong> across the chip. It is important to:
-- Avoid <strong>CMP (Chemical Mechanical Polishing) issues</strong>.
-- Reduce <strong>variation in resistance and capacitance</strong>.
-- Ensure uniform power distribution.</p>
+<p>Metal density refers to the distribution of metal layers across the chip. It is important to:</p>
+<ul>
+<li>Avoid CMP (Chemical Mechanical Polishing) issues.</li>
+<li>Reduce variation in resistance and capacitance.</li>
+<li>Ensure uniform power distribution.</li>
+</ul>
 <hr />
 <h2 id="13-what-is-eco-engineering-change-order-in-physical-design">13. What is ECO (Engineering Change Order) in Physical Design?<a class="headerlink" href="#13-what-is-eco-engineering-change-order-in-physical-design" title="Permanent link">&para;</a></h2>
-<p>ECO is a <strong>late-stage modification</strong> to the design <strong>without rerunning full synthesis</strong>. It is used to:
-- <strong>Fix functional or timing issues</strong>.
-- <strong>Optimize power or performance</strong>.
-- <strong>Reduce area post-signoff</strong>.</p>
+<p>ECO is a late-stage modification to the design without rerunning full synthesis. It is used to:</p>
+<ul>
+<li>Fix functional or timing issues.</li>
+<li>Optimize power or performance.</li>
+<li>Reduce area post-signoff.</li>
+</ul>
 <hr />
 <h2 id="14-what-is-the-purpose-of-filler-cells-in-physical-design">14. What is the purpose of filler cells in Physical Design?<a class="headerlink" href="#14-what-is-the-purpose-of-filler-cells-in-physical-design" title="Permanent link">&para;</a></h2>
-<p>Filler cells are used to:
-- <strong>Maintain continuity of N-well and P-well for power distribution</strong>.
-- <strong>Ensure proper spacing between cells</strong>.
-- <strong>Avoid DRC violations</strong>.</p>
+<p>Filler cells are used to:</p>
+<ul>
+<li>Maintain continuity of N-well and P-well for power distribution.</li>
+<li>Ensure proper spacing between cells.</li>
+<li>Avoid DRC violations.</li>
+</ul>
 <hr />
 <h2 id="15-what-is-cross-talk-in-routing-and-how-is-it-reduced">15. What is cross-talk in routing, and how is it reduced?<a class="headerlink" href="#15-what-is-cross-talk-in-routing-and-how-is-it-reduced" title="Permanent link">&para;</a></h2>
-<p>Crosstalk is <strong>unwanted interference</strong> between adjacent nets due to capacitive coupling.</p>
-<p><strong>Mitigation Techniques:</strong>
-- <strong>Increase spacing</strong> between critical nets.
-- <strong>Use shielding (ground/power tracks).</strong>
-- <strong>Route signals on different metal layers.</strong></p>
+<p>Crosstalk is unwanted interference between adjacent nets due to capacitive coupling.</p>
+<p>Ways to reduce crosstalk:</p>
+<ul>
+<li>Increase spacing between critical nets.</li>
+<li>Use shielding (ground/power tracks).</li>
+<li>Route signals on different metal layers.</li>
+</ul>
 <hr />
 <h2 id="16-what-is-the-impact-of-multi-cycle-paths-on-timing-analysis">16. What is the impact of multi-cycle paths on timing analysis?<a class="headerlink" href="#16-what-is-the-impact-of-multi-cycle-paths-on-timing-analysis" title="Permanent link">&para;</a></h2>
-<p>Multi-cycle paths require <strong>more than one clock cycle</strong> to propagate data. They:
-- <strong>Relax setup timing constraints</strong>.
-- <strong>Need careful exception handling in STA</strong>.</p>
+<p>Multi-cycle paths require more than one clock cycle to propagate data. They:</p>
+<ul>
+<li>Relax setup timing constraints.</li>
+<li>Need careful exception handling in STA.</li>
+</ul>
 <hr />
 <h2 id="17-what-are-hold-violations-and-how-do-you-fix-them">17. What are hold violations, and how do you fix them?<a class="headerlink" href="#17-what-are-hold-violations-and-how-do-you-fix-them" title="Permanent link">&para;</a></h2>
-<p><strong>Hold violations</strong> occur when data propagates too quickly, causing incorrect latching.</p>
-<p><strong>Fixes:</strong>
-- Insert <strong>small buffers</strong> to delay the signal.
-- Adjust <strong>clock skew</strong>.</p>
+<p>Hold violations occur when data propagates too quickly, causing incorrect latching.</p>
+<p>Ways to fix hold violations:</p>
+<ul>
+<li>Insert small buffers to delay the signal.</li>
+<li>Adjust clock skew.</li>
+</ul>
 <hr />
 <h2 id="18-what-is-clock-gating-and-how-does-it-improve-power-efficiency">18. What is clock gating, and how does it improve power efficiency?<a class="headerlink" href="#18-what-is-clock-gating-and-how-does-it-improve-power-efficiency" title="Permanent link">&para;</a></h2>
-<p>Clock gating disables the clock signal to <strong>inactive blocks</strong>, reducing <strong>dynamic power consumption</strong>.</p>
+<p>Clock gating disables the clock signal to inactive blocks, reducing dynamic power consumption.</p>
 <ul>
-<li>Implemented using <strong>clock gating cells</strong>.</li>
-<li>Controlled by <strong>enable signals</strong>.</li>
+<li>Implemented using clock gating cells.</li>
+<li>Controlled by enable signals.</li>
 </ul>
 <hr />
 <h2 id="19-what-are-the-challenges-in-multi-power-domain-designs">19. What are the challenges in multi-power domain designs?<a class="headerlink" href="#19-what-are-the-challenges-in-multi-power-domain-designs" title="Permanent link">&para;</a></h2>
-<p>Multi-power domain designs use <strong>isolation cells, level shifters, and retention cells</strong> to handle:
-- <strong>Voltage level mismatches</strong>.
-- <strong>State retention during power gating</strong>.
-- <strong>Complex power sequencing.</strong></p>
+<p>Multi-power domain designs use isolation cells, level shifters, and retention cells to handle:</p>
+<ul>
+<li>Voltage level mismatches.</li>
+<li>State retention during power gating.</li>
+<li>Complex power sequencing.</li>
+</ul>
 <hr />
 <h2 id="20-how-does-signoff-verification-ensure-a-tapeout-ready-design">20. How does signoff verification ensure a tapeout-ready design?<a class="headerlink" href="#20-how-does-signoff-verification-ensure-a-tapeout-ready-design" title="Permanent link">&para;</a></h2>
-<p>Signoff verification includes:
-- <strong>Static Timing Analysis (STA)</strong>: Ensures timing closure.
-- <strong>IR Drop Analysis</strong>: Checks power integrity.
-- <strong>DRC/LVS Checks</strong>: Ensures design rule compliance.
-- <strong>Antenna Rule Check</strong>: Prevents device damage.</p>
+<p>Signoff verification includes:</p>
+<ul>
+<li>Static Timing Analysis (STA) to ensure timing closure.</li>
+<li>IR Drop Analysis to check power integrity.</li>
+<li>DRC/LVS Checks to ensure design rule compliance.</li>
+<li>Antenna Rule Check to prevent device damage.</li>
+</ul>
 <hr />
 
 
