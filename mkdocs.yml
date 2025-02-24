@@ -25,13 +25,20 @@ extra_css:
 nav:
   - Home: index.md
   - Digital Design:
-    - Overview: questions/digital.md
-    - Logic Design Questions: questions/digital/logic-design.md
-    - Clocking, Clock Dividers, and Reset Questions: questions/digital/clocking.md
-    - Clock Domain Crossing (CDC) Questions: questions/digital/cdc.md
-    - Power-Related Questions: questions/digital/power.md
-    - Digital Filter Questions (FIR, IIR and CIC): questions/digital/digital-filters.md
-  - Protocols: questions/protocol.md  
+      - Overview: questions/digital.md
+      - Logic Design Questions: questions/digital/logic-design.md
+      - Clocking, Clock Dividers, and Reset Questions: questions/digital/clocking.md
+      - Clock Domain Crossing (CDC) Questions: questions/digital/cdc.md
+      - Power-Related Questions: questions/digital/power.md
+      - Digital Filter Questions (FIR, IIR and CIC): questions/digital/digital-filters.md
+  - Protocols:
+      - Overview: questions/protocols.md
+      - APB (Advanced Peripheral Bus): questions/protocols/apb.md
+      - AHB (Advanced High-performance Bus): questions/protocols/ahb.md
+      - AXI (Advanced eXtensible Interface): questions/protocols/axi.md
+      - PCIe (Peripheral Component Interconnect Express): questions/protocols/pcie.md
+      - DDR (Double Data Rate Memory): questions/protocols/ddr.md
+      - USB (Universal Serial Bus): questions/protocols/usb.md
   - Verification: questions/verification.md
   - Physical Design: questions/physical.md
   - Synthesis & STA: questions/synthesis.md

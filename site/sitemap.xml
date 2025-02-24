@@ -52,4 +52,12 @@
          <loc>https://yourwebsite.com/questions/digital/power/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
+    <url>
+         <loc>https://yourwebsite.com/questions/protocols/axi/</loc>
+         <lastmod>2025-02-24</lastmod>
+    </url>
+    <url>
+         <loc>https://yourwebsite.com/questions/protocols/noc/</loc>
+         <lastmod>2025-02-24</lastmod>
+    </url>
 </urlset>
