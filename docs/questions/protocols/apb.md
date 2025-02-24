@@ -1,0 +1,153 @@
+# APB (Advanced Peripheral Bus) Interview Questions and Answers
+
+## 1. What is the APB bus, and where is it used?
+APB (Advanced Peripheral Bus) is a **low-power, low-bandwidth** bus used in the **AMBA (Advanced Microcontroller Bus Architecture)** for connecting **peripheral devices** like UART, SPI, I2C, GPIO, and timers. It provides **simple interface logic** compared to high-performance buses like AHB and AXI.
+
+---
+
+## 2. What are the key signals in APB?
+- **PCLK**: APB clock signal.
+- **PSEL**: Select signal for enabling communication with a slave.
+- **PADDR**: Address signal to select a register in the slave.
+- **PWRITE**: Determines if the operation is a **read (0)** or **write (1)**.
+- **PWDATA**: Write data bus.
+- **PRDATA**: Read data bus.
+- **PENABLE**: Indicates the second phase of the APB transfer.
+- **PREADY**: Indicates if the slave is ready to complete the transfer.
+- **PSLVERR**: Signals an error response from the slave.
+
+---
+
+## 3. What is the APB write transaction sequence?
+1. **Address Phase**:
+   - Master asserts `PSEL`, `PWRITE`, and provides `PADDR` and `PWDATA`.
+2. **Enable Phase**:
+   - Master asserts `PENABLE` and waits for `PREADY` from the slave.
+3. **Completion**:
+   - If `PREADY=1`, the transfer completes, and `PENABLE` is deasserted.
+
+📌 **APB Write Transfer Timing Diagram:**  
+![APB Write Transfer](images/apb_write.png)
+
+---
+
+## 4. What is the APB read transaction sequence?
+1. **Address Phase**:
+   - Master asserts `PSEL`, `PWRITE=0`, and provides `PADDR`.
+2. **Enable Phase**:
+   - Master asserts `PENABLE` and waits for `PREADY` from the slave.
+3. **Completion**:
+   - If `PREADY=1`, the transfer completes, and `PRDATA` contains valid read data.
+
+📌 **APB Read Transfer Timing Diagram:**  
+![APB Read Transfer](images/apb_read.png)
+
+---
+
+## 5. How does APB differ from AHB and AXI?
+- **AHB (Advanced High-performance Bus)**:
+  - Supports burst transfers.
+  - Pipelined structure.
+  - Single master with multiple slaves.
+- **AXI (Advanced eXtensible Interface)**:
+  - Supports **out-of-order** and **parallel transactions**.
+  - Separate **read/write channels**.
+  - Higher bandwidth.
+- **APB (Advanced Peripheral Bus)**:
+  - **No burst support** (single transaction per clock cycle).
+  - **Simple, low-power interface** for peripherals.
+
+---
+
+## 6. How does APB fit into an SoC? Explain an APB system.
+APB is used to connect low-bandwidth peripherals to a **high-performance system bus**. Since APB does not support pipelining or burst transfers, it is **typically connected via an AHB-to-APB or AXI-to-APB bridge**.
+
+### Components of an APB system:
+- **AHB/APB Bridge**: Converts AHB (or AXI) transactions into APB transactions.
+- **Address Decoder**: Selects the appropriate APB slave based on `PADDR`.
+- **APB Slaves**: Peripheral devices like UART, GPIO, I2C, SPI, timers, etc.
+
+### APB Transfer Flow:
+1. **AHB/AXI Master initiates a request.**
+2. **AHB/APB Bridge converts the request to APB format.**
+3. **Address Decoder activates the correct `PSEL` signal for the slave.**
+4. **APB transaction completes using `PENABLE`, `PREADY`, `PWDATA`, and `PRDATA`.**
+
+📌 **Example APB System Diagram:**  
+![APB System](images/apb_system.png)
+
+---
+
+## 7. What is the role of PREADY in APB?
+- **PREADY = 0** → Slave needs more time to process the request.
+- **PREADY = 1** → Slave completes the transaction.
+
+---
+
+## 8. Why does APB have two phases (Address + Enable)?
+- **Address Phase** allows setup of signals.
+- **Enable Phase** ensures data stability.
+- This prevents timing hazards and simplifies slave logic.
+
+---
+
+## 9. What happens if `PENABLE` is asserted before `PSEL`?
+- The transaction is **invalid**, as `PSEL` must be set first.
+
+---
+
+## 10. What happens if `PREADY` is always high?
+- APB transfers will always complete in **one clock cycle**.
+
+---
+
+## 11. What is the function of `PSLVERR` in APB?
+- If `PSLVERR=1`, it indicates **an error response** from the slave.
+
+---
+
+## 12. Can APB handle multiple outstanding transactions?
+- **No**, APB only supports **one active transaction at a time**.
+
+---
+
+## 13. How does APB handle clock domain crossings?
+- Usually **synchronizers** or **bridges** (e.g., AHB to APB bridge) are used.
+
+---
+
+## 14. Why is APB not pipelined?
+- APB follows a **simple two-phase protocol**, making it **easier to implement** and **lower in power**.
+
+---
+
+## 15. What is the impact of `PENABLE` deassertion?
+- If `PENABLE=0`, the transfer is **not completed**.
+
+---
+
+## 16. Can `PWRITE` change during a transaction?
+- **No**, `PWRITE` must remain stable once the transfer starts.
+
+---
+
+## 17. What happens if the slave never asserts `PREADY`?
+- The master **waits indefinitely**, causing a **hang**.
+
+---
+
+## 18. How can a master abort an APB transaction?
+- By **deasserting `PSEL`**, the transfer is canceled.
+
+---
+
+## 19. How is an APB slave selected?
+- The **APB bridge decodes the address (`PADDR`)** and sets `PSEL` accordingly.
+
+---
+
+## 20. What are the main differences between **APB3 and APB4**?
+- **APB3** lacks the `PSTRB` and `PPROT` signals.
+- **APB4** adds **byte strobes (`PSTRB`)** for finer control.
+
+---
