@@ -1,7 +1,7 @@
 # 👋 Hello!
 # Welcome to *asic-interview* website! 🚀
 
-The field of Very Large Scale Integration (VLSI) plays a crucial role in modern semiconductor technology, shaping the design of chips used in consumer electronics, computing, and communication systems. With companies constantly pushing the boundaries of performance, power efficiency, and cost, there is a growing demand for **skilled VLSI engineers**. However, securing a role in this competitive field requires thorough preparation, not just in technical concepts but also in problem-solving and communication skills.
+With VLSI companies constantly pushing the boundaries of performance, power efficiency, and cost, there is a growing demand for **skilled VLSI engineers**. However, securing a role in this competitive field requires thorough preparation, not just in technical concepts but also in problem-solving and communication skills.
 
 ## 💡 Why This Website?
 
@@ -32,22 +32,22 @@ This website is structured into multiple sections, covering essential topics suc
 
 You can navigate through the chapters based on your interests or the specific areas you need to improve.
 
-## 🔍 **How to Use This Site**
+## 🔍 How to Use This Site
 
-### **🗂️ Left Sidebar (Navigation Menu)**
-- The **left sidebar** contains the **main categories** of interview questions.
-- Sections like **Digital Design, Verification, Physical Design, DFT, and more** are grouped under relevant topics.
-- Clicking on a section **expands subtopics** for easy access to specific question categories.
-- Use this menu to **jump directly to different topics**.
+### 📌 Top Navigation & Search
+- The top menu provides direct access to key sections of the website.
+- Viewers can explore topics like Digital Design, Verification, Physical Design, DFT, and more.
+- Use the search bar (🔎) to quickly find interview questions across all categories.
 
-### **📑 Right Sidebar (Table of Contents)**
-- The **right sidebar** (if enabled) shows the **Table of Contents (TOC)** for the page you’re currently viewing.
-- This helps you **quickly navigate within a long article**.
-- Click on a heading in the TOC to **jump to that section instantly**.
+### 🗂️ Left Sidebar (Navigation Menu)
+- The left sidebar contains subcategories of key sections.
+- Clicking on a section expands subtopics for easy access to specific question categories.
+- Use this menu to navigate directly to different topics.
 
-### **📌 Top Navigation & Search**
-- The **top menu** provides direct access to key sections of the website.
-- Use the **search bar** (🔎) to quickly find interview questions across all categories.
+### 📑 Right Sidebar (Table of Contents)
+- The right sidebar (if enabled) displays the Table of Contents (TOC) for the current page.
+- This helps you quickly navigate within a long article.
+- Click on a heading in the TOC to jump to that section instantly.
 
 ## 🚀 The Goal
 
