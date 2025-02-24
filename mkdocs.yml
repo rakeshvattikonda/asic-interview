@@ -39,6 +39,7 @@ nav:
       - PCIe (Peripheral Component Interconnect Express): questions/protocols/pcie.md
       - DDR (Double Data Rate Memory): questions/protocols/ddr.md
       - USB (Universal Serial Bus): questions/protocols/usb.md
+      - NOC (Network On Chip): questions/protocols/noc.md
   - Verification: questions/verification.md
   - Physical Design: questions/physical.md
   - Synthesis & STA: questions/synthesis.md
