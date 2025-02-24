@@ -32,6 +32,23 @@ This website is structured into multiple sections, covering essential topics suc
 
 You can navigate through the chapters based on your interests or the specific areas you need to improve.
 
+## 🔍 **How to Use This Site**
+
+### **🗂️ Left Sidebar (Navigation Menu)**
+- The **left sidebar** contains the **main categories** of interview questions.
+- Sections like **Digital Design, Verification, Physical Design, DFT, and more** are grouped under relevant topics.
+- Clicking on a section **expands subtopics** for easy access to specific question categories.
+- Use this menu to **jump directly to different topics**.
+
+### **📑 Right Sidebar (Table of Contents)**
+- The **right sidebar** (if enabled) shows the **Table of Contents (TOC)** for the page you’re currently viewing.
+- This helps you **quickly navigate within a long article**.
+- Click on a heading in the TOC to **jump to that section instantly**.
+
+### **📌 Top Navigation & Search**
+- The **top menu** provides direct access to key sections of the website.
+- Use the **search bar** (🔎) to quickly find interview questions across all categories.
+
 ## 🚀 The Goal
 
 My goal is not just to help you answer questions correctly but to equip you with the right mindset and approach to tackle interviews with confidence. By the time you finish this website, you will:
@@ -41,11 +58,6 @@ My goal is not just to help you answer questions correctly but to equip you with
 ✅ Develop the adaptability needed to succeed in the ever-evolving semiconductor industry  
 
 Stay focused, keep learning, and approach each interview as an opportunity to grow—your perseverance will pay off. 💪
-
-## 🔍 **How to Use This Site**
-
-- Navigate using the top menu or search bar.
-- Click on a topic to explore interview questions and answers.
 
 ---
 
