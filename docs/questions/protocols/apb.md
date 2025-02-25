@@ -22,11 +22,7 @@ APB (Advanced Peripheral Bus) is a low-power, low-bandwidth bus used in the AMBA
 An APB write transaction consists of two main phases:
 
 ### 1️⃣ Address Phase
-- The master initiates the transaction by asserting:
-  - `PSEL = 1` (Slave Select)
-  - `PWRITE = 1` (Write Operation)
-  - `PADDR` (Target register address)
-  - `PWDATA` (Data to be written)
+- The master initiates the transaction by asserting: `PSEL = 1` (Slave Select), `PWRITE = 1` (Write Operation), `PADDR` (Target register address), `PWDATA` (Data to be written)
 
 ### 2️⃣ Data Phase
 If no wait states are inserted (`PREADY=1` immediately), the Data Phase consists of a single clock cycle where the transaction completes. If the slave requires more time, it inserts wait states, causing the Data Phase to be split into two sub-phases:
@@ -51,10 +47,7 @@ If no wait states are inserted (`PREADY=1` immediately), the Data Phase consists
 An APB read transaction follows the same structure as the write transaction, except that the master reads data instead of writing it.
 
 ### 1️⃣ Address Phase
-- The master initiates the read transaction by asserting:
-  - `PSEL = 1` (Slave Select)
-  - `PWRITE = 0` (Read Operation)
-  - `PADDR` (Target register address)
+- The master initiates the read transaction by asserting: `PSEL = 1` (Slave Select), `PWRITE = 0` (Read Operation), `PADDR` (Target register address)
 
 ### 2️⃣ Data Phase
 If no wait states are inserted (`PREADY=1` immediately), the Data Phase completes in one clock cycle. If the slave needs more time, the Data Phase is split into two parts:
