@@ -6,15 +6,8 @@ APB (Advanced Peripheral Bus) is a low-power, low-bandwidth bus used in the AMBA
 ---
 
 ## 2. What are the key signals in APB?
-- PCLK: APB clock signal
-- PSEL: Select signal for enabling communication with a slave
-- PADDR: Address signal to select a register in the slave
-- PWRITE: Determines if the operation is a read (0) or write (1)
-- PWDATA: Write data bus
-- PRDATA: Read data bus
-- PENABLE: Indicates the second phase of the APB transfer
-- PREADY: Indicates if the slave is ready to complete the transfer
-- PSLVERR: Signals an error response from the slave
+📌 APB Signals:  
+![APB Signals](images/apb_signals.png)
 
 ---
 
@@ -170,11 +163,5 @@ APB is used to connect low-bandwidth peripherals to a high-performance system bu
 
 ## 19. How is an APB slave selected?
 - The APB bridge decodes the address (`PADDR`) and sets `PSEL` accordingly.  
-
----
-
-## 20. What are the main differences between APB3 and APB4?
-- APB3 lacks the `PSTRB` and `PPROT` signals.  
-- APB4 adds byte strobes (`PSTRB`) for finer control.  
 
 ---
