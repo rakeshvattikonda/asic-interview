@@ -101,20 +101,20 @@ These are some important interview questions on digital filter design, focusing 
 - **Optimize the number of stages** to balance resource usage and performance.
 
 ---
+## **Verilog Implementation**
 Lets look at implementing some standard filters using systemverilog. These questions are asked in interviews and the candidates are expected to code in real time and talk about the frequency response, filter coefficients and time response of the filters.
 
-# Synthesizable Combinational Mean Filter (10-Sample Moving Average)
+---
 
-A **mean filter** computes the **running average** of the last 10 samples. The formula is:
+### Mean Filter (10-Sample Moving Average)
+
+A **mean filter** computes the running average of the last 10 samples. The formula is:
 
 $$ y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i] $$
 
-This implementation is **combinational**, meaning all computations occur within a single cycle.
-- **Removes high-frequency noise**, improving signal quality.
-- **Combinational approach is fast** but requires input storage.
-- Common in **image & signal processing** applications.
+This implementation is combinational, meaning all computations occur within a single cycle. It removes high-frequency noise. It is common in **image & signal processing** applications.
 
-## SystemVerilog Implementation
+### SystemVerilog Implementation
 
 ```verilog 
 module mean_filter_10 #(
@@ -136,15 +136,18 @@ module mean_filter_10 #(
 endmodule
 ```
 
-## Key Points
+### Key Points
 - **Combinational Design:** No clock or state, purely logic-based.
 - **Summation & Division:** Adds 10 samples and divides by 10.
 - **Bit-width Consideration:** Extra bits prevent overflow.
 - **No Storage:** Previous samples must be provided externally.
 
-## Frequency Response
+### Frequency Response
 - Acts as a **low-pass filter**, attenuating high-frequency noise.
 - First **notch** at \( \frac{Fs}{10} \), reducing periodic components.
 - Strong suppression at the **Nyquist frequency**.
+
+---
+
 
 
