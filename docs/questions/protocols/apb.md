@@ -21,18 +21,18 @@ APB (Advanced Peripheral Bus) is a low-power, low-bandwidth bus used in the AMBA
 ## 3. What is the APB write transaction sequence?
 An APB write transaction consists of two main phases:
 
-### 1️⃣ Address Phase
+- 1️⃣ Address Phase
 - The master initiates the transaction by asserting: `PSEL = 1` (Slave Select), `PWRITE = 1` (Write Operation), `PADDR` (Target register address), `PWDATA` (Data to be written)
 
-### 2️⃣ Data Phase
+- 2️⃣ Data Phase
 If no wait states are inserted (`PREADY=1` immediately), the Data Phase consists of a single clock cycle where the transaction completes. If the slave requires more time, it inserts wait states, causing the Data Phase to be split into two sub-phases:
 
-#### 2.1 Enable Phase
+- 2.1 Enable Phase
 - The master asserts `PENABLE=1` in the next clock cycle.
 - The slave starts processing the write request.
 - If the slave is not ready, it holds `PREADY=0`, inserting wait states.
 
-#### 2.2 Completion Phase
+- 2.2 Completion Phase
 - When the slave is ready (`PREADY=1`), the transaction completes. The master deasserts `PENABLE=0`.
 
 📌 APB Write Transfer Timing Diagram  (with 3 Wait States): 
@@ -43,18 +43,18 @@ If no wait states are inserted (`PREADY=1` immediately), the Data Phase consists
 ## 4. What is the APB read transaction sequence?
 An APB read transaction follows the same structure as the write transaction, except that the master reads data instead of writing it.
 
-### 1️⃣ Address Phase
+- 1️⃣ Address Phase
 - The master initiates the read transaction by asserting: `PSEL = 1` (Slave Select), `PWRITE = 0` (Read Operation), `PADDR` (Target register address)
 
-### 2️⃣ Data Phase
+- 2️⃣ Data Phase
 If no wait states are inserted (`PREADY=1` immediately), the Data Phase completes in one clock cycle. If the slave needs more time, the Data Phase is split into two parts:
 
-#### 2.1 Enable Phase
+- 2.1 Enable Phase
 - The master asserts `PENABLE=1` in the next clock cycle.
 - The slave retrieves the requested data.
 - If the slave is not ready, it holds `PREADY=0`, inserting wait states.
 
-#### 2.2 Completion Phase
+- 2.2 Completion Phase
 - When the slave has valid data (`PREADY=1`):
   - `PRDATA` contains the requested value.
   - The master deasserts `PENABLE=0`, completing the read.
@@ -64,17 +64,17 @@ If no wait states are inserted (`PREADY=1` immediately), the Data Phase complete
 ---
 
 ## 5. How does APB differ from AHB and AXI?
-### APB (Advanced Peripheral Bus)
+- APB (Advanced Peripheral Bus)
 - APB follows a **non-pipelined** structure, meaning the address and data phases occur separately.
 - Each transaction consists of an **address phase** followed by a **data phase**, which can include wait states if the slave is not ready.
 - There is no support for burst transfers; each transaction is independent.
 - APB is designed for **low-power, low-bandwidth peripherals** like UART, I2C, SPI, and GPIO.
-### AHB (Advanced High-performance Bus)
+- AHB (Advanced High-performance Bus)
 - AHB follows a **pipelined** structure, allowing the **address phase for transaction N** to execute while the **data phase for transaction N-1** is completing.
 - This pipelining increases bus efficiency by overlapping transactions.
 - Supports burst transfers, allowing multiple data transactions to occur sequentially after a single address phase.
 - Uses a **single master with multiple slaves** architecture, where arbitration ensures only one master controls the bus at a time.
-### AXI (Advanced eXtensible Interface)
+- AXI (Advanced eXtensible Interface)
 - AXI allows **out-of-order execution** and **parallel transactions** using separate **read and write address/data channels**.
 - Unlike AHB, AXI supports multiple outstanding transactions without requiring them to be completed in order.
 - Provides higher bandwidth by allowing independent reads and writes.
