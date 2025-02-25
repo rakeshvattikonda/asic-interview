@@ -828,33 +828,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#systemverilog-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      SystemVerilog Implementation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Points
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frequency-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      Frequency Response
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1479,33 +1452,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#systemverilog-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      SystemVerilog Implementation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#key-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Points
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frequency-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      Frequency Response
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1650,7 +1596,7 @@
 <script type="math/tex; mode=display"> y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i] </script>
 </div>
 <p>This implementation is combinational, meaning all computations occur within a single cycle. It removes high-frequency noise. It is common in <strong>image &amp; signal processing</strong> applications.</p>
-<h3 id="systemverilog-implementation">SystemVerilog Implementation<a class="headerlink" href="#systemverilog-implementation" title="Permanent link">&para;</a></h3>
+<p><strong>SystemVerilog Implementation</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">mean_filter_10</span><span class="w"> </span><span class="p">#(</span>
 <span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">16</span><span class="w">  </span><span class="c1">// Define bit-width of input data</span>
 <span class="p">)(</span>
@@ -1669,19 +1615,15 @@
 
 <span class="k">endmodule</span>
 </code></pre></div>
-<h3 id="key-points">Key Points<a class="headerlink" href="#key-points" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Combinational Design:</strong> No clock or state, purely logic-based.</li>
-<li><strong>Summation &amp; Division:</strong> Adds 10 samples and divides by 10.</li>
-<li><strong>Bit-width Consideration:</strong> Extra bits prevent overflow.</li>
-<li><strong>No Storage:</strong> Previous samples must be provided externally.</li>
-</ul>
-<h3 id="frequency-response">Frequency Response<a class="headerlink" href="#frequency-response" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Acts as a <strong>low-pass filter</strong>, attenuating high-frequency noise.</li>
-<li>First <strong>notch</strong> at <span class="arithmatex"><span class="MathJax_Preview"> \frac{Fs}{10} </span><script type="math/tex"> \frac{Fs}{10} </script></span>, reducing periodic components.</li>
-<li>Strong suppression at the <strong>Nyquist frequency</strong>.</li>
-</ul>
+<p><strong>Key Points</strong>
+- <strong>Combinational Design:</strong> No clock or state, purely logic-based.
+- <strong>Summation &amp; Division:</strong> Adds 10 samples and divides by 10.
+- <strong>Bit-width Consideration:</strong> Extra bits prevent overflow.
+- <strong>No Storage:</strong> Previous samples must be provided externally.</p>
+<p><strong>Frequency Response</strong>
+- Acts as a <strong>low-pass filter</strong>, attenuating high-frequency noise.
+- First <strong>notch</strong> at <span class="arithmatex"><span class="MathJax_Preview"> \frac{Fs}{10} </span><script type="math/tex"> \frac{Fs}{10} </script></span>, reducing periodic components.
+- Strong suppression at the <strong>Nyquist frequency</strong>.</p>
 <hr />
 
 

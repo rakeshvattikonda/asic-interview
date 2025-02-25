@@ -137,12 +137,14 @@ endmodule
 ```
 
 **Key Points**
+
 - **Combinational Design:** No clock or state, purely logic-based.
 - **Summation & Division:** Adds 10 samples and divides by 10.
 - **Bit-width Consideration:** Extra bits prevent overflow.
 - **No Storage:** Previous samples must be provided externally.
 
 **Frequency Response**
+
 - Acts as a **low-pass filter**, attenuating high-frequency noise.
 - First **notch** at \( \frac{Fs}{10} \), reducing periodic components.
 - Strong suppression at the **Nyquist frequency**.
