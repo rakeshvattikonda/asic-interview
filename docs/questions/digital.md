@@ -6,3 +6,4 @@
 - [Clock Domain Crossing (CDC) Questions](digital/cdc.md)
 - [Power-Related Questions](digital/power.md)
 - [Digital Filter Questions (FIR, IIR and CIC)](digital/digital-filters.md)
+- [Verilog Questions](digital/verilog.md)

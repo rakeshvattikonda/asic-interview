@@ -31,6 +31,7 @@ nav:
       - Clock Domain Crossing (CDC) Questions: questions/digital/cdc.md
       - Power-Related Questions: questions/digital/power.md
       - Digital Filter Questions (FIR, IIR and CIC): questions/digital/digital-filters.md
+      - Verilog Questions: questions/digital/verilog.md
   - Protocols:
       - Overview: questions/protocols.md
       - APB (Advanced Peripheral Bus): questions/protocols/apb.md
