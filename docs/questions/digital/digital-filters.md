@@ -114,7 +114,7 @@ $$ y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i] $$
 
 This implementation is combinational, meaning all computations occur within a single cycle. It removes high-frequency noise. It is common in **image & signal processing** applications.
 
-### SystemVerilog Implementation
+**SystemVerilog Implementation**
 
 ```verilog 
 module mean_filter_10 #(
@@ -136,13 +136,13 @@ module mean_filter_10 #(
 endmodule
 ```
 
-### Key Points
+**Key Points**
 - **Combinational Design:** No clock or state, purely logic-based.
 - **Summation & Division:** Adds 10 samples and divides by 10.
 - **Bit-width Consideration:** Extra bits prevent overflow.
 - **No Storage:** Previous samples must be provided externally.
 
-### Frequency Response
+**Frequency Response**
 - Acts as a **low-pass filter**, attenuating high-frequency noise.
 - First **notch** at \( \frac{Fs}{10} \), reducing periodic components.
 - Strong suppression at the **Nyquist frequency**.
