@@ -53,6 +53,10 @@
          <lastmod>2025-02-25</lastmod>
     </url>
     <url>
+         <loc>https://yourwebsite.com/questions/protocols/ahb/</loc>
+         <lastmod>2025-02-25</lastmod>
+    </url>
+    <url>
          <loc>https://yourwebsite.com/questions/protocols/apb/</loc>
          <lastmod>2025-02-25</lastmod>
     </url>
@@ -61,7 +65,19 @@
          <lastmod>2025-02-25</lastmod>
     </url>
     <url>
+         <loc>https://yourwebsite.com/questions/protocols/ddr/</loc>
+         <lastmod>2025-02-25</lastmod>
+    </url>
+    <url>
          <loc>https://yourwebsite.com/questions/protocols/noc/</loc>
+         <lastmod>2025-02-25</lastmod>
+    </url>
+    <url>
+         <loc>https://yourwebsite.com/questions/protocols/pcie/</loc>
+         <lastmod>2025-02-25</lastmod>
+    </url>
+    <url>
+         <loc>https://yourwebsite.com/questions/protocols/usb/</loc>
          <lastmod>2025-02-25</lastmod>
     </url>
 </urlset>
