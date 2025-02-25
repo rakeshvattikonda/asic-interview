@@ -1105,6 +1105,7 @@
 </ul>
 <hr />
 <h1 id="verilog-coding-examples">Verilog Coding Examples<a class="headerlink" href="#verilog-coding-examples" title="Permanent link">&para;</a></h1>
+<hr />
 <h2 id="4-bit-arbiter-priority-and-round-robin">4-bit Arbiter: Priority and Round Robin<a class="headerlink" href="#4-bit-arbiter-priority-and-round-robin" title="Permanent link">&para;</a></h2>
 <p>Arbiters are essential in multi-client communication systems where multiple requestors compete for a shared resource. Two common arbitration mechanisms are:</p>
 <ul>
@@ -1116,7 +1117,7 @@
 <p>A <strong>priority arbiter</strong> grants access to the highest-priority requestor first. The request with the lowest index (<code>req[0]</code>) has the highest priority, while <code>req[3]</code> has the lowest.</p>
 <h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
 <p>The design uses a case statement to check requests in priority order, granting access to the first active request.</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">priority_arbiter</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">priority_arbiter</span><span class="p">(</span>
 <span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
 <span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">req</span><span class="p">,</span><span class="w">  </span><span class="c1">// Request signals from 4 clients</span>
 <span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">grant</span><span class="w">  </span><span class="c1">// Grant signal to one client</span>
@@ -1136,6 +1137,21 @@
 <span class="w">    </span><span class="k">end</span>
 <span class="k">endmodule</span>
 </code></pre></div>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Fixed priority scheme</strong>: The lowest-numbered request has the highest priority.</li>
+<li><strong>Casez statement</strong>: Allows <code>?</code> (don't care) for flexibility in priority encoding.</li>
+<li><strong>Simple implementation</strong>: Efficient and minimal hardware overhead.</li>
+</ul>
+<h3 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Interrupt controllers where some interrupts are more critical.</li>
+<li>Memory access arbitration where certain clients have higher priority.</li>
+</ul>
+<h2 id="2-round-robin-arbiter">2. Round Robin Arbiter<a class="headerlink" href="#2-round-robin-arbiter" title="Permanent link">&para;</a></h2>
+<p>A <strong>round robin arbiter</strong> ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.</p>
+<h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">&para;</a></h3>
+<p>This design keeps track of the last granted request (<code>last_grant</code>) and rotates priority accordingly.</p>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">round_robin_arbiter</span><span class="p">(</span>
 <span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
 <span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">req</span><span class="p">,</span><span class="w">  </span><span class="c1">// Request signals from 4 clients</span>
@@ -1182,7 +1198,52 @@
 <span class="w">        </span><span class="k">end</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">endmodule</span>
-</code></pre></div></p>
+</code></pre></div>
+<h3 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Rotating priority</strong>: Ensures fair access to all clients.</li>
+<li><strong>State tracking (<code>last_grant</code>)</strong>: Maintains the last granted request and shifts priority.</li>
+<li><strong>No starvation</strong>: Every request eventually gets served.</li>
+</ul>
+<h3 id="use-cases_1">Use Cases<a class="headerlink" href="#use-cases_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Shared bus arbitration (e.g., AMBA, Wishbone).</li>
+<li>Scheduling mechanisms in networking (e.g., time-division multiplexing).</li>
+<li>Fair allocation of resources among multiple processing cores.</li>
+</ul>
+<h2 id="comparison-priority-vs-round-robin">Comparison: Priority vs. Round Robin<a class="headerlink" href="#comparison-priority-vs-round-robin" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Priority Arbiter</th>
+<th>Round Robin Arbiter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fairness</strong></td>
+<td>No, favors lower request numbers</td>
+<td>Yes, rotates priority</td>
+</tr>
+<tr>
+<td><strong>Implementation</strong></td>
+<td>Simple priority logic</td>
+<td>Requires state tracking</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Fast response for high-priority requests</td>
+<td>Uniform latency distribution</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Real-time critical systems</td>
+<td>Shared resource fairness</td>
+</tr>
+</tbody>
+</table>
+<hr />
 
 
 
