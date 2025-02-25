@@ -1615,15 +1615,19 @@
 
 <span class="k">endmodule</span>
 </code></pre></div>
-<p><strong>Key Points</strong>
-- <strong>Combinational Design:</strong> No clock or state, purely logic-based.
-- <strong>Summation &amp; Division:</strong> Adds 10 samples and divides by 10.
-- <strong>Bit-width Consideration:</strong> Extra bits prevent overflow.
-- <strong>No Storage:</strong> Previous samples must be provided externally.</p>
-<p><strong>Frequency Response</strong>
-- Acts as a <strong>low-pass filter</strong>, attenuating high-frequency noise.
-- First <strong>notch</strong> at <span class="arithmatex"><span class="MathJax_Preview"> \frac{Fs}{10} </span><script type="math/tex"> \frac{Fs}{10} </script></span>, reducing periodic components.
-- Strong suppression at the <strong>Nyquist frequency</strong>.</p>
+<p><strong>Key Points</strong></p>
+<ul>
+<li><strong>Combinational Design:</strong> No clock or state, purely logic-based.</li>
+<li><strong>Summation &amp; Division:</strong> Adds 10 samples and divides by 10.</li>
+<li><strong>Bit-width Consideration:</strong> Extra bits prevent overflow.</li>
+<li><strong>No Storage:</strong> Previous samples must be provided externally.</li>
+</ul>
+<p><strong>Frequency Response</strong></p>
+<ul>
+<li>Acts as a <strong>low-pass filter</strong>, attenuating high-frequency noise.</li>
+<li>First <strong>notch</strong> at <span class="arithmatex"><span class="MathJax_Preview"> \frac{Fs}{10} </span><script type="math/tex"> \frac{Fs}{10} </script></span>, reducing periodic components.</li>
+<li>Strong suppression at the <strong>Nyquist frequency</strong>.</li>
+</ul>
 <hr />
 
 
