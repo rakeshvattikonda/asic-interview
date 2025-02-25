@@ -21,6 +21,11 @@ theme:
 
 extra_css:
   - stylesheets/custom.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css  
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/contrib/auto-render.min.js
 
 nav:
   - Home: index.md

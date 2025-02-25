@@ -107,9 +107,7 @@ Lets look at implementing some standard filters using systemverilog. These quest
 
 A **mean filter** computes the **running average** of the last 10 samples. The formula is:
 
-\[
-y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i]
-\]
+$$ y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i] $$
 
 This implementation is **combinational**, meaning all computations occur within a single cycle.
 - **Removes high-frequency noise**, improving signal quality.
