@@ -33,12 +33,9 @@ If no wait states are inserted (`PREADY=1` immediately), the Data Phase consists
 - If the slave is not ready, it holds `PREADY=0`, inserting wait states.
 
 #### 2.2 Completion Phase
-- When the slave is ready (`PREADY=1`), the transaction completes:
-  - The master deasserts `PENABLE=0`.
-  - The write operation is committed to the target register.
-  - The bus is ready for the next transaction.
+- When the slave is ready (`PREADY=1`), the transaction completes. The master deasserts `PENABLE=0`.
 
-📌 APB Write Transfer Timing Diagram: 
+📌 APB Write Transfer Timing Diagram  (with 3 Wait States): 
 ![APB Write Transfer](images/apb_write.png)
 
 ---
@@ -61,7 +58,6 @@ If no wait states are inserted (`PREADY=1` immediately), the Data Phase complete
 - When the slave has valid data (`PREADY=1`):
   - `PRDATA` contains the requested value.
   - The master deasserts `PENABLE=0`, completing the read.
-  - The system is ready for the next transaction.
 
 📌 APB Read Transfer Timing Diagram (with 3 Wait States): 
 ![APB Read Transfer](images/apb_read.png)
