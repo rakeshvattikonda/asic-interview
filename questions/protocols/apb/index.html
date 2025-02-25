@@ -909,9 +909,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-why-does-apb-have-two-phases-address-enable" class="md-nav__link">
+  <a href="#8-why-does-apb-have-two-phases-address-data" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Why does APB have two phases (Address + Enable)?
+      8. Why does APB have two phases (Address + Data)?
     </span>
   </a>
   
@@ -1512,9 +1512,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-why-does-apb-have-two-phases-address-enable" class="md-nav__link">
+  <a href="#8-why-does-apb-have-two-phases-address-data" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Why does APB have two phases (Address + Enable)?
+      8. Why does APB have two phases (Address + Data)?
     </span>
   </a>
   
@@ -1717,15 +1717,17 @@
 <p>APB is used to connect low-bandwidth peripherals to a high-performance system bus. Since APB does not support pipelining or burst transfers, it is typically connected via an AHB-to-APB or AXI-to-APB bridge.</p>
 <h3 id="components-of-an-apb-system">Components of an APB system:<a class="headerlink" href="#components-of-an-apb-system" title="Permanent link">&para;</a></h3>
 <ul>
-<li>AHB/APB Bridge: Converts AHB (or AXI) transactions into APB transactions.</li>
-<li>Address Decoder: Selects the appropriate APB slave based on <code>PADDR</code>.</li>
-<li>APB Slaves: Peripheral devices like UART, GPIO, I2C, SPI, timers, etc.</li>
+<li><strong>AHB/APB Bridge</strong>: Converts AHB (or AXI) transactions into APB transactions.</li>
+<li><strong>Address Decoder</strong>: Selects the appropriate APB slave based on <code>PADDR</code>.</li>
+<li><strong>APB Slave MUX</strong>: Handles data multiplexing from multiple APB slaves and forwards it to the APB bridge.</li>
+<li><strong>APB Slaves</strong>: Peripheral devices like UART, GPIO, I2C, SPI, timers, etc.</li>
 </ul>
 <h3 id="apb-transfer-flow">APB Transfer Flow:<a class="headerlink" href="#apb-transfer-flow" title="Permanent link">&para;</a></h3>
 <ol>
-<li>AHB/AXI Master initiates a request.  </li>
-<li>AHB/APB Bridge converts the request to APB format.  </li>
-<li>Address Decoder activates the correct <code>PSEL</code> signal for the slave.  </li>
+<li>AHB/AXI Master initiates a request.</li>
+<li>AHB/APB Bridge converts the request to APB format.</li>
+<li>Address Decoder activates the correct <code>PSEL</code> signal for the slave.</li>
+<li>APB Slave MUX ensures the correct data path between multiple APB slaves and the master.</li>
 <li>APB transaction completes using <code>PENABLE</code>, <code>PREADY</code>, <code>PWDATA</code>, and <code>PRDATA</code>.</li>
 </ol>
 <p>📌 Example APB System Diagram:<br />
@@ -1737,10 +1739,10 @@
 <li><code>PREADY = 1</code> → Slave completes the transaction.  </li>
 </ul>
 <hr />
-<h2 id="8-why-does-apb-have-two-phases-address-enable">8. Why does APB have two phases (Address + Enable)?<a class="headerlink" href="#8-why-does-apb-have-two-phases-address-enable" title="Permanent link">&para;</a></h2>
+<h2 id="8-why-does-apb-have-two-phases-address-data">8. Why does APB have two phases (Address + Data)?<a class="headerlink" href="#8-why-does-apb-have-two-phases-address-data" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Address phase allows setup of signals.  </li>
-<li>Enable phase ensures data stability.  </li>
+<li>Data phase ensures data stability.  </li>
 <li>This prevents timing hazards and simplifies slave logic.  </li>
 </ul>
 <hr />
