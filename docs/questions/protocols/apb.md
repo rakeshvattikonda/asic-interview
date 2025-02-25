@@ -64,17 +64,21 @@ If no wait states are inserted (`PREADY=1` immediately), the Data Phase complete
 ---
 
 ## 5. How does APB differ from AHB and AXI?
-- **AHB (Advanced High-performance Bus)**:
-  - Supports burst transfers.
-  - Pipelined structure.
-  - Single master with multiple slaves.
-- **AXI (Advanced eXtensible Interface)**:
-  - Supports **out-of-order** and **parallel transactions**.
-  - Separate **read/write channels**.
-  - Higher bandwidth.
-- **APB (Advanced Peripheral Bus)**:
-  - **No burst support** (single transaction per clock cycle).
-  - **Simple, low-power interface** for peripherals.
+### APB (Advanced Peripheral Bus)
+- APB follows a **non-pipelined** structure, meaning the address and data phases occur separately.
+- Each transaction consists of an **address phase** followed by a **data phase**, which can include wait states if the slave is not ready.
+- There is no support for burst transfers; each transaction is independent.
+- APB is designed for **low-power, low-bandwidth peripherals** like UART, I2C, SPI, and GPIO.
+### AHB (Advanced High-performance Bus)
+- AHB follows a **pipelined** structure, allowing the **address phase for transaction N** to execute while the **data phase for transaction N-1** is completing.
+- This pipelining increases bus efficiency by overlapping transactions.
+- Supports burst transfers, allowing multiple data transactions to occur sequentially after a single address phase.
+- Uses a **single master with multiple slaves** architecture, where arbitration ensures only one master controls the bus at a time.
+### AXI (Advanced eXtensible Interface)
+- AXI allows **out-of-order execution** and **parallel transactions** using separate **read and write address/data channels**.
+- Unlike AHB, AXI supports multiple outstanding transactions without requiring them to be completed in order.
+- Provides higher bandwidth by allowing independent reads and writes.
+- Frequently used in high-performance applications like **multi-core processors, memory controllers, and networking devices**.
 
 ---
 
