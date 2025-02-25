@@ -809,6 +809,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#verilog-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verilog Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verilog Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean-filter-10-sample-moving-average" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Filter (10-Sample Moving Average)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemverilog-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SystemVerilog Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency Response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1409,6 +1460,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#verilog-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verilog Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verilog Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mean-filter-10-sample-moving-average" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean Filter (10-Sample Moving Average)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemverilog-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SystemVerilog Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frequency Response
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1538,18 +1640,17 @@
 <li><strong>Optimize the number of stages</strong> to balance resource usage and performance.</li>
 </ul>
 <hr />
+<h2 id="verilog-implementation"><strong>Verilog Implementation</strong><a class="headerlink" href="#verilog-implementation" title="Permanent link">&para;</a></h2>
 <p>Lets look at implementing some standard filters using systemverilog. These questions are asked in interviews and the candidates are expected to code in real time and talk about the frequency response, filter coefficients and time response of the filters.</p>
-<h1 id="synthesizable-combinational-mean-filter-10-sample-moving-average">Synthesizable Combinational Mean Filter (10-Sample Moving Average)<a class="headerlink" href="#synthesizable-combinational-mean-filter-10-sample-moving-average" title="Permanent link">&para;</a></h1>
-<p>A <strong>mean filter</strong> computes the <strong>running average</strong> of the last 10 samples. The formula is:</p>
+<hr />
+<h3 id="mean-filter-10-sample-moving-average">Mean Filter (10-Sample Moving Average)<a class="headerlink" href="#mean-filter-10-sample-moving-average" title="Permanent link">&para;</a></h3>
+<p>A <strong>mean filter</strong> computes the running average of the last 10 samples. The formula is:</p>
 <div class="arithmatex">
 <div class="MathJax_Preview"> y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i] </div>
 <script type="math/tex; mode=display"> y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i] </script>
 </div>
-<p>This implementation is <strong>combinational</strong>, meaning all computations occur within a single cycle.
-- <strong>Removes high-frequency noise</strong>, improving signal quality.
-- <strong>Combinational approach is fast</strong> but requires input storage.
-- Common in <strong>image &amp; signal processing</strong> applications.</p>
-<h2 id="systemverilog-implementation">SystemVerilog Implementation<a class="headerlink" href="#systemverilog-implementation" title="Permanent link">&para;</a></h2>
+<p>This implementation is combinational, meaning all computations occur within a single cycle. It removes high-frequency noise. It is common in <strong>image &amp; signal processing</strong> applications.</p>
+<h3 id="systemverilog-implementation">SystemVerilog Implementation<a class="headerlink" href="#systemverilog-implementation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">mean_filter_10</span><span class="w"> </span><span class="p">#(</span>
 <span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">16</span><span class="w">  </span><span class="c1">// Define bit-width of input data</span>
 <span class="p">)(</span>
@@ -1568,19 +1669,20 @@
 
 <span class="k">endmodule</span>
 </code></pre></div>
-<h2 id="key-points">Key Points<a class="headerlink" href="#key-points" title="Permanent link">&para;</a></h2>
+<h3 id="key-points">Key Points<a class="headerlink" href="#key-points" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Combinational Design:</strong> No clock or state, purely logic-based.</li>
 <li><strong>Summation &amp; Division:</strong> Adds 10 samples and divides by 10.</li>
 <li><strong>Bit-width Consideration:</strong> Extra bits prevent overflow.</li>
 <li><strong>No Storage:</strong> Previous samples must be provided externally.</li>
 </ul>
-<h2 id="frequency-response">Frequency Response<a class="headerlink" href="#frequency-response" title="Permanent link">&para;</a></h2>
+<h3 id="frequency-response">Frequency Response<a class="headerlink" href="#frequency-response" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Acts as a <strong>low-pass filter</strong>, attenuating high-frequency noise.</li>
 <li>First <strong>notch</strong> at <span class="arithmatex"><span class="MathJax_Preview"> \frac{Fs}{10} </span><script type="math/tex"> \frac{Fs}{10} </script></span>, reducing periodic components.</li>
 <li>Strong suppression at the <strong>Nyquist frequency</strong>.</li>
 </ul>
+<hr />
 
 
 
