@@ -1,7 +1,7 @@
 # APB (Advanced Peripheral Bus) Interview Questions and Answers
 
 ## 1. What is the APB bus, and where is it used?
-APB (Advanced Peripheral Bus) is a **low-power, low-bandwidth** bus used in the **AMBA (Advanced Microcontroller Bus Architecture)** for connecting **peripheral devices** like UART, SPI, I2C, GPIO, and timers. It provides **simple interface logic** compared to high-performance buses like AHB and AXI.
+APB (Advanced Peripheral Bus) is a low-power, low-bandwidth bus used in the AMBA (Advanced Microcontroller Bus Architecture) for connecting peripheral devices like UART, SPI, I2C, GPIO, and timers. It provides simple interface logic compared to high-performance buses like AHB and AXI.
 
 ---
 
@@ -18,30 +18,68 @@ APB (Advanced Peripheral Bus) is a **low-power, low-bandwidth** bus used in the 
 
 ---
 
-## 3. What is the APB write transaction sequence?
-1. **Address Phase**:
-   - Master asserts `PSEL`, `PWRITE`, and provides `PADDR` and `PWDATA`.
-2. **Enable Phase**:
-   - Master asserts `PENABLE` and waits for `PREADY` from the slave.
-3. **Completion**:
-   - If `PREADY=1`, the transfer completes, and `PENABLE` is deasserted.
+# APB (Advanced Peripheral Bus) Transactions
 
-📌 **APB Write Timing Diagram with 3 wait states**  
+---
+
+## **3. What is the APB write transaction sequence?**
+An **APB write transaction** consists of two main phases:
+
+### **1️⃣ Address Phase**
+- The **master initiates the transaction** by asserting:
+  - `PSEL = 1` (Slave Select)
+  - `PWRITE = 1` (Write Operation)
+  - `PADDR` (Target register address)
+  - `PWDATA` (Data to be written)
+
+### **2️⃣ Data Phase**
+If **no wait states** are inserted (`PREADY=1` immediately), the Data Phase consists of a **single clock cycle** where the transaction completes.
+
+If the slave **requires more time**, it inserts **wait states**, causing the Data Phase to be split into two sub-phases:
+
+#### **2.1 Enable Phase**
+- The master asserts `PENABLE=1` in the next clock cycle.
+- The slave **starts processing the write request**.
+- If the slave is **not ready**, it **holds `PREADY=0`**, inserting wait states.
+
+#### **2.2 Completion Phase**
+- When the slave is ready (`PREADY=1`), the transaction completes:
+  - The master **deasserts `PENABLE=0`**.
+  - The write operation is **committed to the target register**.
+  - The bus is **ready for the next transaction**.
+
+📌 **APB Write Transfer Timing Diagram:**  
 ![APB Write Transfer](images/apb_write.png)
 
 ---
 
-## 4. What is the APB read transaction sequence?
-1. **Address Phase**:
-   - Master asserts `PSEL`, `PWRITE=0`, and provides `PADDR`.
-2. **Enable Phase**:
-   - Master asserts `PENABLE` and waits for `PREADY` from the slave.
-3. **Completion**:
-   - If `PREADY=1`, the transfer completes, and `PRDATA` contains valid read data.
+## **4. What is the APB read transaction sequence?**
+An **APB read transaction** follows the same structure as the write transaction, except that the **master reads data** instead of writing it.
 
-📌 **APB Read Timing Diagram with 3 wait states**  
+### **1️⃣ Address Phase**
+- The **master initiates the read transaction** by asserting:
+  - `PSEL = 1` (Slave Select)
+  - `PWRITE = 0` (Read Operation)
+  - `PADDR` (Target register address)
+
+### **2️⃣ Data Phase**
+If **no wait states** are inserted (`PREADY=1` immediately), the Data Phase completes in **one clock cycle**.
+
+If the slave **needs more time**, the Data Phase is split into two parts:
+
+#### **2.1 Enable Phase**
+- The master asserts `PENABLE=1` in the next clock cycle.
+- The slave **retrieves the requested data**.
+- If the slave **is not ready**, it **holds `PREADY=0`**, inserting wait states.
+
+#### **2.2 Completion Phase**
+- When the slave has valid data (`PREADY=1`):
+  - `PRDATA` contains the requested value.
+  - The master **deasserts `PENABLE=0`**, completing the read.
+  - The system is **ready for the next transaction**.
+
+📌 **APB Read Transfer Timing Diagram (with 3 Wait States):**  
 ![APB Read Transfer](images/apb_read.png)
-
 ---
 
 ## 5. How does APB differ from AHB and AXI?
