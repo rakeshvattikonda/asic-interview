@@ -1608,58 +1608,56 @@
 </ul>
 <hr />
 <h2 id="3-what-is-the-apb-write-transaction-sequence">3. What is the APB write transaction sequence?<a class="headerlink" href="#3-what-is-the-apb-write-transaction-sequence" title="Permanent link">&para;</a></h2>
-<p>An <strong>APB write transaction</strong> consists of two main phases:</p>
+<p>An APB write transaction consists of two main phases:</p>
 <h3 id="1-address-phase">1️⃣ Address Phase<a class="headerlink" href="#1-address-phase" title="Permanent link">&para;</a></h3>
 <ul>
-<li>The <strong>master initiates the transaction</strong> by asserting:</li>
+<li>The master initiates the transaction by asserting:</li>
 <li><code>PSEL = 1</code> (Slave Select)</li>
 <li><code>PWRITE = 1</code> (Write Operation)</li>
 <li><code>PADDR</code> (Target register address)</li>
 <li><code>PWDATA</code> (Data to be written)</li>
 </ul>
 <h3 id="2-data-phase">2️⃣ Data Phase<a class="headerlink" href="#2-data-phase" title="Permanent link">&para;</a></h3>
-<p>If <strong>no wait states</strong> are inserted (<code>PREADY=1</code> immediately), the Data Phase consists of a <strong>single clock cycle</strong> where the transaction completes.</p>
-<p>If the slave <strong>requires more time</strong>, it inserts <strong>wait states</strong>, causing the Data Phase to be split into two sub-phases:</p>
+<p>If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Phase consists of a single clock cycle where the transaction completes. If the slave requires more time, it inserts wait states, causing the Data Phase to be split into two sub-phases:</p>
 <h4 id="21-enable-phase">2.1 Enable Phase<a class="headerlink" href="#21-enable-phase" title="Permanent link">&para;</a></h4>
 <ul>
 <li>The master asserts <code>PENABLE=1</code> in the next clock cycle.</li>
-<li>The slave <strong>starts processing the write request</strong>.</li>
-<li>If the slave is <strong>not ready</strong>, it <strong>holds <code>PREADY=0</code></strong>, inserting wait states.</li>
+<li>The slave starts processing the write request.</li>
+<li>If the slave is not ready, it holds <code>PREADY=0</code>, inserting wait states.</li>
 </ul>
 <h4 id="22-completion-phase">2.2 Completion Phase<a class="headerlink" href="#22-completion-phase" title="Permanent link">&para;</a></h4>
 <ul>
 <li>When the slave is ready (<code>PREADY=1</code>), the transaction completes:</li>
-<li>The master <strong>deasserts <code>PENABLE=0</code></strong>.</li>
-<li>The write operation is <strong>committed to the target register</strong>.</li>
-<li>The bus is <strong>ready for the next transaction</strong>.</li>
+<li>The master deasserts <code>PENABLE=0</code>.</li>
+<li>The write operation is committed to the target register.</li>
+<li>The bus is ready for the next transaction.</li>
 </ul>
 <p>📌 APB Write Transfer Timing Diagram: 
 <img alt="APB Write Transfer" src="../images/apb_write.png" /></p>
 <hr />
 <h2 id="4-what-is-the-apb-read-transaction-sequence">4. What is the APB read transaction sequence?<a class="headerlink" href="#4-what-is-the-apb-read-transaction-sequence" title="Permanent link">&para;</a></h2>
-<p>An <strong>APB read transaction</strong> follows the same structure as the write transaction, except that the <strong>master reads data</strong> instead of writing it.</p>
+<p>An APB read transaction follows the same structure as the write transaction, except that the master reads data instead of writing it.</p>
 <h3 id="1-address-phase_1">1️⃣ Address Phase<a class="headerlink" href="#1-address-phase_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>The <strong>master initiates the read transaction</strong> by asserting:</li>
+<li>The master initiates the read transaction by asserting:</li>
 <li><code>PSEL = 1</code> (Slave Select)</li>
 <li><code>PWRITE = 0</code> (Read Operation)</li>
 <li><code>PADDR</code> (Target register address)</li>
 </ul>
 <h3 id="2-data-phase_1">2️⃣ Data Phase<a class="headerlink" href="#2-data-phase_1" title="Permanent link">&para;</a></h3>
-<p>If <strong>no wait states</strong> are inserted (<code>PREADY=1</code> immediately), the Data Phase completes in <strong>one clock cycle</strong>.</p>
-<p>If the slave <strong>needs more time</strong>, the Data Phase is split into two parts:</p>
+<p>If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Phase completes in one clock cycle. If the slave needs more time, the Data Phase is split into two parts:</p>
 <h4 id="21-enable-phase_1">2.1 Enable Phase<a class="headerlink" href="#21-enable-phase_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>The master asserts <code>PENABLE=1</code> in the next clock cycle.</li>
-<li>The slave <strong>retrieves the requested data</strong>.</li>
-<li>If the slave <strong>is not ready</strong>, it <strong>holds <code>PREADY=0</code></strong>, inserting wait states.</li>
+<li>The slave retrieves the requested data.</li>
+<li>If the slave is not ready, it holds <code>PREADY=0</code>, inserting wait states.</li>
 </ul>
 <h4 id="22-completion-phase_1">2.2 Completion Phase<a class="headerlink" href="#22-completion-phase_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>When the slave has valid data (<code>PREADY=1</code>):</li>
 <li><code>PRDATA</code> contains the requested value.</li>
-<li>The master <strong>deasserts <code>PENABLE=0</code></strong>, completing the read.</li>
-<li>The system is <strong>ready for the next transaction</strong>.</li>
+<li>The master deasserts <code>PENABLE=0</code>, completing the read.</li>
+<li>The system is ready for the next transaction.</li>
 </ul>
 <p>📌 APB Read Transfer Timing Diagram (with 3 Wait States): 
 <img alt="APB Read Transfer" src="../images/apb_read.png" /></p>
