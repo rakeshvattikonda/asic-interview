@@ -1475,21 +1475,29 @@ If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Pha
 <hr />
 <h2 id="5-how-does-apb-differ-from-ahb-and-axi">5. How does APB differ from AHB and AXI?<a class="headerlink" href="#5-how-does-apb-differ-from-ahb-and-axi" title="Permanent link">&para;</a></h2>
 <ul>
-<li>APB (Advanced Peripheral Bus)</li>
-<li>APB follows a <strong>non-pipelined</strong> structure, meaning the address and data phases occur separately.</li>
-<li>Each transaction consists of an <strong>address phase</strong> followed by a <strong>data phase</strong>, which can include wait states if the slave is not ready.</li>
-<li>There is no support for burst transfers; each transaction is independent.</li>
-<li>APB is designed for <strong>low-power, low-bandwidth peripherals</strong> like UART, I2C, SPI, and GPIO.</li>
-<li>AHB (Advanced High-performance Bus)</li>
-<li>AHB follows a <strong>pipelined</strong> structure, allowing the <strong>address phase for transaction N</strong> to execute while the <strong>data phase for transaction N-1</strong> is completing.</li>
-<li>This pipelining increases bus efficiency by overlapping transactions.</li>
-<li>Supports burst transfers, allowing multiple data transactions to occur sequentially after a single address phase.</li>
-<li>Uses a <strong>single master with multiple slaves</strong> architecture, where arbitration ensures only one master controls the bus at a time.</li>
-<li>AXI (Advanced eXtensible Interface)</li>
-<li>AXI allows <strong>out-of-order execution</strong> and <strong>parallel transactions</strong> using separate <strong>read and write address/data channels</strong>.</li>
-<li>Unlike AHB, AXI supports multiple outstanding transactions without requiring them to be completed in order.</li>
-<li>Provides higher bandwidth by allowing independent reads and writes.</li>
-<li>Frequently used in high-performance applications like <strong>multi-core processors, memory controllers, and networking devices</strong>.</li>
+<li>APB (Advanced Peripheral Bus)  </li>
+<li>APB follows a non-pipelined structure, meaning the address and data phases occur separately.  </li>
+<li>Each transaction consists of an address phase followed by a data phase, which can include wait states if the slave is not ready.  </li>
+<li>There is no support for burst transfers; each transaction is independent.  </li>
+<li>
+<p>APB is designed for low-power, low-bandwidth peripherals like UART, I2C, SPI, and GPIO.  </p>
+</li>
+<li>
+<p>AHB (Advanced High-performance Bus)  </p>
+</li>
+<li>AHB follows a pipelined structure, allowing the address phase for transaction N to execute while the data phase for transaction N-1 is completing.  </li>
+<li>This pipelining increases bus efficiency by overlapping transactions.  </li>
+<li>Supports burst transfers, allowing multiple data transactions to occur sequentially after a single address phase.  </li>
+<li>
+<p>Uses a single master with multiple slaves architecture, where arbitration ensures only one master controls the bus at a time.  </p>
+</li>
+<li>
+<p>AXI (Advanced eXtensible Interface)  </p>
+</li>
+<li>AXI allows out-of-order execution and parallel transactions using separate read and write address/data channels.  </li>
+<li>Unlike AHB, AXI supports multiple outstanding transactions without requiring them to be completed in order.  </li>
+<li>Provides higher bandwidth by allowing independent reads and writes.  </li>
+<li>Frequently used in high-performance applications like multi-core processors, memory controllers, and networking devices.  </li>
 </ul>
 <hr />
 <h2 id="6-how-does-apb-fit-into-an-soc-explain-an-apb-system">6. How does APB fit into an SoC? Explain an APB system.<a class="headerlink" href="#6-how-does-apb-fit-into-an-soc-explain-an-apb-system" title="Permanent link">&para;</a></h2>
