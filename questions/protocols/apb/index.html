@@ -1445,26 +1445,22 @@ If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Pha
 <h2 id="4-what-is-the-apb-read-transaction-sequence">4. What is the APB read transaction sequence?<a class="headerlink" href="#4-what-is-the-apb-read-transaction-sequence" title="Permanent link">&para;</a></h2>
 <p>An APB read transaction follows the same structure as the write transaction, except that the master reads data instead of writing it.</p>
 <ul>
+<li>1️⃣ Address Phase</li>
 <li>
-<p>1️⃣ Address Phase</p>
-<ul>
-<li>The master initiates the read transaction by asserting: <code>PSEL = 1</code> (Slave Select), <code>PWRITE = 0</code> (Read Operation), <code>PADDR</code> (Target register address)</li>
-</ul>
+<p>The master initiates the read transaction by asserting: <code>PSEL = 1</code> (Slave Select), <code>PWRITE = 0</code> (Read Operation), <code>PADDR</code> (Target register address)</p>
 </li>
 <li>
 <p>2️⃣ Data Phase</p>
-<ul>
+</li>
 <li>If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Phase completes in one clock cycle. If the slave needs more time, the Data Phase is split into two parts:</li>
 <li>2.1 Enable Phase
-        - The master asserts <code>PENABLE=1</code> in the next clock cycle.
-        - The slave retrieves the requested data.
-        - If the slave is not ready, it holds <code>PREADY=0</code>, inserting wait states.</li>
+         - The master asserts <code>PENABLE=1</code> in the next clock cycle.
+         - The slave retrieves the requested data.
+         - If the slave is not ready, it holds <code>PREADY=0</code>, inserting wait states.</li>
 <li>2.2 Completion Phase
-        - When the slave has valid data (<code>PREADY=1</code>):
-        - <code>PRDATA</code> contains the requested value.
-        - The master deasserts <code>PENABLE=0</code>, completing the read.</li>
-</ul>
-</li>
+         - When the slave has valid data (<code>PREADY=1</code>):
+         - <code>PRDATA</code> contains the requested value.
+         - The master deasserts <code>PENABLE=0</code>, completing the read.</li>
 </ul>
 <p>📌 APB Read Transfer Timing Diagram (with 3 Wait States): 
 <img alt="APB Read Transfer" src="../images/apb_read.png" /></p>
