@@ -831,6 +831,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5. How does APB differ from AHB and AXI?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apb-advanced-peripheral-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      APB (Advanced Peripheral Bus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ahb-advanced-high-performance-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      AHB (Advanced High-performance Bus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#axi-advanced-extensible-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      AXI (Advanced eXtensible Interface)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1410,6 +1443,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5. How does APB differ from AHB and AXI?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apb-advanced-peripheral-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      APB (Advanced Peripheral Bus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ahb-advanced-high-performance-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      AHB (Advanced High-performance Bus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#axi-advanced-extensible-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      AXI (Advanced eXtensible Interface)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1652,18 +1718,26 @@
 <img alt="APB Read Transfer" src="../images/apb_read.png" /></p>
 <hr />
 <h2 id="5-how-does-apb-differ-from-ahb-and-axi">5. How does APB differ from AHB and AXI?<a class="headerlink" href="#5-how-does-apb-differ-from-ahb-and-axi" title="Permanent link">&para;</a></h2>
+<h3 id="apb-advanced-peripheral-bus">APB (Advanced Peripheral Bus)<a class="headerlink" href="#apb-advanced-peripheral-bus" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>AHB (Advanced High-performance Bus)</strong>:</li>
-<li>Supports burst transfers.</li>
-<li>Pipelined structure.</li>
-<li>Single master with multiple slaves.</li>
-<li><strong>AXI (Advanced eXtensible Interface)</strong>:</li>
-<li>Supports <strong>out-of-order</strong> and <strong>parallel transactions</strong>.</li>
-<li>Separate <strong>read/write channels</strong>.</li>
-<li>Higher bandwidth.</li>
-<li><strong>APB (Advanced Peripheral Bus)</strong>:</li>
-<li><strong>No burst support</strong> (single transaction per clock cycle).</li>
-<li><strong>Simple, low-power interface</strong> for peripherals.</li>
+<li>APB follows a <strong>non-pipelined</strong> structure, meaning the address and data phases occur separately.</li>
+<li>Each transaction consists of an <strong>address phase</strong> followed by a <strong>data phase</strong>, which can include wait states if the slave is not ready.</li>
+<li>There is no support for burst transfers; each transaction is independent.</li>
+<li>APB is designed for <strong>low-power, low-bandwidth peripherals</strong> like UART, I2C, SPI, and GPIO.</li>
+</ul>
+<h3 id="ahb-advanced-high-performance-bus">AHB (Advanced High-performance Bus)<a class="headerlink" href="#ahb-advanced-high-performance-bus" title="Permanent link">&para;</a></h3>
+<ul>
+<li>AHB follows a <strong>pipelined</strong> structure, allowing the <strong>address phase for transaction N</strong> to execute while the <strong>data phase for transaction N-1</strong> is completing.</li>
+<li>This pipelining increases bus efficiency by overlapping transactions.</li>
+<li>Supports burst transfers, allowing multiple data transactions to occur sequentially after a single address phase.</li>
+<li>Uses a <strong>single master with multiple slaves</strong> architecture, where arbitration ensures only one master controls the bus at a time.</li>
+</ul>
+<h3 id="axi-advanced-extensible-interface">AXI (Advanced eXtensible Interface)<a class="headerlink" href="#axi-advanced-extensible-interface" title="Permanent link">&para;</a></h3>
+<ul>
+<li>AXI allows <strong>out-of-order execution</strong> and <strong>parallel transactions</strong> using separate <strong>read and write address/data channels</strong>.</li>
+<li>Unlike AHB, AXI supports multiple outstanding transactions without requiring them to be completed in order.</li>
+<li>Provides higher bandwidth by allowing independent reads and writes.</li>
+<li>Frequently used in high-performance applications like <strong>multi-core processors, memory controllers, and networking devices</strong>.</li>
 </ul>
 <hr />
 <h2 id="6-how-does-apb-fit-into-an-soc-explain-an-apb-system">6. How does APB fit into an SoC? Explain an APB system.<a class="headerlink" href="#6-how-does-apb-fit-into-an-soc-explain-an-apb-system" title="Permanent link">&para;</a></h2>
