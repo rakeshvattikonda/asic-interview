@@ -80,18 +80,21 @@ If no wait states are inserted (`PREADY=1` immediately), the data phase complete
 ---
 
 ## 6. How does APB fit into an SoC? Explain an APB system.
+
 APB is used to connect low-bandwidth peripherals to a high-performance system bus. Since APB does not support pipelining or burst transfers, it is typically connected via an AHB-to-APB or AXI-to-APB bridge.
 
 ### Components of an APB system:
-- AHB/APB Bridge: Converts AHB (or AXI) transactions into APB transactions.
-- Address Decoder: Selects the appropriate APB slave based on `PADDR`.
-- APB Slaves: Peripheral devices like UART, GPIO, I2C, SPI, timers, etc.
+- **AHB/APB Bridge**: Converts AHB (or AXI) transactions into APB transactions.
+- **Address Decoder**: Selects the appropriate APB slave based on `PADDR`.
+- **APB Slave MUX**: Handles data multiplexing from multiple APB slaves and forwards it to the APB bridge.
+- **APB Slaves**: Peripheral devices like UART, GPIO, I2C, SPI, timers, etc.
 
 ### APB Transfer Flow:
-1. AHB/AXI Master initiates a request.  
-2. AHB/APB Bridge converts the request to APB format.  
-3. Address Decoder activates the correct `PSEL` signal for the slave.  
-4. APB transaction completes using `PENABLE`, `PREADY`, `PWDATA`, and `PRDATA`.
+1. AHB/AXI Master initiates a request.
+2. AHB/APB Bridge converts the request to APB format.
+3. Address Decoder activates the correct `PSEL` signal for the slave.
+4. APB Slave MUX ensures the correct data path between multiple APB slaves and the master.
+5. APB transaction completes using `PENABLE`, `PREADY`, `PWDATA`, and `PRDATA`.
 
 📌 Example APB System Diagram:  
 ![APB System](images/apb_system.png)
@@ -104,9 +107,9 @@ APB is used to connect low-bandwidth peripherals to a high-performance system bu
 
 ---
 
-## 8. Why does APB have two phases (Address + Enable)?
+## 8. Why does APB have two phases (Address + Data)?
 - Address phase allows setup of signals.  
-- Enable phase ensures data stability.  
+- Data phase ensures data stability.  
 - This prevents timing hazards and simplifies slave logic.  
 
 ---
