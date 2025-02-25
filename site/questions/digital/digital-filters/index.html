@@ -1536,6 +1536,89 @@
 <li><strong>Optimize the number of stages</strong> to balance resource usage and performance.</li>
 </ul>
 <hr />
+<h1 id="synthesizable-combinational-mean-filter-10-sample-moving-average">Synthesizable Combinational Mean Filter (10-Sample Moving Average)<a class="headerlink" href="#synthesizable-combinational-mean-filter-10-sample-moving-average" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>A <strong>mean filter</strong> calculates the <strong>running average</strong> over a fixed window of past samples. In this case, a <strong>10-sample moving average</strong> is implemented using combinational logic.</p>
+<p>The mathematical formula for the moving average is:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i]
+</div>
+<script type="math/tex; mode=display">
+y[n] = \frac{1}{10} \sum_{i=0}^{9} x[n-i]
+</script>
+</div>
+<p>Where:
+- <span class="arithmatex"><span class="MathJax_Preview"> y[n] </span><script type="math/tex"> y[n] </script></span> is the filtered output at time step <span class="arithmatex"><span class="MathJax_Preview"> n </span><script type="math/tex"> n </script></span>.
+- <span class="arithmatex"><span class="MathJax_Preview"> x[n] </span><script type="math/tex"> x[n] </script></span> is the current input.
+- <span class="arithmatex"><span class="MathJax_Preview"> x[n-1], x[n-2], ..., x[n-9] </span><script type="math/tex"> x[n-1], x[n-2], ..., x[n-9] </script></span> are the previous 9 samples.
+- The divisor <span class="arithmatex"><span class="MathJax_Preview"> 1/10 </span><script type="math/tex"> 1/10 </script></span> can be implemented as a <strong>multiplication by 0.1</strong> or a <strong>division by 10</strong>, depending on the bit-width.</p>
+<p>Since this implementation is <strong>combinational</strong>, we assume that the <strong>last 10 samples are stored externally</strong> and provided as inputs.</p>
+<h2 id="systemverilog-implementation">SystemVerilog Implementation<a class="headerlink" href="#systemverilog-implementation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">mean_filter_10</span><span class="w"> </span><span class="p">#(</span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">16</span><span class="w">  </span><span class="c1">// Define bit-width of input data</span>
+<span class="p">)(</span>
+<span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="n">WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="p">[</span><span class="mh">9</span><span class="o">:</span><span class="mh">0</span><span class="p">],</span><span class="w">  </span><span class="c1">// Last 10 samples as input array</span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="n">WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">mean_out</span><span class="w">       </span><span class="c1">// Filtered output</span>
+<span class="p">);</span>
+<span class="w">    </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="n">WIDTH</span><span class="o">+</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w">  </span><span class="c1">// Increased bit-width to avoid overflow</span>
+
+<span class="w">    </span><span class="k">always_comb</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">&#39;0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">            </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// Sum all 10 samples</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">mean_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mh">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// Compute mean</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="k">endmodule</span>
+</code></pre></div>
+<h2 id="explanation">Explanation<a class="headerlink" href="#explanation" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Input Samples:</strong> The module receives the last 10 samples as a <strong>10-element array</strong>.</li>
+<li><strong>Summation:</strong> All 10 elements are summed using a <strong>for-loop</strong> inside an <code>always_comb</code> block.</li>
+<li><strong>Division by 10:</strong> The sum is divided by 10 to compute the average. Since division is expensive in hardware, a <strong>shift-based approximation</strong> may be used if required.</li>
+<li><strong>Combinational Logic:</strong> This implementation has <strong>no clock or state</strong>, making it <strong>purely combinational</strong>.</li>
+<li><strong>Bit-width Handling:</strong> The sum uses <strong>extra bits</strong> to prevent overflow for larger values.</li>
+</ol>
+<h2 id="frequency-response-of-the-moving-average-filter">Frequency Response of the Moving Average Filter<a class="headerlink" href="#frequency-response-of-the-moving-average-filter" title="Permanent link">&para;</a></h2>
+<p>A <strong>moving average filter (MAF)</strong> is a <strong>low-pass filter</strong> that smooths out high-frequency noise. The <strong>frequency response</strong> can be derived from the <strong>Z-transform</strong>:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+H(z) = \frac{1}{10} \sum_{k=0}^{9} z^{-k}
+</div>
+<script type="math/tex; mode=display">
+H(z) = \frac{1}{10} \sum_{k=0}^{9} z^{-k}
+</script>
+</div>
+<p>Taking the <strong>Discrete-Time Fourier Transform (DTFT)</strong>:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+H(e^{j\omega}) = \frac{1}{10} \frac{1 - e^{-j10\omega}}{1 - e^{-j\omega}}
+</div>
+<script type="math/tex; mode=display">
+H(e^{j\omega}) = \frac{1}{10} \frac{1 - e^{-j10\omega}}{1 - e^{-j\omega}}
+</script>
+</div>
+<h3 id="key-properties">Key Properties<a class="headerlink" href="#key-properties" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Low-pass nature:</strong> Attenuates high-frequency components.</li>
+<li><strong>Nulls at multiples of <span class="arithmatex"><span class="MathJax_Preview"> 2\pi/10 </span><script type="math/tex"> 2\pi/10 </script></span>:</strong> It has <strong>notches</strong> at <span class="arithmatex"><span class="MathJax_Preview"> \omega = \frac{2\pi}{10}, \frac{4\pi}{10}, ... </span><script type="math/tex"> \omega = \frac{2\pi}{10}, \frac{4\pi}{10}, ... </script></span>.</li>
+<li><strong>Cutoff Frequency:</strong> The first notch occurs at <span class="arithmatex"><span class="MathJax_Preview"> \frac{fs}{10} </span><script type="math/tex"> \frac{fs}{10} </script></span>, making it effective for <strong>suppressing noise above this frequency</strong>.</li>
+</ul>
+<h3 id="magnitude-response-gain-vs-frequency">Magnitude Response (Gain vs. Frequency)<a class="headerlink" href="#magnitude-response-gain-vs-frequency" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>At DC (ω = 0):</strong> <span class="arithmatex"><span class="MathJax_Preview"> |H(0)| = 1 </span><script type="math/tex"> |H(0)| = 1 </script></span> (Passes low frequencies).</li>
+<li><strong>At <span class="arithmatex"><span class="MathJax_Preview"> \omega = \frac{2\pi}{10} </span><script type="math/tex"> \omega = \frac{2\pi}{10} </script></span>:</strong> First <strong>notch (zero)</strong> occurs, eliminating periodic noise at that frequency.</li>
+<li><strong>At Nyquist frequency <span class="arithmatex"><span class="MathJax_Preview"> \pi </span><script type="math/tex"> \pi </script></span>:</strong> <span class="arithmatex"><span class="MathJax_Preview"> |H(\pi)| = 0 </span><script type="math/tex"> |H(\pi)| = 0 </script></span>, meaning <strong>high frequencies are heavily attenuated</strong>.</li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The <strong>mean filter</strong> is a <strong>simple and effective low-pass filter</strong>, useful for <strong>smoothing noisy signals</strong>.</li>
+<li>The <strong>combinational approach</strong> is <strong>fast but area-intensive</strong>, requiring <strong>external memory</strong> for the last 10 samples.</li>
+<li>The <strong>frequency response</strong> shows that the filter <strong>removes high-frequency noise</strong> and has periodic <strong>notches</strong> at specific frequencies.</li>
+</ul>
 
 
 
