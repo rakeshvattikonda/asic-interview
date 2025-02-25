@@ -1611,11 +1611,7 @@
 <p>An APB write transaction consists of two main phases:</p>
 <h3 id="1-address-phase">1️⃣ Address Phase<a class="headerlink" href="#1-address-phase" title="Permanent link">&para;</a></h3>
 <ul>
-<li>The master initiates the transaction by asserting:</li>
-<li><code>PSEL = 1</code> (Slave Select)</li>
-<li><code>PWRITE = 1</code> (Write Operation)</li>
-<li><code>PADDR</code> (Target register address)</li>
-<li><code>PWDATA</code> (Data to be written)</li>
+<li>The master initiates the transaction by asserting: <code>PSEL = 1</code> (Slave Select), <code>PWRITE = 1</code> (Write Operation), <code>PADDR</code> (Target register address), <code>PWDATA</code> (Data to be written)</li>
 </ul>
 <h3 id="2-data-phase">2️⃣ Data Phase<a class="headerlink" href="#2-data-phase" title="Permanent link">&para;</a></h3>
 <p>If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Phase consists of a single clock cycle where the transaction completes. If the slave requires more time, it inserts wait states, causing the Data Phase to be split into two sub-phases:</p>
@@ -1639,10 +1635,7 @@
 <p>An APB read transaction follows the same structure as the write transaction, except that the master reads data instead of writing it.</p>
 <h3 id="1-address-phase_1">1️⃣ Address Phase<a class="headerlink" href="#1-address-phase_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>The master initiates the read transaction by asserting:</li>
-<li><code>PSEL = 1</code> (Slave Select)</li>
-<li><code>PWRITE = 0</code> (Read Operation)</li>
-<li><code>PADDR</code> (Target register address)</li>
+<li>The master initiates the read transaction by asserting: <code>PSEL = 1</code> (Slave Select), <code>PWRITE = 0</code> (Read Operation), <code>PADDR</code> (Target register address)</li>
 </ul>
 <h3 id="2-data-phase_1">2️⃣ Data Phase<a class="headerlink" href="#2-data-phase_1" title="Permanent link">&para;</a></h3>
 <p>If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Phase completes in one clock cycle. If the slave needs more time, the Data Phase is split into two parts:</p>
