@@ -26,7 +26,7 @@ APB (Advanced Peripheral Bus) is a **low-power, low-bandwidth** bus used in the 
 3. **Completion**:
    - If `PREADY=1`, the transfer completes, and `PENABLE` is deasserted.
 
-📌 **APB Write Transfer Timing Diagram:**  
+📌 **APB Write Timing Diagram with 3 wait states**  
 ![APB Write Transfer](images/apb_write.png)
 
 ---
@@ -39,7 +39,7 @@ APB (Advanced Peripheral Bus) is a **low-power, low-bandwidth** bus used in the 
 3. **Completion**:
    - If `PREADY=1`, the transfer completes, and `PRDATA` contains valid read data.
 
-📌 **APB Read Transfer Timing Diagram:**  
+📌 **APB Read Timing Diagram with 3 wait states**  
 ![APB Read Transfer](images/apb_read.png)
 
 ---
