@@ -1476,7 +1476,7 @@ If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Pha
 <h2 id="5-how-does-apb-differ-from-ahb-and-axi">5. How does APB differ from AHB and AXI?<a class="headerlink" href="#5-how-does-apb-differ-from-ahb-and-axi" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>APB (Advanced Peripheral Bus)  </p>
+<p><strong>APB (Advanced Peripheral Bus)</strong>  </p>
 <ul>
 <li>APB follows a non-pipelined structure, meaning the address and data phases occur separately.  </li>
 <li>Each transaction consists of an address phase followed by a data phase, which can include wait states if the slave is not ready.  </li>
@@ -1485,7 +1485,7 @@ If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Pha
 </ul>
 </li>
 <li>
-<p>AHB (Advanced High-performance Bus)  </p>
+<p><strong>AHB (Advanced High-performance Bus)</strong>  </p>
 <ul>
 <li>AHB follows a pipelined structure, allowing the address phase for transaction N to execute while the data phase for transaction N-1 is completing.  </li>
 <li>This pipelining increases bus efficiency by overlapping transactions.  </li>
@@ -1494,7 +1494,7 @@ If no wait states are inserted (<code>PREADY=1</code> immediately), the Data Pha
 </ul>
 </li>
 <li>
-<p>AXI (Advanced eXtensible Interface)  </p>
+<p><strong>AXI (Advanced eXtensible Interface)</strong>  </p>
 <ul>
 <li>AXI allows out-of-order execution and parallel transactions using separate read and write address/data channels.  </li>
 <li>Unlike AHB, AXI supports multiple outstanding transactions without requiring them to be completed in order.  </li>
