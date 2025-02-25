@@ -101,12 +101,10 @@ These are some important interview questions on digital filter design, focusing 
 - **Optimize the number of stages** to balance resource usage and performance.
 
 ---
+Lets look at implementing some standard filters using systemverilog. These questions are asked in interviews and the candidates are expected to code in real time and talk about the frequency response, filter coefficients and time response of the filters.
 
 # Synthesizable Combinational Mean Filter (10-Sample Moving Average)
 
-# Synthesizable Combinational Mean Filter (10-Sample Moving Average)
-
-## Overview
 A **mean filter** computes the **running average** of the last 10 samples. The formula is:
 
 \[
