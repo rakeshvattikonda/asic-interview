@@ -44,20 +44,19 @@ If no wait states are inserted (`PREADY=1` immediately), the Data Phase consists
 An APB read transaction follows the same structure as the write transaction, except that the master reads data instead of writing it.
 
 - 1️⃣ Address Phase
-- The master initiates the read transaction by asserting: `PSEL = 1` (Slave Select), `PWRITE = 0` (Read Operation), `PADDR` (Target register address)
+   - The master initiates the read transaction by asserting: `PSEL = 1` (Slave Select), `PWRITE = 0` (Read Operation), `PADDR` (Target register address)
 
 - 2️⃣ Data Phase
-If no wait states are inserted (`PREADY=1` immediately), the Data Phase completes in one clock cycle. If the slave needs more time, the Data Phase is split into two parts:
+   - If no wait states are inserted (`PREADY=1` immediately), the Data Phase completes in one clock cycle. If the slave needs more time, the Data Phase is split into two parts:
+   - 2.1 Enable Phase
+      - The master asserts `PENABLE=1` in the next clock cycle.
+      - The slave retrieves the requested data.
+      - If the slave is not ready, it holds `PREADY=0`, inserting wait states.
 
-- 2.1 Enable Phase
-- The master asserts `PENABLE=1` in the next clock cycle.
-- The slave retrieves the requested data.
-- If the slave is not ready, it holds `PREADY=0`, inserting wait states.
-
-- 2.2 Completion Phase
-- When the slave has valid data (`PREADY=1`):
-  - `PRDATA` contains the requested value.
-  - The master deasserts `PENABLE=0`, completing the read.
+   - 2.2 Completion Phase
+      - When the slave has valid data (`PREADY=1`):
+      - `PRDATA` contains the requested value.
+      - The master deasserts `PENABLE=0`, completing the read.
 
 📌 APB Read Transfer Timing Diagram (with 3 Wait States): 
 ![APB Read Transfer](images/apb_read.png)
