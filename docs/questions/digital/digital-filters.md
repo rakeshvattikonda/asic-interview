@@ -108,6 +108,7 @@ Lets look at implementing some standard filters using systemverilog. These quest
 
 ### Mean Filter (10-Sample Moving Average)
 
+SAMPLE TEST
 A **mean filter** computes the running average of the last 10 samples. The formula is:
 
 $$ 
