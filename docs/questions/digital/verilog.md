@@ -1,20 +1,16 @@
 # Verilog for ASIC Interviews
 
-Many companies evaluate Verilog skills using platforms like CoderPad, Hackerrank, or online Verilog simulators.
-
-## Interview Focus Areas
+Many companies evaluate Verilog skills using onlinr platforms like CoderPad, Hackerrank, or online Verilog simulators. Interviewers focus on following areas:
 
 - Implementing a synthesizable Verilog module from given specifications
 - Fixing syntax and logical errors
 - Understanding power, area, and timing constraints
-
-## Common Verilog Tasks  
-
-- Combinational circuits such as multiplexers, adders, and encoders  
-- Finite state machine (FSM) design  
-- Writing parameterized RTL for reusability  
-- Handling clock domain crossings (CDC) and metastability  
-- Debugging simulation failures and timing violations  
+- Following are the common Verilog codes evaluated
+    - Combinational circuits such as multiplexers, adders, and encoders  
+    - Finite state machine (FSM) design  
+    - Writing parameterized RTL for reusability  
+    - Handling clock domain crossings (CDC) and metastability  
+    - Debugging simulation failures and timing violations  
 
 Let's look at some common verilog questions
 
