@@ -640,17 +640,17 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="4-bit Arbiter: Priority and Round Robin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-priority-arbiter-fixed-priority" class="md-nav__link">
     <span class="md-ellipsis">
       1. Priority Arbiter (Fixed Priority)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Priority Arbiter (Fixed Priority)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#implementation" class="md-nav__link">
@@ -679,20 +679,14 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#2-round-robin-arbiter" class="md-nav__link">
     <span class="md-ellipsis">
       2. Round Robin Arbiter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Round Robin Arbiter">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#implementation_1" class="md-nav__link">
@@ -1122,17 +1116,17 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="4-bit Arbiter: Priority and Round Robin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-priority-arbiter-fixed-priority" class="md-nav__link">
     <span class="md-ellipsis">
       1. Priority Arbiter (Fixed Priority)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Priority Arbiter (Fixed Priority)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#implementation" class="md-nav__link">
@@ -1161,20 +1155,14 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#2-round-robin-arbiter" class="md-nav__link">
     <span class="md-ellipsis">
       2. Round Robin Arbiter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Round Robin Arbiter">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#implementation_1" class="md-nav__link">
@@ -1239,11 +1227,11 @@
 <h1 id="verilog-for-asic-interviews">Verilog for ASIC Interviews<a class="headerlink" href="#verilog-for-asic-interviews" title="Permanent link">&para;</a></h1>
 <p>Interviewers assess candidates on:</p>
 <ul>
-<li>Implementing asynthesizable Verilog module from specs.</li>
+<li>Implementing a synthesizable Verilog module from specs.</li>
 <li>Fixing syntax/logical errors.</li>
 <li>Understanding power, area, and timing constraints. </li>
 </ul>
-<h3 id="common-verilog-tasks">Common Verilog Tasks<a class="headerlink" href="#common-verilog-tasks" title="Permanent link">&para;</a></h3>
+<h2 id="common-verilog-tasks">Common Verilog Tasks<a class="headerlink" href="#common-verilog-tasks" title="Permanent link">&para;</a></h2>
 <p>Many companies use CoderPad, Hackerrank, or online Verilog tools to evaluate skills:</p>
 <p>✅ Combinational circuits (MUX, adders, encoders)<br />
 ✅ FSM design<br />
@@ -1259,7 +1247,7 @@
 <li>Round Robin Arbiter: Ensures fairness by rotating the grant order among requestors.</li>
 </ul>
 <p>Below are the Verilog implementations for both.</p>
-<h2 id="1-priority-arbiter-fixed-priority">1. Priority Arbiter (Fixed Priority)<a class="headerlink" href="#1-priority-arbiter-fixed-priority" title="Permanent link">&para;</a></h2>
+<h3 id="1-priority-arbiter-fixed-priority">1. Priority Arbiter (Fixed Priority)<a class="headerlink" href="#1-priority-arbiter-fixed-priority" title="Permanent link">&para;</a></h3>
 <p>A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (<code>req[0]</code>) has the highest priority, while <code>req[3]</code> has the lowest.</p>
 <h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
 <p>The design uses a case statement to check requests in priority order, granting access to the first active request.</p>
@@ -1294,7 +1282,7 @@
 <li>Interrupt controllers where some interrupts are more critical.</li>
 <li>Memory access arbitration where certain clients have higher priority.</li>
 </ul>
-<h2 id="2-round-robin-arbiter">2. Round Robin Arbiter<a class="headerlink" href="#2-round-robin-arbiter" title="Permanent link">&para;</a></h2>
+<h3 id="2-round-robin-arbiter">2. Round Robin Arbiter<a class="headerlink" href="#2-round-robin-arbiter" title="Permanent link">&para;</a></h3>
 <p>A round robin arbiter ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.</p>
 <h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">&para;</a></h3>
 <p>This design keeps track of the last granted request (<code>last_grant</code>) and rotates priority accordingly.</p>
