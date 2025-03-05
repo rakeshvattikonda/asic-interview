@@ -1,6 +1,6 @@
 # Verilog for ASIC Interviews
 
-Many companies evaluate Verilog skills using onlinr platforms like CoderPad, Hackerrank, or online Verilog simulators. Interviewers focus on following areas:
+Many companies evaluate Verilog skills using online platforms like CoderPad, Hackerrank, or online Verilog simulators. Interviewers focus on following areas:
 
 - Implementing a synthesizable Verilog module from given specifications
 - Fixing syntax and logical errors
@@ -139,3 +139,30 @@ endmodule
 
 ---
 
+# Parameterized One-Hot Decoder
+
+## Overview
+
+- Converts a binary address (`addr`) into a one-hot encoded output (`addr_dec`).
+- The width of `addr_dec` is automatically determined by `ADDR_WIDTH`, making it scalable for different widths.
+- Combinational logic ensures fast response with no clock dependencies.
+
+## Verilog Implementation
+
+```verilog 
+module decoder #(
+    parameter ADDR_WIDTH = 3
+)(
+    input  logic [ADDR_WIDTH-1:0] raddr,  
+    output logic [(1 << ADDR_WIDTH)-1:0] addr_dec  // Dynamically set output width
+);
+
+always_comb begin
+    addr_dec = '0;        // Reset all bits
+    addr_dec[raddr] = 1'b1; // Set the selected bit
+end
+
+endmodule
+```
+
+---
