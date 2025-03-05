@@ -1,6 +1,7 @@
 # Verilog for ASIC Interviews
 
 ## Importance of Verilog  
+
 Verilog is crucial for ASIC and FPGA design. Interviewers assess candidates on:
 - Writing **synthesizable RTL**.
 - Debugging **Verilog simulations**.
@@ -8,6 +9,7 @@ Verilog is crucial for ASIC and FPGA design. Interviewers assess candidates on:
 - Understanding **power, area, and timing constraints**.
 
 ## Real-Time Coding Tests  
+
 Many companies use **CoderPad, Hackerrank, or online Verilog tools** to evaluate skills:
 - Implementing a **Verilog module** from specs.
 - Fixing **syntax/logical errors**.
