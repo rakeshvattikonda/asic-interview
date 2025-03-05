@@ -150,7 +150,7 @@ endmodule
 ## Verilog Implementation
 
 ```verilog 
-module decoder #(
+module parameterized_decoder #(
     parameter ADDR_WIDTH = 3
 )(
     input  logic [ADDR_WIDTH-1:0] raddr,  
