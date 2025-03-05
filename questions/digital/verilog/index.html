@@ -1195,7 +1195,7 @@
 
 
 <h1 id="verilog-for-asic-interviews">Verilog for ASIC Interviews<a class="headerlink" href="#verilog-for-asic-interviews" title="Permanent link">&para;</a></h1>
-<p>Many companies evaluate Verilog skills using onlinr platforms like CoderPad, Hackerrank, or online Verilog simulators. Interviewers focus on following areas:</p>
+<p>Many companies evaluate Verilog skills using online platforms like CoderPad, Hackerrank, or online Verilog simulators. Interviewers focus on following areas:</p>
 <ul>
 <li>Implementing a synthesizable Verilog module from given specifications</li>
 <li>Fixing syntax and logical errors</li>
@@ -1348,6 +1348,29 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h1 id="parameterized-one-hot-decoder">Parameterized One-Hot Decoder<a class="headerlink" href="#parameterized-one-hot-decoder" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Converts a binary address (<code>addr</code>) into a one-hot encoded output (<code>addr_dec</code>).</li>
+<li>The width of <code>addr_dec</code> is automatically determined by <code>ADDR_WIDTH</code>, making it scalable for different widths.</li>
+<li>Combinational logic ensures fast response with no clock dependencies.</li>
+</ul>
+<h2 id="verilog-implementation">Verilog Implementation<a class="headerlink" href="#verilog-implementation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">parameterized_decoder</span><span class="w"> </span><span class="p">#(</span>
+<span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">ADDR_WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">3</span>
+<span class="p">)(</span>
+<span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="n">ADDR_WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">raddr</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[(</span><span class="mh">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ADDR_WIDTH</span><span class="p">)</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">addr_dec</span><span class="w">  </span><span class="c1">// Dynamically set output width</span>
+<span class="p">);</span>
+
+<span class="k">always_comb</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">addr_dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">&#39;0</span><span class="p">;</span><span class="w">        </span><span class="c1">// Reset all bits</span>
+<span class="w">    </span><span class="n">addr_dec</span><span class="p">[</span><span class="n">raddr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set the selected bit</span>
+<span class="k">end</span>
+
+<span class="k">endmodule</span>
+</code></pre></div>
 <hr />
 
 
