@@ -2,24 +2,17 @@
 
 Interviewers assess candidates on:
 
-- Writing **synthesizable RTL**.
-- Debugging **Verilog simulations**.
-- Implementing **state machines, FIFOs, multiplexers**.
-- Understanding **power, area, and timing constraints**. 
+- Implementing asynthesizable Verilog module from specs.
+- Fixing syntax/logical errors.
+- Understanding power, area, and timing constraints. 
+- Many companies use CoderPad, Hackerrank, or online Verilog tools to evaluate skills:
 
-Many companies use **CoderPad, Hackerrank, or online Verilog tools** to evaluate skills:
-
-- Implementing a **Verilog module** from specs.
-- Fixing **syntax/logical errors**.
-- Writing **testbenches**.
-- Ensuring **synthesizability and timing**.
-
-### **Common Verilog Tasks**  
-✅ **Combinational circuits** (MUX, adders, encoders)  
-✅ **FSM design**  
-✅ **Parameterized RTL** for reusability  
-✅ **Clock domain crossing (CDC) handling**  
-✅ **Debugging failing simulations & timing violations**  
+### Common Verilog Tasks  
+✅ Combinational circuits (MUX, adders, encoders)  
+✅ FSM design  
+✅ Parameterized RTL for reusability  
+✅ Clock domain crossing (CDC) handling  
+✅ Debugging failing simulations & timing violations
 
 Let's look at some common verilog questions which gets asked in interviews.
 
@@ -28,13 +21,13 @@ Let's look at some common verilog questions which gets asked in interviews.
 
 Arbiters are essential in multi-client communication systems where multiple requestors compete for a shared resource. Two common arbitration mechanisms are:
 
-- **Priority Arbiter**: Grants access based on a fixed priority order.
-- **Round Robin Arbiter**: Ensures fairness by rotating the grant order among requestors.
+- Priority Arbiter: Grants access based on a fixed priority order.
+- Round Robin Arbiter: Ensures fairness by rotating the grant order among requestors.
 
 Below are the Verilog implementations for both.
 
 ## 1. Priority Arbiter (Fixed Priority)
-A **priority arbiter** grants access to the highest-priority requestor first. The request with the lowest index (`req[0]`) has the highest priority, while `req[3]` has the lowest.
+A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (`req[0]`) has the highest priority, while `req[3]` has the lowest.
 
 ### Implementation
 The design uses a case statement to check requests in priority order, granting access to the first active request.
@@ -61,16 +54,16 @@ module priority_arbiter(
 endmodule
 ```
 ### Key Features
-- **Fixed priority scheme**: The lowest-numbered request has the highest priority.
-- **Casez statement**: Allows `?` (don't care) for flexibility in priority encoding.
-- **Simple implementation**: Efficient and minimal hardware overhead.
+- Fixed priority scheme: The lowest-numbered request has the highest priority.
+- Casez statement: Allows `?` (don't care) for flexibility in priority encoding.
+- Simple implementation: Efficient and minimal hardware overhead.
 
 ### Use Cases
 - Interrupt controllers where some interrupts are more critical.
 - Memory access arbitration where certain clients have higher priority.
 
 ## 2. Round Robin Arbiter
-A **round robin arbiter** ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.
+A round robin arbiter ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.
 
 ### Implementation
 This design keeps track of the last granted request (`last_grant`) and rotates priority accordingly.
@@ -125,9 +118,9 @@ module round_robin_arbiter(
 endmodule
 ```
 ### Key Features
-- **Rotating priority**: Ensures fair access to all clients.
-- **State tracking (`last_grant`)**: Maintains the last granted request and shifts priority.
-- **No starvation**: Every request eventually gets served.
+- Rotating priority: Ensures fair access to all clients.
+- State tracking (`last_grant`): Maintains the last granted request and shifts priority.
+- No starvation: Every request eventually gets served.
 
 ### Use Cases
 - Shared bus arbitration (e.g., AMBA, Wishbone).
@@ -138,10 +131,10 @@ endmodule
 
 | Feature               | Priority Arbiter | Round Robin Arbiter |
 |----------------------|----------------|----------------|
-| **Fairness**         | No, favors lower request numbers | Yes, rotates priority |
-| **Implementation**   | Simple priority logic | Requires state tracking |
-| **Latency**          | Fast response for high-priority requests | Uniform latency distribution |
-| **Use Case**         | Real-time critical systems | Shared resource fairness |
+| Fairness         | No, favors lower request numbers | Yes, rotates priority |
+| Implementation   | Simple priority logic | Requires state tracking |
+| Latency          | Fast response for high-priority requests | Uniform latency distribution |
+| Use Case         | Real-time critical systems | Shared resource fairness |
 
 ---
 
