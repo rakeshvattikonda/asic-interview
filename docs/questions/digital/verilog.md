@@ -1,13 +1,12 @@
 # Verilog for ASIC Interviews
 
 Interviewers assess candidates on:
-
 - Implementing asynthesizable Verilog module from specs.
 - Fixing syntax/logical errors.
 - Understanding power, area, and timing constraints. 
-- Many companies use CoderPad, Hackerrank, or online Verilog tools to evaluate skills:
 
 ### Common Verilog Tasks  
+Many companies use CoderPad, Hackerrank, or online Verilog tools to evaluate skills:
 ✅ Combinational circuits (MUX, adders, encoders)  
 ✅ FSM design  
 ✅ Parameterized RTL for reusability  
