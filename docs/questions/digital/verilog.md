@@ -1,12 +1,12 @@
 # Verilog for ASIC Interviews
 
+Many companies evaluate Verilog skills using platforms like CoderPad, Hackerrank, or online Verilog simulators.
+
 ## Interview Focus Areas
 
 - Implementing a synthesizable Verilog module from given specifications
 - Fixing syntax and logical errors
 - Understanding power, area, and timing constraints
-
-Many companies evaluate Verilog skills using platforms like CoderPad, Hackerrank, or online Verilog simulators.
 
 ## Common Verilog Tasks  
 
@@ -16,6 +16,10 @@ Many companies evaluate Verilog skills using platforms like CoderPad, Hackerrank
 - Handling clock domain crossings (CDC) and metastability  
 - Debugging simulation failures and timing violations  
 
+Let's look at some common verilog questions
+
+---
+
 ## Arbitration in Multi-Client Systems  
 
 Arbiters control access to shared resources when multiple requestors compete for access. Two common arbitration methods are:
@@ -24,8 +28,6 @@ Arbiters control access to shared resources when multiple requestors compete for
 - **Round Robin Arbiter**: Distributes access fairly by rotating the grant order.
 
 Below are Verilog implementations for both.
-
----
 
 ## Priority Arbiter (Fixed Priority)
 
