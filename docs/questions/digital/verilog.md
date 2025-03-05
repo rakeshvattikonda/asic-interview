@@ -1,5 +1,5 @@
 # Verilog for ASIC Interviews
-Interviewers assess candidates on:
+## Interviewers assess candidates on:
 ✅ Implementing a synthesizable Verilog module from specs.
 ✅ Fixing syntax/logical errors.
 ✅ Understanding power, area, and timing constraints. 
