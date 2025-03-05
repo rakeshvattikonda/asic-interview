@@ -16,7 +16,7 @@ Let's look at some common verilog questions
 
 ---
 
-### Arbitration in Multi-Client Systems  
+# Arbitration in Multi-Client Systems  
 
 Arbiters control access to shared resources when multiple requestors compete for access. Two common arbitration methods are:
 
@@ -25,7 +25,7 @@ Arbiters control access to shared resources when multiple requestors compete for
 
 Below are Verilog implementations for both.
 
-### 1. Priority Arbiter (Fixed Priority)
+## 1. Priority Arbiter (Fixed Priority)
 
 A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (`req[0]`) has the highest priority, while `req[3]` has the lowest.
 
@@ -63,7 +63,7 @@ endmodule
 - Interrupt controllers where some interrupts are more critical.
 - Memory access arbitration where certain clients have higher priority.
 
-### 2. Round Robin Arbiter
+## 2. Round Robin Arbiter
 A round robin arbiter ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.
 
 ### Implementation
@@ -128,7 +128,7 @@ endmodule
 - Scheduling mechanisms in networking (e.g., time-division multiplexing).
 - Fair allocation of resources among multiple processing cores.
 
-### Comparison: Priority vs. Round Robin
+## Comparison: Priority vs. Round Robin
 
 | Feature               | Priority Arbiter | Round Robin Arbiter |
 |----------------------|----------------|----------------|
