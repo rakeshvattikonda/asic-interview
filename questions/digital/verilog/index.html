@@ -1243,13 +1243,13 @@
 
 
 <h1 id="verilog-for-asic-interviews">Verilog for ASIC Interviews<a class="headerlink" href="#verilog-for-asic-interviews" title="Permanent link">&para;</a></h1>
+<p>Many companies evaluate Verilog skills using platforms like CoderPad, Hackerrank, or online Verilog simulators.</p>
 <h2 id="interview-focus-areas">Interview Focus Areas<a class="headerlink" href="#interview-focus-areas" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Implementing a synthesizable Verilog module from given specifications</li>
 <li>Fixing syntax and logical errors</li>
 <li>Understanding power, area, and timing constraints</li>
 </ul>
-<p>Many companies evaluate Verilog skills using platforms like CoderPad, Hackerrank, or online Verilog simulators.</p>
 <h2 id="common-verilog-tasks">Common Verilog Tasks<a class="headerlink" href="#common-verilog-tasks" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Combinational circuits such as multiplexers, adders, and encoders  </li>
@@ -1258,6 +1258,8 @@
 <li>Handling clock domain crossings (CDC) and metastability  </li>
 <li>Debugging simulation failures and timing violations  </li>
 </ul>
+<p>Let's look at some common verilog questions</p>
+<hr />
 <h2 id="arbitration-in-multi-client-systems">Arbitration in Multi-Client Systems<a class="headerlink" href="#arbitration-in-multi-client-systems" title="Permanent link">&para;</a></h2>
 <p>Arbiters control access to shared resources when multiple requestors compete for access. Two common arbitration methods are:</p>
 <ul>
@@ -1265,7 +1267,6 @@
 <li><strong>Round Robin Arbiter</strong>: Distributes access fairly by rotating the grant order.</li>
 </ul>
 <p>Below are Verilog implementations for both.</p>
-<hr />
 <h2 id="priority-arbiter-fixed-priority">Priority Arbiter (Fixed Priority)<a class="headerlink" href="#priority-arbiter-fixed-priority" title="Permanent link">&para;</a></h2>
 <p>A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (<code>req[0]</code>) has the highest priority, while <code>req[3]</code> has the lowest.</p>
 <h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
