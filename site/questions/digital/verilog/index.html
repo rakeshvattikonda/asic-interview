@@ -640,9 +640,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Common Verilog Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#arbitration-in-multi-client-systems" class="md-nav__link">
     <span class="md-ellipsis">
       Arbitration in Multi-Client Systems
@@ -650,16 +651,15 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#priority-arbiter-fixed-priority" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#1-priority-arbiter-fixed-priority" class="md-nav__link">
     <span class="md-ellipsis">
-      Priority Arbiter (Fixed Priority)
+      1. Priority Arbiter (Fixed Priority)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Priority Arbiter (Fixed Priority)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#implementation" class="md-nav__link">
@@ -1125,9 +1125,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Common Verilog Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#arbitration-in-multi-client-systems" class="md-nav__link">
     <span class="md-ellipsis">
       Arbitration in Multi-Client Systems
@@ -1135,16 +1136,15 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#priority-arbiter-fixed-priority" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#1-priority-arbiter-fixed-priority" class="md-nav__link">
     <span class="md-ellipsis">
-      Priority Arbiter (Fixed Priority)
+      1. Priority Arbiter (Fixed Priority)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Priority Arbiter (Fixed Priority)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#implementation" class="md-nav__link">
@@ -1260,14 +1260,14 @@
 </ul>
 <p>Let's look at some common verilog questions</p>
 <hr />
-<h2 id="arbitration-in-multi-client-systems">Arbitration in Multi-Client Systems<a class="headerlink" href="#arbitration-in-multi-client-systems" title="Permanent link">&para;</a></h2>
+<h3 id="arbitration-in-multi-client-systems">Arbitration in Multi-Client Systems<a class="headerlink" href="#arbitration-in-multi-client-systems" title="Permanent link">&para;</a></h3>
 <p>Arbiters control access to shared resources when multiple requestors compete for access. Two common arbitration methods are:</p>
 <ul>
 <li><strong>Priority Arbiter</strong>: Grants access based on a fixed priority order.</li>
 <li><strong>Round Robin Arbiter</strong>: Distributes access fairly by rotating the grant order.</li>
 </ul>
 <p>Below are Verilog implementations for both.</p>
-<h2 id="priority-arbiter-fixed-priority">Priority Arbiter (Fixed Priority)<a class="headerlink" href="#priority-arbiter-fixed-priority" title="Permanent link">&para;</a></h2>
+<h3 id="1-priority-arbiter-fixed-priority">1. Priority Arbiter (Fixed Priority)<a class="headerlink" href="#1-priority-arbiter-fixed-priority" title="Permanent link">&para;</a></h3>
 <p>A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (<code>req[0]</code>) has the highest priority, while <code>req[3]</code> has the lowest.</p>
 <h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
 <p>The design uses a case statement to check requests in priority order, granting access to the first active request.</p>

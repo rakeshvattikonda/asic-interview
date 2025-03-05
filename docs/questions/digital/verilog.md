@@ -132,7 +132,7 @@ endmodule
 - Scheduling mechanisms in networking (e.g., time-division multiplexing).
 - Fair allocation of resources among multiple processing cores.
 
-## Comparison: Priority vs. Round Robin
+### Comparison: Priority vs. Round Robin
 
 | Feature               | Priority Arbiter | Round Robin Arbiter |
 |----------------------|----------------|----------------|
