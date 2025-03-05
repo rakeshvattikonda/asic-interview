@@ -1,29 +1,25 @@
 # Verilog for ASIC Interviews
 
-## Why is Verilog Important in Interviews?
+## Importance of Verilog  
+Verilog is crucial for ASIC and FPGA design. Interviewers assess candidates on:
+- Writing **synthesizable RTL**.
+- Debugging **Verilog simulations**.
+- Implementing **state machines, FIFOs, multiplexers**.
+- Understanding **power, area, and timing constraints**.
 
-Verilog is a fundamental hardware description language (HDL) used in ASIC and FPGA design. It plays a key role in designing, verifying, and implementing digital circuits. Strong Verilog coding skills are essential for ASIC engineers, and many companies test candidates' abilities in:
+## Real-Time Coding Tests  
+Many companies use **CoderPad, Hackerrank, or online Verilog tools** to evaluate skills:
+- Implementing a **Verilog module** from specs.
+- Fixing **syntax/logical errors**.
+- Writing **testbenches**.
+- Ensuring **synthesizability and timing**.
 
-- Writing synthesizable RTL for real-world ASIC designs.
-- Debugging and analyzing Verilog simulations.
-- Implementing common digital circuits, such as state machines, multiplexers, FIFOs, and memory controllers.
-- Understanding power, area, and timing constraints during synthesis.
-
-## Real-Time Coding in Interviews
-
-Many companies use CoderPad, Hackerrank, or online Verilog compilers during interviews to evaluate coding skills. Candidates are often required to:
-
-- Implement a Verilog module based on given specifications.
-- Fix syntax or logical errors in a Verilog snippet.
-- Write testbenches to verify functionality.
-- Understand synthesizability and timing constraints.
-
-### Common Verilog Tasks in Live Interviews:
-- Implementing combinational circuits (multiplexers, adders, encoders).
-- Designing finite state machines (FSMs).
-- Writing parameterized RTL for reusability.
-- Handling clock domain crossings (CDC) and metastability.
-- Debugging failing simulations and timing violations.
+### **Common Verilog Tasks**  
+✅ **Combinational circuits** (MUX, adders, encoders)  
+✅ **FSM design**  
+✅ **Parameterized RTL** for reusability  
+✅ **Clock domain crossing (CDC) handling**  
+✅ **Debugging failing simulations & timing violations**  
 
 ---
 
