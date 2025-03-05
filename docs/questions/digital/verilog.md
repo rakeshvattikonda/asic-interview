@@ -20,7 +20,7 @@ Let's look at some common verilog questions
 
 ---
 
-## Arbitration in Multi-Client Systems  
+### Arbitration in Multi-Client Systems  
 
 Arbiters control access to shared resources when multiple requestors compete for access. Two common arbitration methods are:
 
@@ -29,7 +29,7 @@ Arbiters control access to shared resources when multiple requestors compete for
 
 Below are Verilog implementations for both.
 
-## Priority Arbiter (Fixed Priority)
+### 1. Priority Arbiter (Fixed Priority)
 
 A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (`req[0]`) has the highest priority, while `req[3]` has the lowest.
 
