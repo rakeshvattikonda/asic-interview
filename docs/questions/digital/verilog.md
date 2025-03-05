@@ -1,36 +1,38 @@
 # Verilog for ASIC Interviews
 
-## Interviewers assess candidates on
+## Interview Focus Areas
 
-✅ Implementing a synthesizable Verilog module from specs
-✅ Fixing syntax/logical errors
-✅ Understanding power, area, and timing constraints
+- Implementing a synthesizable Verilog module from given specifications
+- Fixing syntax and logical errors
+- Understanding power, area, and timing constraints
 
-Many companies use CoderPad, Hackerrank, or online Verilog tools to evaluate skills:
+Many companies evaluate Verilog skills using platforms like CoderPad, Hackerrank, or online Verilog simulators.
 
 ## Common Verilog Tasks  
-✅ Combinational circuits (MUX, adders, encoders)  
-✅ FSM design  
-✅ Parameterized RTL for reusability  
-✅ Clock domain crossing (CDC) handling  
-✅ Debugging failing simulations & timing violations
 
-Let's look at some common verilog questions which gets asked in interviews.
+- Combinational circuits such as multiplexers, adders, and encoders  
+- Finite state machine (FSM) design  
+- Writing parameterized RTL for reusability  
+- Handling clock domain crossings (CDC) and metastability  
+- Debugging simulation failures and timing violations  
+
+## Arbitration in Multi-Client Systems  
+
+Arbiters control access to shared resources when multiple requestors compete for access. Two common arbitration methods are:
+
+- **Priority Arbiter**: Grants access based on a fixed priority order.
+- **Round Robin Arbiter**: Distributes access fairly by rotating the grant order.
+
+Below are Verilog implementations for both.
 
 ---
-## 4-bit Arbiter: Priority and Round Robin
 
-Arbiters are essential in multi-client communication systems where multiple requestors compete for a shared resource. Two common arbitration mechanisms are:
+## Priority Arbiter (Fixed Priority)
 
-- Priority Arbiter: Grants access based on a fixed priority order.
-- Round Robin Arbiter: Ensures fairness by rotating the grant order among requestors.
-
-Below are the Verilog implementations for both.
-
-### 1. Priority Arbiter (Fixed Priority)
 A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (`req[0]`) has the highest priority, while `req[3]` has the lowest.
 
 ### Implementation
+
 The design uses a case statement to check requests in priority order, granting access to the first active request.
 
 ```verilog 
