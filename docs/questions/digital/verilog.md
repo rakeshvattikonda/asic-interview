@@ -1,11 +1,11 @@
 # Verilog for ASIC Interviews
 Interviewers assess candidates on:
 
-- Implementing asynthesizable Verilog module from specs.
+- Implementing a synthesizable Verilog module from specs.
 - Fixing syntax/logical errors.
 - Understanding power, area, and timing constraints. 
 
-### Common Verilog Tasks  
+## Common Verilog Tasks  
 Many companies use CoderPad, Hackerrank, or online Verilog tools to evaluate skills:
 
 ✅ Combinational circuits (MUX, adders, encoders)  
@@ -26,7 +26,7 @@ Arbiters are essential in multi-client communication systems where multiple requ
 
 Below are the Verilog implementations for both.
 
-## 1. Priority Arbiter (Fixed Priority)
+### 1. Priority Arbiter (Fixed Priority)
 A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (`req[0]`) has the highest priority, while `req[3]` has the lowest.
 
 ### Implementation
@@ -62,7 +62,7 @@ endmodule
 - Interrupt controllers where some interrupts are more critical.
 - Memory access arbitration where certain clients have higher priority.
 
-## 2. Round Robin Arbiter
+### 2. Round Robin Arbiter
 A round robin arbiter ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.
 
 ### Implementation
