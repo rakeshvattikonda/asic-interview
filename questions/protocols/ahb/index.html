@@ -1378,122 +1378,134 @@
 <p>This page contains <strong>interview questions</strong> related to the <strong>AHB (Advanced High-performance Bus)</strong> from the AMBA protocol.</p>
 <hr />
 <h2 id="1-what-is-the-amba-ahb-protocol-and-how-does-it-differ-from-other-amba-protocols-like-apb-and-axi">1. What is the AMBA AHB protocol, and how does it differ from other AMBA protocols like APB and AXI?<a class="headerlink" href="#1-what-is-the-amba-ahb-protocol-and-how-does-it-differ-from-other-amba-protocols-like-apb-and-axi" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-AHB is a high-speed pipelined bus designed for efficient data transfers between system components.  </p>
+<p>AHB is a high-speed pipelined bus designed for efficient data transfers between system components.  </p>
 <ul>
 <li><strong>Differences from APB</strong>: AHB is used for high-speed memory and peripherals, while APB is for low-speed peripherals (e.g., GPIO, UART).  </li>
 <li><strong>Differences from AXI</strong>: AXI supports multiple outstanding transactions and out-of-order execution, while AHB follows a simpler single-address, single-data phase protocol.</li>
 </ul>
 <hr />
 <h2 id="2-describe-the-various-versions-of-ahb-and-their-key-differences">2. Describe the various versions of AHB and their key differences.<a class="headerlink" href="#2-describe-the-various-versions-of-ahb-and-their-key-differences" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>AMBA 2 AHB</strong>: Supports multiple masters and slaves.<br />
-- <strong>AHB-Lite</strong>: A simplified version of AHB, designed for single-master systems (no arbitration).<br />
-- <strong>AHB5</strong>: Adds TrustZone security and exclusive access support.</p>
+<ul>
+<li><strong>AMBA 2 AHB</strong>: Supports multiple masters and slaves.  </li>
+<li><strong>AHB-Lite</strong>: A simplified version of AHB, designed for single-master systems (no arbitration).  </li>
+<li><strong>AHB5</strong>: Adds TrustZone security and exclusive access support.</li>
+</ul>
 <hr />
 <h2 id="3-what-are-the-primary-advantages-of-ahb-over-other-bus-protocols-in-an-soc">3. What are the primary advantages of AHB over other bus protocols in an SoC?<a class="headerlink" href="#3-what-are-the-primary-advantages-of-ahb-over-other-bus-protocols-in-an-soc" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>Higher performance</strong>: Supports burst transfers and pipelining.<br />
-- <strong>Multiple masters</strong>: Arbitration allows multiple bus masters.<br />
-- <strong>Efficient data transfer</strong>: Supports 8-bit, 16-bit, and 32-bit transfers.<br />
-- <strong>Low-latency</strong>: Split and retry responses improve slave performance.</p>
+<ul>
+<li><strong>Higher performance</strong>: Supports burst transfers and pipelining.  </li>
+<li><strong>Multiple masters</strong>: Arbitration allows multiple bus masters.  </li>
+<li><strong>Efficient data transfer</strong>: Supports 8-bit, 16-bit, and 32-bit transfers.  </li>
+<li><strong>Low-latency</strong>: Split and retry responses improve slave performance.</li>
+</ul>
 <hr />
 <h2 id="4-what-is-the-purpose-of-the-ahb-bus-matrix-and-how-does-it-improve-system-performance">4. What is the purpose of the AHB Bus Matrix, and how does it improve system performance?<a class="headerlink" href="#4-what-is-the-purpose-of-the-ahb-bus-matrix-and-how-does-it-improve-system-performance" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-The <strong>AHB Bus Matrix</strong> allows multiple masters to communicate with multiple slaves <strong>simultaneously</strong>. It improves performance by:
+<p>The <strong>AHB Bus Matrix</strong> allows multiple masters to communicate with multiple slaves <strong>simultaneously</strong>. It improves performance by:
 - <strong>Reducing contention</strong>: Masters can access different slaves at the same time.
 - <strong>Optimizing arbitration</strong>: Implements <strong>priority-based bus arbitration</strong>.
 - <strong>Minimizing bottlenecks</strong>: Enables <strong>parallel transactions</strong> instead of a single shared bus.</p>
 <hr />
 <h2 id="5-explain-the-role-of-the-following-ahb-signals-hclk-hresetn-haddr-htrans-hwrite-hsize">5. Explain the role of the following AHB signals: <code>HCLK</code>, <code>HRESETn</code>, <code>HADDR</code>, <code>HTRANS</code>, <code>HWRITE</code>, <code>HSIZE</code>.<a class="headerlink" href="#5-explain-the-role-of-the-following-ahb-signals-hclk-hresetn-haddr-htrans-hwrite-hsize" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <code>HCLK</code>: Clock signal.<br />
-- <code>HRESETn</code>: Active-low reset signal.<br />
-- <code>HADDR</code>: Address bus (32-bit).<br />
-- <code>HTRANS</code>: Transfer type (<code>IDLE</code>, <code>BUSY</code>, <code>NONSEQ</code>, <code>SEQ</code>).<br />
-- <code>HWRITE</code>: <code>1</code> = Write, <code>0</code> = Read.<br />
-- <code>HSIZE</code>: Transfer size (<code>8-bit</code>, <code>16-bit</code>, <code>32-bit</code>).</p>
+<ul>
+<li><code>HCLK</code>: Clock signal.  </li>
+<li><code>HRESETn</code>: Active-low reset signal.  </li>
+<li><code>HADDR</code>: Address bus (32-bit).  </li>
+<li><code>HTRANS</code>: Transfer type (<code>IDLE</code>, <code>BUSY</code>, <code>NONSEQ</code>, <code>SEQ</code>).  </li>
+<li><code>HWRITE</code>: <code>1</code> = Write, <code>0</code> = Read.  </li>
+<li><code>HSIZE</code>: Transfer size (<code>8-bit</code>, <code>16-bit</code>, <code>32-bit</code>).</li>
+</ul>
 <hr />
 <h2 id="6-what-is-the-function-of-the-hready-and-hreadyout-signals">6. What is the function of the <code>HREADY</code> and <code>HREADYOUT</code> signals?<a class="headerlink" href="#6-what-is-the-function-of-the-hready-and-hreadyout-signals" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <code>HREADY</code> (input) <strong>tells the master</strong> if the slave is ready for the next transaction.
-- <code>HREADYOUT</code> (output) <strong>indicates if the slave is ready</strong>.</p>
+<ul>
+<li><code>HREADY</code> (input) <strong>tells the master</strong> if the slave is ready for the next transaction.</li>
+<li><code>HREADYOUT</code> (output) <strong>indicates if the slave is ready</strong>.</li>
+</ul>
 <p>If <code>HREADY = 0</code>, the master must wait before sending the next request.</p>
 <hr />
 <h2 id="7-how-does-hsel-slave-select-work-in-ahb-transactions">7. How does <code>HSEL</code> (Slave Select) work in AHB transactions?<a class="headerlink" href="#7-how-does-hsel-slave-select-work-in-ahb-transactions" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>AHB decoder asserts <code>HSEL</code></strong> to select the corresponding slave.<br />
-- Only <strong>one slave can be active at a time</strong> for a given transaction.</p>
+<ul>
+<li><strong>AHB decoder asserts <code>HSEL</code></strong> to select the corresponding slave.  </li>
+<li>Only <strong>one slave can be active at a time</strong> for a given transaction.</li>
+</ul>
 <hr />
 <h2 id="8-what-is-the-purpose-of-the-hburst-signal-and-how-does-it-optimize-transfers">8. What is the purpose of the <code>HBURST</code> signal, and how does it optimize transfers?<a class="headerlink" href="#8-what-is-the-purpose-of-the-hburst-signal-and-how-does-it-optimize-transfers" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-<code>HBURST</code> defines the <strong>burst transaction type</strong>:
+<p><code>HBURST</code> defines the <strong>burst transaction type</strong>:
 - <strong>SINGLE</strong>: One transfer.
 - <strong>INCR</strong>: Incrementing burst (no fixed length).
 - <strong>WRAP4, INCR4, WRAP8, INCR8, WRAP16, INCR16</strong>: Fixed-length bursts.</p>
 <p><strong>Optimization</strong>: Burst transactions reduce <strong>address overhead</strong>, improving efficiency.</p>
 <hr />
 <h2 id="9-explain-the-difference-between-address-phase-and-data-phase-in-an-ahb-transaction">9. Explain the difference between address phase and data phase in an AHB transaction.<a class="headerlink" href="#9-explain-the-difference-between-address-phase-and-data-phase-in-an-ahb-transaction" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>Address phase</strong>: The master sends <strong>HADDR, HTRANS, HWRITE, HSIZE</strong>.<br />
-- <strong>Data phase</strong>: The actual data transfer occurs <strong>one cycle later</strong>.</p>
+<ul>
+<li><strong>Address phase</strong>: The master sends <strong>HADDR, HTRANS, HWRITE, HSIZE</strong>.  </li>
+<li><strong>Data phase</strong>: The actual data transfer occurs <strong>one cycle later</strong>.</li>
+</ul>
 <hr />
 <h2 id="10-what-is-the-role-of-the-default-slave-and-what-happens-when-an-invalid-address-is-accessed">10. What is the role of the default slave, and what happens when an invalid address is accessed?<a class="headerlink" href="#10-what-is-the-role-of-the-default-slave-and-what-happens-when-an-invalid-address-is-accessed" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- The <strong>default slave</strong> is selected when no valid slave is assigned to the address.
-- It returns an <strong>ERROR response</strong>, preventing undefined behavior.</p>
+<ul>
+<li>The <strong>default slave</strong> is selected when no valid slave is assigned to the address.</li>
+<li>It returns an <strong>ERROR response</strong>, preventing undefined behavior.</li>
+</ul>
 <hr />
 <h2 id="11-how-does-an-ahb-slave-indicate-readiness-for-a-new-transfer">11. How does an AHB slave indicate readiness for a new transfer?<a class="headerlink" href="#11-how-does-an-ahb-slave-indicate-readiness-for-a-new-transfer" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- By asserting <strong>HREADYOUT = 1</strong>, meaning it has completed processing.
-- If <strong>HREADYOUT = 0</strong>, the master must wait.</p>
+<ul>
+<li>By asserting <strong>HREADYOUT = 1</strong>, meaning it has completed processing.</li>
+<li>If <strong>HREADYOUT = 0</strong>, the master must wait.</li>
+</ul>
 <hr />
 <h2 id="12-what-is-the-impact-of-pipelined-operations-in-ahb">12. What is the impact of pipelined operations in AHB?<a class="headerlink" href="#12-what-is-the-impact-of-pipelined-operations-in-ahb" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>Pipelining overlaps address and data phases</strong>.
-- While one transfer is in the data phase, the next transfer's address phase begins.
-- This improves <strong>throughput and efficiency</strong>.</p>
+<ul>
+<li><strong>Pipelining overlaps address and data phases</strong>.</li>
+<li>While one transfer is in the data phase, the next transfer's address phase begins.</li>
+<li>This improves <strong>throughput and efficiency</strong>.</li>
+</ul>
 <hr />
 <h2 id="13-how-does-multi-master-arbitration-work-in-ahb">13. How does multi-master arbitration work in AHB?<a class="headerlink" href="#13-how-does-multi-master-arbitration-work-in-ahb" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>AHB arbiter</strong> resolves conflicts when multiple masters request access.
-- Key arbitration signals:
-  - <code>HGRANT</code>: Grants bus ownership.
-  - <code>HLOCK</code>: Indicates locked transactions.
-  - <code>HMASTER</code>: Shows current master.
-- Uses <strong>priority-based or round-robin arbitration</strong>.</p>
+<ul>
+<li><strong>AHB arbiter</strong> resolves conflicts when multiple masters request access.</li>
+<li>Key arbitration signals:</li>
+<li><code>HGRANT</code>: Grants bus ownership.</li>
+<li><code>HLOCK</code>: Indicates locked transactions.</li>
+<li><code>HMASTER</code>: Shows current master.</li>
+<li>Uses <strong>priority-based or round-robin arbitration</strong>.</li>
+</ul>
 <hr />
 <h2 id="14-what-changes-were-introduced-in-ahb-lite">14. What changes were introduced in AHB-Lite?<a class="headerlink" href="#14-what-changes-were-introduced-in-ahb-lite" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>AHB-Lite is a single-master version of AHB</strong> (no arbitration).
-- It <strong>removes unnecessary logic</strong>, making it <strong>ideal for simple SoCs</strong>.</p>
+<ul>
+<li><strong>AHB-Lite is a single-master version of AHB</strong> (no arbitration).</li>
+<li>It <strong>removes unnecessary logic</strong>, making it <strong>ideal for simple SoCs</strong>.</li>
+</ul>
 <hr />
 <h2 id="15-how-does-ahb5-support-exclusive-access-and-trustzone">15. How does AHB5 support exclusive access and TrustZone?<a class="headerlink" href="#15-how-does-ahb5-support-exclusive-access-and-trustzone" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>Exclusive access</strong> ensures <strong>atomic read-modify-write</strong> operations.
-- <strong>TrustZone uses <code>HNONSEC</code> signal</strong> to separate <strong>secure and non-secure transactions</strong>.</p>
+<ul>
+<li><strong>Exclusive access</strong> ensures <strong>atomic read-modify-write</strong> operations.</li>
+<li><strong>TrustZone uses <code>HNONSEC</code> signal</strong> to separate <strong>secure and non-secure transactions</strong>.</li>
+</ul>
 <hr />
 <h2 id="16-what-is-a-burst-transaction-and-why-is-it-useful">16. What is a burst transaction, and why is it useful?<a class="headerlink" href="#16-what-is-a-burst-transaction-and-why-is-it-useful" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-A <strong>burst transaction</strong> is a sequence of <strong>back-to-back transfers</strong> using a single <strong>address phase</strong> to reduce overhead.</p>
+<p>A <strong>burst transaction</strong> is a sequence of <strong>back-to-back transfers</strong> using a single <strong>address phase</strong> to reduce overhead.</p>
 <hr />
 <h2 id="17-what-is-the-difference-between-incrementing-and-wrapping-bursts">17. What is the difference between incrementing and wrapping bursts?<a class="headerlink" href="#17-what-is-the-difference-between-incrementing-and-wrapping-bursts" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>Incrementing (INCR)</strong>: Address <strong>increases sequentially</strong>.
-- <strong>Wrapping (WRAP)</strong>: Address <strong>wraps around at boundaries</strong> (e.g., <code>4-beat burst at 0x10, 0x14, 0x18, wraps to 0x00</code>).</p>
+<ul>
+<li><strong>Incrementing (INCR)</strong>: Address <strong>increases sequentially</strong>.</li>
+<li><strong>Wrapping (WRAP)</strong>: Address <strong>wraps around at boundaries</strong> (e.g., <code>4-beat burst at 0x10, 0x14, 0x18, wraps to 0x00</code>).</li>
+</ul>
 <hr />
 <h2 id="18-how-does-a-slave-handle-an-incomplete-burst-transaction">18. How does a slave handle an incomplete burst transaction?<a class="headerlink" href="#18-how-does-a-slave-handle-an-incomplete-burst-transaction" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- It can <strong>terminate with an ERROR response</strong>, forcing the master to retry or handle the error.</p>
+<ul>
+<li>It can <strong>terminate with an ERROR response</strong>, forcing the master to retry or handle the error.</li>
+</ul>
 <hr />
 <h2 id="19-what-happens-if-a-slave-does-not-support-bursts">19. What happens if a slave does not support bursts?<a class="headerlink" href="#19-what-happens-if-a-slave-does-not-support-bursts" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- The slave <strong>treats all transfers as SINGLE</strong> and ignores the <code>HBURST</code> signal.</p>
+<ul>
+<li>The slave <strong>treats all transfers as SINGLE</strong> and ignores the <code>HBURST</code> signal.</li>
+</ul>
 <hr />
 <h2 id="20-how-do-burst-transactions-improve-dram-access-efficiency">20. How do burst transactions improve DRAM access efficiency?<a class="headerlink" href="#20-how-do-burst-transactions-improve-dram-access-efficiency" title="Permanent link">&para;</a></h2>
-<p><strong>Answer:</strong><br />
-- <strong>Sequential bursts</strong> maximize <strong>row buffer hits</strong> in DRAM.<br />
-- <strong>Avoids row activation overhead</strong>, improving memory bandwidth.</p>
+<ul>
+<li><strong>Sequential bursts</strong> maximize <strong>row buffer hits</strong> in DRAM.  </li>
+<li><strong>Avoids row activation overhead</strong>, improving memory bandwidth.</li>
+</ul>
 <hr />
 
 
