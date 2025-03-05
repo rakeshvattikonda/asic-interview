@@ -1239,35 +1239,28 @@
 <h1 id="verilog-for-asic-interviews">Verilog for ASIC Interviews<a class="headerlink" href="#verilog-for-asic-interviews" title="Permanent link">&para;</a></h1>
 <p>Interviewers assess candidates on:</p>
 <ul>
-<li>Writing <strong>synthesizable RTL</strong>.</li>
-<li>Debugging <strong>Verilog simulations</strong>.</li>
-<li>Implementing <strong>state machines, FIFOs, multiplexers</strong>.</li>
-<li>Understanding <strong>power, area, and timing constraints</strong>. </li>
+<li>Implementing asynthesizable Verilog module from specs.</li>
+<li>Fixing syntax/logical errors.</li>
+<li>Understanding power, area, and timing constraints. </li>
+<li>Many companies use CoderPad, Hackerrank, or online Verilog tools to evaluate skills:</li>
 </ul>
-<p>Many companies use <strong>CoderPad, Hackerrank, or online Verilog tools</strong> to evaluate skills:</p>
-<ul>
-<li>Implementing a <strong>Verilog module</strong> from specs.</li>
-<li>Fixing <strong>syntax/logical errors</strong>.</li>
-<li>Writing <strong>testbenches</strong>.</li>
-<li>Ensuring <strong>synthesizability and timing</strong>.</li>
-</ul>
-<h3 id="common-verilog-tasks"><strong>Common Verilog Tasks</strong><a class="headerlink" href="#common-verilog-tasks" title="Permanent link">&para;</a></h3>
-<p>✅ <strong>Combinational circuits</strong> (MUX, adders, encoders)<br />
-✅ <strong>FSM design</strong><br />
-✅ <strong>Parameterized RTL</strong> for reusability<br />
-✅ <strong>Clock domain crossing (CDC) handling</strong><br />
-✅ <strong>Debugging failing simulations &amp; timing violations</strong>  </p>
+<h3 id="common-verilog-tasks">Common Verilog Tasks<a class="headerlink" href="#common-verilog-tasks" title="Permanent link">&para;</a></h3>
+<p>✅ Combinational circuits (MUX, adders, encoders)<br />
+✅ FSM design<br />
+✅ Parameterized RTL for reusability<br />
+✅ Clock domain crossing (CDC) handling<br />
+✅ Debugging failing simulations &amp; timing violations</p>
 <p>Let's look at some common verilog questions which gets asked in interviews.</p>
 <hr />
 <h2 id="4-bit-arbiter-priority-and-round-robin">4-bit Arbiter: Priority and Round Robin<a class="headerlink" href="#4-bit-arbiter-priority-and-round-robin" title="Permanent link">&para;</a></h2>
 <p>Arbiters are essential in multi-client communication systems where multiple requestors compete for a shared resource. Two common arbitration mechanisms are:</p>
 <ul>
-<li><strong>Priority Arbiter</strong>: Grants access based on a fixed priority order.</li>
-<li><strong>Round Robin Arbiter</strong>: Ensures fairness by rotating the grant order among requestors.</li>
+<li>Priority Arbiter: Grants access based on a fixed priority order.</li>
+<li>Round Robin Arbiter: Ensures fairness by rotating the grant order among requestors.</li>
 </ul>
 <p>Below are the Verilog implementations for both.</p>
 <h2 id="1-priority-arbiter-fixed-priority">1. Priority Arbiter (Fixed Priority)<a class="headerlink" href="#1-priority-arbiter-fixed-priority" title="Permanent link">&para;</a></h2>
-<p>A <strong>priority arbiter</strong> grants access to the highest-priority requestor first. The request with the lowest index (<code>req[0]</code>) has the highest priority, while <code>req[3]</code> has the lowest.</p>
+<p>A priority arbiter grants access to the highest-priority requestor first. The request with the lowest index (<code>req[0]</code>) has the highest priority, while <code>req[3]</code> has the lowest.</p>
 <h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
 <p>The design uses a case statement to check requests in priority order, granting access to the first active request.</p>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">priority_arbiter</span><span class="p">(</span>
@@ -1292,9 +1285,9 @@
 </code></pre></div>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Fixed priority scheme</strong>: The lowest-numbered request has the highest priority.</li>
-<li><strong>Casez statement</strong>: Allows <code>?</code> (don't care) for flexibility in priority encoding.</li>
-<li><strong>Simple implementation</strong>: Efficient and minimal hardware overhead.</li>
+<li>Fixed priority scheme: The lowest-numbered request has the highest priority.</li>
+<li>Casez statement: Allows <code>?</code> (don't care) for flexibility in priority encoding.</li>
+<li>Simple implementation: Efficient and minimal hardware overhead.</li>
 </ul>
 <h3 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1302,7 +1295,7 @@
 <li>Memory access arbitration where certain clients have higher priority.</li>
 </ul>
 <h2 id="2-round-robin-arbiter">2. Round Robin Arbiter<a class="headerlink" href="#2-round-robin-arbiter" title="Permanent link">&para;</a></h2>
-<p>A <strong>round robin arbiter</strong> ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.</p>
+<p>A round robin arbiter ensures fairness by granting requests in cyclic order. It avoids starvation by rotating priority after each successful grant.</p>
 <h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">&para;</a></h3>
 <p>This design keeps track of the last granted request (<code>last_grant</code>) and rotates priority accordingly.</p>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">round_robin_arbiter</span><span class="p">(</span>
@@ -1354,9 +1347,9 @@
 </code></pre></div>
 <h3 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Rotating priority</strong>: Ensures fair access to all clients.</li>
-<li><strong>State tracking (<code>last_grant</code>)</strong>: Maintains the last granted request and shifts priority.</li>
-<li><strong>No starvation</strong>: Every request eventually gets served.</li>
+<li>Rotating priority: Ensures fair access to all clients.</li>
+<li>State tracking (<code>last_grant</code>): Maintains the last granted request and shifts priority.</li>
+<li>No starvation: Every request eventually gets served.</li>
 </ul>
 <h3 id="use-cases_1">Use Cases<a class="headerlink" href="#use-cases_1" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1375,22 +1368,22 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Fairness</strong></td>
+<td>Fairness</td>
 <td>No, favors lower request numbers</td>
 <td>Yes, rotates priority</td>
 </tr>
 <tr>
-<td><strong>Implementation</strong></td>
+<td>Implementation</td>
 <td>Simple priority logic</td>
 <td>Requires state tracking</td>
 </tr>
 <tr>
-<td><strong>Latency</strong></td>
+<td>Latency</td>
 <td>Fast response for high-priority requests</td>
 <td>Uniform latency distribution</td>
 </tr>
 <tr>
-<td><strong>Use Case</strong></td>
+<td>Use Case</td>
 <td>Real-time critical systems</td>
 <td>Shared resource fairness</td>
 </tr>
