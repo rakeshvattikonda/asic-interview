@@ -5,6 +5,7 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 ---
 
 ## 1️⃣ Setup & Configuration
+
 | **Action** | **Command** |
 |------------|------------|
 | Set Perforce server | `export P4PORT=ssl:perforce.company.com:1666` |
@@ -16,26 +17,40 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 ---
 
 ## 2️⃣ Checking Out & Editing Files
+
 | **Action** | **Command** |
 |------------|------------|
 | Open a file for editing | `p4 edit file.sv` |
-| Check out multiple files | `p4 edit *.sv` |
+| Check out multiple files | `p4 edit file1.sv file2.sv file3.sv` |
 | Check out an entire directory | `p4 edit //depot/path/...` |
 | Open a file for add (new file) | `p4 add new_file.sv` |
 | Open a file for delete | `p4 delete file.sv` |
 
 ---
 
-## 3️⃣ Submitting (Check-in)
+## 3️⃣ Viewing Checked-Out Files
+
 | **Action** | **Command** |
 |------------|------------|
+| Show all checked-out files in the workspace | `p4 opened` |
+| Show checked-out files in a specific changelist | `p4 opened -c <changelist_number>` |
+| Show checked-out files by a specific user | `p4 opened -u username` |
+
+---
+
+## 4️⃣ Submitting (Check-in)
+
+| **Action** | **Command** |
+|------------|------------|
+| Submit a single file | `p4 submit file.sv -d "Commit message"` |
+| Submit multiple files | `p4 submit file1.sv file2.sv -d "Commit message"` |
 | Submit all checked-out files | `p4 submit -d "Commit message"` |
-| Submit a specific file | `p4 submit file.sv -d "Commit message"` |
 | Submit a specific changelist | `p4 submit -c <changelist_number>` |
 
 ---
 
-## 4️⃣ Reverting Changes (Undo)
+## 5️⃣ Reverting Changes (Undo)
+
 | **Action** | **Command** |
 |------------|------------|
 | Revert a file | `p4 revert file.sv` |
@@ -44,7 +59,8 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 
 ---
 
-## 5️⃣ Shelving (Stashing)
+## 6️⃣ Shelving (Stashing)
+
 | **Action** | **Command** |
 |------------|------------|
 | Shelve all open files in a changelist | `p4 shelve -c <changelist_number>` |
@@ -54,7 +70,8 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 
 ---
 
-## 6️⃣ Syncing Files (Pull from Depot)
+## 7️⃣ Syncing Files (Pull from Depot)
+
 | **Action** | **Command** |
 |------------|------------|
 | Sync all files in the workspace | `p4 sync` |
@@ -64,7 +81,8 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 
 ---
 
-## 7️⃣ Comparing Files (Diff)
+## 8️⃣ Comparing Files (Diff)
+
 | **Action** | **Command** |
 |------------|------------|
 | Compare local file with last synced version | `p4 diff file.sv` |
@@ -74,7 +92,8 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 
 ---
 
-## 8️⃣ Viewing File History
+## 9️⃣ Viewing File History
+
 | **Action** | **Command** |
 |------------|------------|
 | Show revision history of a file | `p4 filelog file.sv` |
@@ -84,7 +103,8 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 
 ---
 
-## 9️⃣ Branching & Integration
+## 🔟 Branching & Integration
+
 | **Action** | **Command** |
 |------------|------------|
 | Branch a file | `p4 integrate //depot/main/file.sv //depot/branch/file.sv` |
@@ -93,7 +113,8 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 
 ---
 
-## 🔟 Miscellaneous
+## 11️⃣ Miscellaneous
+
 | **Action** | **Command** |
 |------------|------------|
 | List all pending changelists | `p4 changes -s pending` |
@@ -104,6 +125,7 @@ This cheat sheet covers **common Perforce commands** for managing files, checkin
 ---
 
 ## 🚀 Best Practices
+
 - Use descriptive changelist messages (`p4 submit -d "Fix CDC issue in file.sv"`).
 - Shelve work before switching tasks (`p4 shelve -c 12345`).
 - Sync regularly to avoid conflicts (`p4 sync`).
