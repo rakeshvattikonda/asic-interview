@@ -107,7 +107,6 @@
 
         .options button.incorrect {
             background-color: #dc2626;
-            /* Red color for wrong answer */
             color: white;
         }
 
@@ -228,7 +227,7 @@
 
             if (choice === correct) {
                 correctSound.play();
-                document.getElementById("feedback").textContent = "✅ Correct!";
+                document.getElementById("feedback").textContent = ""; // Clear feedback on correct answer
 
                 const fullText = questions[currentQuestion].text;
                 const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
@@ -255,7 +254,7 @@
                     selectedButton.classList.add('incorrect');
                     setTimeout(() => {
                         selectedButton.classList.remove('incorrect');
-                    }, 300); // 300 milliseconds delay
+                    }, 1000); // 1000 milliseconds (1 second) delay
                 }
             }
         }
