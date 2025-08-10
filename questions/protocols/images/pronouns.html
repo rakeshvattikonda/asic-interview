@@ -7,84 +7,132 @@
     <title>Pronoun Learning Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f8ff;
             text-align: center;
             padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .question {
-            font-size: 48px;
-            margin: 20px 0;
-            display: none;
-            /* hide sentence initially */
-        }
-
-        .correct-pronoun {
-            color: #2563eb;
-            /* Blue color */
-            font-weight: bold;
+        #subject {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
         }
 
         img {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 30px auto;
             max-width: 600px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+        }
+
+        #question {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin: 20px 0;
+            display: none;
+            /* hidden initially */
+        }
+
+        .correct-pronoun {
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .options {
+            margin-top: auto;
+            padding: 15px 0;
+            background: #e0f0ff;
+            box-shadow: 0 -2px 6px rgb(0 0 0 / 0.1);
         }
 
         .options button {
-            font-size: 40px;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 8px;
+            font-size: 2.5rem;
+            padding: 15px 40px;
+            margin: 0 20px;
+            border-radius: 10px;
             border: none;
             cursor: pointer;
-            background-color: #4CAF50;
+            background-color: #3b82f6;
             color: white;
-            transition: 0.3s;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            min-width: 120px;
         }
 
         .options button:hover {
-            background-color: #45a049;
+            background-color: #2563eb;
         }
 
         #nextBtn {
-            font-size: 40px;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 8px;
+            font-size: 2.5rem;
+            padding: 15px 40px;
+            margin: 20px auto 0 auto;
+            border-radius: 10px;
             border: none;
             cursor: pointer;
-            background-color: #4CAF50;
+            background-color: #10b981;
             color: white;
-            transition: 0.3s;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
             display: none;
-            /* hide initially */
+            min-width: 150px;
+            box-shadow: 0 3px 6px rgb(16 185 129 / 0.5);
         }
 
         #nextBtn:hover {
-            background-color: #45a049;
+            background-color: #059669;
         }
 
         .feedback {
-            font-size: 20px;
-            margin-top: 15px;
-            height: 25px;
+            font-size: 1.3rem;
+            margin-top: 12px;
+            height: 28px;
+            color: #333;
+            min-height: 28px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 700px) {
+            #subject {
+                font-size: 2rem;
+            }
+
+            #question {
+                font-size: 1.8rem;
+            }
+
+            .options button,
+            #nextBtn {
+                font-size: 1.8rem;
+                padding: 12px 25px;
+                margin: 0 12px;
+                min-width: 100px;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="game">
+        <div id="subject"></div>
         <img id="image" src="" alt="Question Image" />
         <div class="question" id="question"></div>
-        <div class="options" id="options"></div>
-        <button id="nextBtn" onclick="nextQuestion()">Next</button>
         <div class="feedback" id="feedback"></div>
     </div>
+
+    <div class="options" id="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+
     <script>
         const correctSound = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
         const incorrectSound = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
@@ -115,20 +163,32 @@
         let currentQuestion = 0;
 
         function loadQuestion() {
+            const questionObj = questions[currentQuestion];
+
+            // Extract subject (e.g. "The boy") from the question text (everything before first period)
+            const subject = questionObj.text.split('.')[0];
+
+            // Set subject above image
+            document.getElementById("subject").textContent = subject;
+
+            // Set image
+            document.getElementById("image").src = questionObj.img;
+            document.getElementById("image").style.display = "block";
+
             // Hide sentence initially
             const questionDiv = document.getElementById("question");
             questionDiv.style.display = "none";
-
-            // Set image src
-            document.getElementById("image").src = questions[currentQuestion].img;
+            questionDiv.innerHTML = "";
 
             // Clear feedback and hide next button
             document.getElementById("feedback").textContent = "";
             document.getElementById("nextBtn").style.display = "none";
 
-            // Show options buttons
+            // Show options buttons at bottom
             const optionsDiv = document.getElementById("options");
-            optionsDiv.style.display = "block";
+            optionsDiv.style.display = "flex";
+            optionsDiv.style.justifyContent = "center";
+            optionsDiv.style.gap = "30px";
             optionsDiv.innerHTML = '';
             ['he', 'she', 'it'].forEach(opt => {
                 const btn = document.createElement('button');
@@ -136,9 +196,6 @@
                 btn.onclick = () => checkAnswer(opt);
                 optionsDiv.appendChild(btn);
             });
-
-            // Make sure image visible
-            document.getElementById("image").style.display = "block";
         }
 
         function checkAnswer(choice) {
@@ -147,7 +204,7 @@
                 correctSound.play();
                 document.getElementById("feedback").textContent = "✅ Correct!";
 
-                // Show the full sentence with colored pronoun
+                // Show full sentence with pronoun highlighted
                 const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
                 const newQuestionText = questions[currentQuestion].text.replace("___", `<span class="correct-pronoun">${pronoun}</span>`);
                 const questionDiv = document.getElementById("question");
@@ -157,7 +214,7 @@
                 // Show Next button
                 document.getElementById("nextBtn").style.display = "inline-block";
 
-                // Remove options buttons
+                // Remove option buttons
                 document.getElementById("options").innerHTML = '';
             } else {
                 incorrectSound.play();
@@ -170,6 +227,8 @@
             if (currentQuestion < questions.length) {
                 loadQuestion();
             } else {
+                // End message
+                document.getElementById("subject").textContent = "";
                 document.getElementById("question").textContent = "🎉 Great job! You finished all questions.";
                 document.getElementById("question").style.display = "block";
                 document.getElementById("image").style.display = "none";
@@ -179,7 +238,7 @@
             }
         }
 
-        // Start the game
+        // Initialize game on load
         loadQuestion();
     </script>
 </body>
