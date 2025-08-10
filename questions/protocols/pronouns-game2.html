@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pronoun Sorting Game (Top Boxes)</title>
+    <title>Pronoun Sorting Game (Animated Drop)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,7 +51,7 @@
         #image-container {
             margin-top: 40px;
             min-height: 320px;
-            /* Reserve space for image */
+            position: relative;
         }
 
         img {
@@ -59,7 +59,11 @@
             max-height: 300px;
             border-radius: 10px;
             cursor: grab;
-            transition: transform 0.3s ease;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            transition: transform 0.5s ease;
+            /* Smooth movement */
         }
 
         .feedback {
@@ -117,9 +121,7 @@
         const nextBtn = document.getElementById("nextBtn");
 
         function loadImage() {
-            // Move image back to bottom area
-            imageContainer.appendChild(imageEl);
-            imageEl.style.transform = "translate(0,0)";
+            imageEl.style.transform = "translate(-50%, 0)";
             imageEl.src = images[currentIndex].img;
             feedbackEl.textContent = "";
             nextBtn.style.display = "none";
@@ -146,7 +148,16 @@
             const chosen = e.currentTarget.getAttribute("data-pronoun");
 
             if (chosen === correct) {
-                e.currentTarget.appendChild(imageEl); // Move image up into box
+                const dropZoneRect = e.currentTarget.getBoundingClientRect();
+                const imageRect = imageEl.getBoundingClientRect();
+
+                // Calculate movement from image to dropzone center
+                const offsetX = dropZoneRect.left + dropZoneRect.width / 2 - (imageRect.left + imageRect.width / 2);
+                const offsetY = dropZoneRect.top + dropZoneRect.height / 2 - (imageRect.top + imageRect.height / 2);
+
+                // Animate to the box
+                imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
+
                 feedbackEl.textContent = "✅ Correct!";
                 nextBtn.style.display = "inline-block";
             } else {
