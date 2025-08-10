@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pronoun Sorting Game (Large Drop Zones)</title>
+    <title>Pronoun Sorting Game (Top Boxes)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,8 +16,42 @@
             margin-bottom: 20px;
         }
 
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .dropzone {
+            width: 300px;
+            height: 300px;
+            border: 3px dashed #555;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #fff8dc;
+            /* light yellow */
+            transition: background-color 0.3s;
+        }
+
+        .dropzone.over {
+            background-color: #ffe4b5;
+            /* darker yellow on hover */
+        }
+
+        .label {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
         #image-container {
-            margin-bottom: 20px;
+            margin-top: 40px;
+            min-height: 320px;
+            /* Reserve space for image */
         }
 
         img {
@@ -25,36 +59,7 @@
             max-height: 300px;
             border-radius: 10px;
             cursor: grab;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-        }
-
-        .dropzone {
-            width: 300px;
-            height: 300px;
-            border: 3px dashed #999;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff;
-            transition: background-color 0.3s;
-            flex-direction: column;
-        }
-
-        .dropzone.over {
-            background-color: #cce5ff;
-        }
-
-        .label {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            transition: transform 0.3s ease;
         }
 
         .feedback {
@@ -76,10 +81,6 @@
 
     <h1>Drag the Picture to "He", "She", or "It"</h1>
 
-    <div id="image-container">
-        <img id="image" src="" draggable="true">
-    </div>
-
     <div class="container">
         <div class="dropzone" data-pronoun="he">
             <div class="label">He</div>
@@ -90,6 +91,10 @@
         <div class="dropzone" data-pronoun="it">
             <div class="label">It</div>
         </div>
+    </div>
+
+    <div id="image-container">
+        <img id="image" src="" draggable="true">
     </div>
 
     <div class="feedback" id="feedback"></div>
@@ -112,8 +117,9 @@
         const nextBtn = document.getElementById("nextBtn");
 
         function loadImage() {
-            // Move image back to its container
+            // Move image back to bottom area
             imageContainer.appendChild(imageEl);
+            imageEl.style.transform = "translate(0,0)";
             imageEl.src = images[currentIndex].img;
             feedbackEl.textContent = "";
             nextBtn.style.display = "none";
@@ -140,7 +146,7 @@
             const chosen = e.currentTarget.getAttribute("data-pronoun");
 
             if (chosen === correct) {
-                e.currentTarget.appendChild(imageEl); // Move image physically
+                e.currentTarget.appendChild(imageEl); // Move image up into box
                 feedbackEl.textContent = "✅ Correct!";
                 nextBtn.style.display = "inline-block";
             } else {
