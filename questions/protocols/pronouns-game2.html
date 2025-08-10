@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pronoun Sorting Game (Animated Drop)</title>
+    <title>Pronoun Sorting Game (Animated Feedback)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,6 +40,11 @@
         .dropzone.over {
             background-color: #ffe4b5;
             /* darker yellow on hover */
+        }
+
+        .dropzone.wrong {
+            background-color: #ffb3b3 !important;
+            /* light red for wrong */
         }
 
         .label {
@@ -116,7 +121,6 @@
 
         let currentIndex = 0;
         const imageEl = document.getElementById("image");
-        const imageContainer = document.getElementById("image-container");
         const feedbackEl = document.getElementById("feedback");
         const nextBtn = document.getElementById("nextBtn");
 
@@ -147,46 +151,22 @@
             const correct = images[currentIndex].answer;
             const chosen = e.currentTarget.getAttribute("data-pronoun");
 
+            const dropZoneRect = e.currentTarget.getBoundingClientRect();
+            const imageRect = imageEl.getBoundingClientRect();
+            const offsetX = dropZoneRect.left + dropZoneRect.width / 2 - (imageRect.left + imageRect.width / 2);
+            const offsetY = dropZoneRect.top + dropZoneRect.height / 2 - (imageRect.top + imageRect.height / 2);
+
             if (chosen === correct) {
-                const dropZoneRect = e.currentTarget.getBoundingClientRect();
-                const imageRect = imageEl.getBoundingClientRect();
-
-                // Calculate movement from image to dropzone center
-                const offsetX = dropZoneRect.left + dropZoneRect.width / 2 - (imageRect.left + imageRect.width / 2);
-                const offsetY = dropZoneRect.top + dropZoneRect.height / 2 - (imageRect.top + imageRect.height / 2);
-
-                // Animate to the box
                 imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
-
                 feedbackEl.textContent = "✅ Correct!";
                 nextBtn.style.display = "inline-block";
             } else {
+                // Animate to wrong box
+                imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
+                e.currentTarget.classList.add("wrong");
                 feedbackEl.textContent = "❌ Try again.";
-            }
-        }
 
-        function nextImage() {
-            currentIndex++;
-            if (currentIndex < images.length) {
-                loadImage();
-            } else {
-                imageEl.style.display = "none";
-                feedbackEl.textContent = "🎉 Great job! You sorted all images!";
-                nextBtn.style.display = "none";
-            }
-        }
-
-        imageEl.addEventListener("dragstart", handleDragStart);
-
-        document.querySelectorAll(".dropzone").forEach(zone => {
-            zone.addEventListener("dragover", handleDragOver);
-            zone.addEventListener("dragleave", handleDragLeave);
-            zone.addEventListener("drop", handleDrop);
-        });
-
-        loadImage();
-    </script>
-
-</body>
-
-</html>
+                // After animation, return to start and remove red
+                setTimeout(() => {
+                    imageEl.style.transform = "translate(-50%, 0)";
+                    e.currentTarget.class
