@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pronoun Sorting Game (Drag and Drop)</title>
+    <title>Pronoun Sorting Game (Move Image on Drop)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,10 +16,13 @@
             margin-bottom: 20px;
         }
 
-        #image {
+        #image-container {
+            margin-bottom: 20px;
+        }
+
+        img {
             max-width: 300px;
             border-radius: 10px;
-            margin-bottom: 20px;
             cursor: grab;
         }
 
@@ -42,6 +45,7 @@
             font-weight: bold;
             background-color: #fff;
             transition: background-color 0.3s;
+            flex-direction: column;
         }
 
         .dropzone.over {
@@ -67,7 +71,9 @@
 
     <h1>Drag the Picture to "He", "She", or "It"</h1>
 
-    <img id="image" src="" draggable="true">
+    <div id="image-container">
+        <img id="image" src="" draggable="true">
+    </div>
 
     <div class="container">
         <div class="dropzone" data-pronoun="he">He</div>
@@ -90,10 +96,13 @@
 
         let currentIndex = 0;
         const imageEl = document.getElementById("image");
+        const imageContainer = document.getElementById("image-container");
         const feedbackEl = document.getElementById("feedback");
         const nextBtn = document.getElementById("nextBtn");
 
         function loadImage() {
+            // Put image back into its container
+            imageContainer.appendChild(imageEl);
             imageEl.src = images[currentIndex].img;
             feedbackEl.textContent = "";
             nextBtn.style.display = "none";
@@ -120,6 +129,7 @@
             const chosen = e.currentTarget.getAttribute("data-pronoun");
 
             if (chosen === correct) {
+                e.currentTarget.appendChild(imageEl); // MOVE the image physically
                 feedbackEl.textContent = "✅ Correct!";
                 nextBtn.style.display = "inline-block";
             } else {
@@ -146,7 +156,6 @@
             zone.addEventListener("drop", handleDrop);
         });
 
-        // Start the game
         loadImage();
     </script>
 
