@@ -23,9 +23,7 @@
             flex-direction: column;
             align-items: center;
             flex-grow: 1;
-            /* Allows the game container to grow and center its content */
             justify-content: center;
-            /* Centers content vertically */
         }
 
         #subject {
@@ -33,14 +31,6 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: #2563eb;
-        }
-
-        img {
-            display: block;
-            margin: 0 auto 30px auto;
-            max-width: 600px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
         }
 
         #question {
@@ -60,12 +50,9 @@
         .options {
             padding: 15px 0;
             display: flex;
-            /* Ensures buttons are side-by-side */
             justify-content: center;
             gap: 30px;
-            /* Space between buttons */
             margin-top: 20px;
-            /* Space below the picture */
         }
 
         .options button {
@@ -83,26 +70,6 @@
 
         .options button:hover {
             background-color: #16a34a;
-        }
-
-        #nextBtn {
-            font-size: 2.5rem;
-            padding: 15px 40px;
-            margin-top: 20px;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            background-color: #10b981;
-            color: white;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            display: none;
-            min-width: 150px;
-            box-shadow: 0 3px 6px rgb(16 185 129 / 0.5);
-        }
-
-        #nextBtn:hover {
-            background-color: #059669;
         }
 
         .feedback {
@@ -123,6 +90,7 @@
             }
 
             .options button,
+            #prevBtn,
             #nextBtn {
                 font-size: 1.8rem;
                 padding: 12px 25px;
@@ -131,7 +99,6 @@
 
             .options {
                 flex-wrap: wrap;
-                /* Allows buttons to wrap on smaller screens */
             }
         }
     </style>
@@ -140,11 +107,18 @@
 <body>
     <div class="game">
         <div id="subject"></div>
-        <img id="image" src="" alt="Question Image" />
+        <div class="image-controls-container"
+            style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
+            <button id="prevBtn" onclick="prevQuestion()"
+                style="font-size: 1.8rem; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; background-color: #64748b; color: white; font-weight: 600; transition: background-color 0.3s ease; min-width: 100px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">Prev</button>
+            <img id="image" src="" alt="Question Image"
+                style="max-width: 600px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <button id="nextBtn" onclick="nextQuestion()"
+                style="font-size: 1.8rem; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; background-color: #10b981; color: white; font-weight: 600; transition: background-color 0.3s ease; display: none; min-width: 100px; box-shadow: 0 3px 6px rgba(16, 185, 129, 0.5);">Next</button>
+        </div>
         <div class="question" id="question"></div>
         <div class="feedback" id="feedback"></div>
         <div class="options" id="options"></div>
-        <button id="nextBtn" onclick="nextQuestion()">Next</button>
     </div>
 
     <script>
@@ -176,6 +150,15 @@
 
         let currentQuestion = 0;
 
+        function prevQuestion() {
+            currentQuestion--;
+            if (currentQuestion >= 0) {
+                loadQuestion();
+            } else {
+                currentQuestion = 0;
+            }
+        }
+
         function extractSubjectNoun(sentence) {
             let firstPart = sentence.split('.')[0];
             if (firstPart.toLowerCase().startsWith("the ")) {
@@ -185,7 +168,7 @@
         }
 
         function loadQuestion() {
-            const questionObj = questions[currentQuestion];
+            const questionObj = questions;
             const subjectNoun = extractSubjectNoun(questionObj.text);
 
             const subjectDiv = document.getElementById("subject");
@@ -201,6 +184,7 @@
 
             document.getElementById("feedback").textContent = "";
             document.getElementById("nextBtn").style.display = "none";
+            document.getElementById("prevBtn").style.display = currentQuestion > 0 ? "inline-block" : "none";
 
             const optionsDiv = document.getElementById("options");
             optionsDiv.style.display = "flex";
@@ -214,12 +198,12 @@
         }
 
         function checkAnswer(choice, subjectNoun) {
-            const correct = questions[currentQuestion].answer;
+            const correct = questions.answer;
             if (choice === correct) {
                 correctSound.play();
                 document.getElementById("feedback").textContent = "✅ Correct!";
 
-                const fullText = questions[currentQuestion].text;
+                const fullText = questions.text;
                 const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
 
                 let sentenceWithPronoun = fullText.replace("___", `<span class="highlight">${pronoun}</span>`);
@@ -248,6 +232,7 @@
             if (currentQuestion < questions.length) {
                 loadQuestion();
             } else {
+                currentQuestion = questions.length - 1;
                 document.getElementById("subject").textContent = "";
                 document.getElementById("question").textContent = "🎉 Great job! You finished all questions.";
                 document.getElementById("question").style.color = "black";
@@ -255,11 +240,13 @@
                 document.getElementById("image").style.display = "none";
                 document.getElementById("options").style.display = "none";
                 document.getElementById("nextBtn").style.display = "none";
+                document.getElementById("prevBtn").style.display = questions.length > 0 ? "inline-block" : "none";
                 document.getElementById("feedback").textContent = "";
             }
         }
 
         loadQuestion();
+        document.getElementById("prevBtn").style.display = "none";
     </script>
 </body>
 
