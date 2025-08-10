@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pronoun Sorting Game (Move Image on Drop)</title>
+    <title>Pronoun Sorting Game (Large Drop Zones)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +22,7 @@
 
         img {
             max-width: 300px;
+            max-height: 300px;
             border-radius: 10px;
             cursor: grab;
         }
@@ -29,20 +30,18 @@
         .container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
             margin-top: 20px;
         }
 
         .dropzone {
-            width: 150px;
-            height: 150px;
+            width: 300px;
+            height: 300px;
             border: 3px dashed #999;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
             background-color: #fff;
             transition: background-color 0.3s;
             flex-direction: column;
@@ -50,6 +49,12 @@
 
         .dropzone.over {
             background-color: #cce5ff;
+        }
+
+        .label {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         .feedback {
@@ -76,9 +81,15 @@
     </div>
 
     <div class="container">
-        <div class="dropzone" data-pronoun="he">He</div>
-        <div class="dropzone" data-pronoun="she">She</div>
-        <div class="dropzone" data-pronoun="it">It</div>
+        <div class="dropzone" data-pronoun="he">
+            <div class="label">He</div>
+        </div>
+        <div class="dropzone" data-pronoun="she">
+            <div class="label">She</div>
+        </div>
+        <div class="dropzone" data-pronoun="it">
+            <div class="label">It</div>
+        </div>
     </div>
 
     <div class="feedback" id="feedback"></div>
@@ -101,7 +112,7 @@
         const nextBtn = document.getElementById("nextBtn");
 
         function loadImage() {
-            // Put image back into its container
+            // Move image back to its container
             imageContainer.appendChild(imageEl);
             imageEl.src = images[currentIndex].img;
             feedbackEl.textContent = "";
@@ -129,7 +140,7 @@
             const chosen = e.currentTarget.getAttribute("data-pronoun");
 
             if (chosen === correct) {
-                e.currentTarget.appendChild(imageEl); // MOVE the image physically
+                e.currentTarget.appendChild(imageEl); // Move image physically
                 feedbackEl.textContent = "✅ Correct!";
                 nextBtn.style.display = "inline-block";
             } else {
