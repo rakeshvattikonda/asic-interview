@@ -22,7 +22,8 @@
             font-size: 3rem;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #333;
+            color: #2563eb;
+            /* Blue */
         }
 
         img {
@@ -36,15 +37,16 @@
         #question {
             font-size: 2.5rem;
             font-weight: 600;
-            color: #1e40af;
+            color: black;
+            /* Default black */
             margin: 20px 0;
             display: none;
-            /* hidden initially */
         }
 
-        .correct-pronoun {
+        .highlight {
             color: #2563eb;
-            font-weight: bold;
+            /* Blue */
+            font-weight: 700;
             text-decoration: underline;
         }
 
@@ -101,7 +103,6 @@
             min-height: 28px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 700px) {
             #subject {
                 font-size: 2rem;
@@ -162,14 +163,30 @@
 
         let currentQuestion = 0;
 
+        // Function to extract the main subject noun (e.g., "boy" from "The boy is running.")
+        function extractSubjectNoun(sentence) {
+            // Take the first sentence (before period)
+            let firstPart = sentence.split('.')[0]; // e.g. "The boy is running"
+            // Remove "The " prefix if present
+            if (firstPart.toLowerCase().startsWith("the ")) {
+                firstPart = firstPart.slice(4);
+            }
+            // Take the first word (subject noun)
+            // Because sentence structure is usually: "[Subject noun] is ..."
+            // So split by space and take first word
+            return firstPart.split(' ')[0]; // e.g. "boy"
+        }
+
         function loadQuestion() {
             const questionObj = questions[currentQuestion];
 
-            // Extract subject (e.g. "The boy") from the question text (everything before first period)
-            const subject = questionObj.text.split('.')[0];
+            // Extract subject noun
+            const subjectNoun = extractSubjectNoun(questionObj.text);
 
-            // Set subject above image
-            document.getElementById("subject").textContent = subject;
+            // Set subject noun text in blue above image
+            const subjectDiv = document.getElementById("subject");
+            subjectDiv.textContent = subjectNoun;
+            subjectDiv.style.color = "#2563eb";
 
             // Set image
             document.getElementById("image").src = questionObj.img;
@@ -193,28 +210,45 @@
             ['he', 'she', 'it'].forEach(opt => {
                 const btn = document.createElement('button');
                 btn.textContent = opt.charAt(0).toUpperCase() + opt.slice(1);
-                btn.onclick = () => checkAnswer(opt);
+                btn.onclick = () => checkAnswer(opt, subjectNoun);
                 optionsDiv.appendChild(btn);
             });
         }
 
-        function checkAnswer(choice) {
+        // Check answer, highlight subject noun and pronoun in blue, full sentence black text
+        function checkAnswer(choice, subjectNoun) {
             const correct = questions[currentQuestion].answer;
             if (choice === correct) {
                 correctSound.play();
                 document.getElementById("feedback").textContent = "✅ Correct!";
 
-                // Show full sentence with pronoun highlighted
+                // Format full sentence:
+                // 1) Highlight subject noun (only the noun, e.g. "father")
+                // 2) Highlight pronoun (___ replaced with pronoun)
+                const fullText = questions[currentQuestion].text;
                 const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
-                const newQuestionText = questions[currentQuestion].text.replace("___", `<span class="correct-pronoun">${pronoun}</span>`);
+
+                // Replace ___ with pronoun highlighted
+                let sentenceWithPronoun = fullText.replace("___", `<span class="highlight">${pronoun}</span>`);
+
+                // Highlight subject noun in sentence with blue
+                // Use regex to replace whole word only (case-insensitive)
+                const subjectRegex = new RegExp(`\\b${subjectNoun}\\b`, 'gi');
+                sentenceWithPronoun = sentenceWithPronoun.replace(subjectRegex, `<span class="highlight">${subjectNoun}</span>`);
+
                 const questionDiv = document.getElementById("question");
-                questionDiv.innerHTML = newQuestionText;
-                questionDiv.style.display = "block"; // show sentence
+                questionDiv.innerHTML = sentenceWithPronoun;
+                questionDiv.style.color = "black";
+                questionDiv.style.display = "block";
+
+                // Also highlight subject noun at top again (just in case)
+                document.getElementById("subject").textContent = subjectNoun;
+                document.getElementById("subject").style.color = "#2563eb";
 
                 // Show Next button
                 document.getElementById("nextBtn").style.display = "inline-block";
 
-                // Remove option buttons
+                // Remove options buttons
                 document.getElementById("options").innerHTML = '';
             } else {
                 incorrectSound.play();
@@ -227,9 +261,9 @@
             if (currentQuestion < questions.length) {
                 loadQuestion();
             } else {
-                // End message
                 document.getElementById("subject").textContent = "";
                 document.getElementById("question").textContent = "🎉 Great job! You finished all questions.";
+                document.getElementById("question").style.color = "black";
                 document.getElementById("question").style.display = "block";
                 document.getElementById("image").style.display = "none";
                 document.getElementById("options").style.display = "none";
@@ -238,7 +272,6 @@
             }
         }
 
-        // Initialize game on load
         loadQuestion();
     </script>
 </body>
