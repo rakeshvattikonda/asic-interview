@@ -105,6 +105,12 @@
             background-color: #16a34a;
         }
 
+        .options button.incorrect {
+            background-color: #dc2626;
+            /* Red color for wrong answer */
+            color: white;
+        }
+
         .feedback {
             font-size: 1.3rem;
             margin-top: 12px;
@@ -216,6 +222,10 @@
 
         function checkAnswer(choice, subjectNoun) {
             const correct = questions[currentQuestion].answer;
+            const selectedButton = Array.from(document.getElementById("options").children).find(
+                button => button.textContent.toLowerCase() === choice
+            );
+
             if (choice === correct) {
                 correctSound.play();
                 document.getElementById("feedback").textContent = "✅ Correct!";
@@ -241,6 +251,12 @@
             } else {
                 incorrectSound.play();
                 document.getElementById("feedback").textContent = "❌ Try again.";
+                if (selectedButton) {
+                    selectedButton.classList.add('incorrect');
+                    setTimeout(() => {
+                        selectedButton.classList.remove('incorrect');
+                    }, 300); // 300 milliseconds delay
+                }
             }
         }
 
@@ -252,7 +268,6 @@
                 document.getElementById("subject").textContent = "";
                 document.getElementById("question").textContent = "🎉 Great job! You finished all questions.";
                 document.getElementById("question").style.color = "black";
-                document.getElementById("question").style.display = "block";
                 document.getElementById("image").style.display = "none";
                 document.getElementById("options").style.display = "none";
                 document.getElementById("nextBtn").style.display = "none";
