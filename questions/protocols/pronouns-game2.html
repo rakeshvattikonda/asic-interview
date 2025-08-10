@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pronoun Sorting Game (Animated Feedback)</title>
+    <title>Pronoun Sorting Game (Animated Feedback + Shake)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +44,8 @@
 
         .dropzone.wrong {
             background-color: #ffb3b3 !important;
-            /* light red for wrong */
+            /* light red */
+            animation: shake 0.4s;
         }
 
         .label {
@@ -66,6 +67,7 @@
             cursor: grab;
             position: absolute;
             left: 50%;
+            top: 0;
             transform: translate(-50%, 0);
             transition: transform 0.5s ease;
             /* Smooth movement */
@@ -82,6 +84,29 @@
             padding: 10px 20px;
             margin-top: 15px;
             display: none;
+        }
+
+        /* Shake animation for wrong answer */
+        @keyframes shake {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(-5px, 0);
+            }
+
+            50% {
+                transform: translate(5px, 0);
+            }
+
+            75% {
+                transform: translate(-5px, 0);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
         }
     </style>
 </head>
@@ -166,7 +191,37 @@
                 e.currentTarget.classList.add("wrong");
                 feedbackEl.textContent = "❌ Try again.";
 
-                // After animation, return to start and remove red
+                // After animation, return to start and remove red/shake
                 setTimeout(() => {
                     imageEl.style.transform = "translate(-50%, 0)";
-                    e.currentTarget.class
+                    e.currentTarget.classList.remove("wrong");
+                }, 700);
+            }
+        }
+
+        function nextImage() {
+            currentIndex++;
+            if (currentIndex < images.length) {
+                loadImage();
+            } else {
+                imageEl.style.display = "none";
+                feedbackEl.textContent = "🎉 Great job! You sorted all images!";
+                nextBtn.style.display = "none";
+            }
+        }
+
+        imageEl.addEventListener("dragstart", handleDragStart);
+
+        document.querySelectorAll(".dropzone").forEach(zone => {
+            zone.addEventListener("dragover", handleDragOver);
+            zone.addEventListener("dragleave", handleDragLeave);
+            zone.addEventListener("drop", handleDrop);
+        });
+
+        // Load first image immediately
+        loadImage();
+    </script>
+
+</body>
+
+</html>
