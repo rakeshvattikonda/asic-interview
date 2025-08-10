@@ -227,7 +227,7 @@
 
             if (choice === correct) {
                 correctSound.play();
-                document.getElementById("feedback").textContent = ""; // Clear feedback on correct answer
+                document.getElementById("feedback").textContent = "";
 
                 const fullText = questions[currentQuestion].text;
                 const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
@@ -248,13 +248,15 @@
 
                 document.getElementById("options").innerHTML = '';
             } else {
-                incorrectSound.play();
+                incorrectSound.pause(); // Stop the current playback
+                incorrectSound.currentTime = 0; // Rewind to the beginning
+                incorrectSound.play(); // Play the sound again
                 document.getElementById("feedback").textContent = "❌ Try again.";
                 if (selectedButton) {
                     selectedButton.classList.add('incorrect');
                     setTimeout(() => {
                         selectedButton.classList.remove('incorrect');
-                    }, 2000); // 1000 milliseconds (2 second) delay
+                    }, 1000);
                 }
             }
         }
