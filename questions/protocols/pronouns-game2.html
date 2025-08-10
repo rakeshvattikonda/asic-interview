@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pronoun Sorting Game (Animated Feedback + Shake)</title>
+    <title>Pronoun Sorting Game (Animated Feedback)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,13 +33,18 @@
             align-items: center;
             justify-content: flex-start;
             background-color: #fff8dc;
-            /* light yellow */
+            /* default yellow */
             transition: background-color 0.3s;
         }
 
         .dropzone.over {
             background-color: #ffe4b5;
             /* darker yellow on hover */
+        }
+
+        .dropzone.correct {
+            background-color: #90ee90;
+            /* light green */
         }
 
         .dropzone.wrong {
@@ -67,10 +72,8 @@
             cursor: grab;
             position: absolute;
             left: 50%;
-            top: 0;
             transform: translate(-50%, 0);
             transition: transform 0.5s ease;
-            /* Smooth movement */
         }
 
         .feedback {
@@ -86,26 +89,25 @@
             display: none;
         }
 
-        /* Shake animation for wrong answer */
         @keyframes shake {
             0% {
-                transform: translate(0, 0);
+                transform: translateX(0);
             }
 
             25% {
-                transform: translate(-5px, 0);
+                transform: translateX(-10px);
             }
 
             50% {
-                transform: translate(5px, 0);
+                transform: translateX(10px);
             }
 
             75% {
-                transform: translate(-5px, 0);
+                transform: translateX(-10px);
             }
 
             100% {
-                transform: translate(0, 0);
+                transform: translateX(0);
             }
         }
     </style>
@@ -150,6 +152,7 @@
         const nextBtn = document.getElementById("nextBtn");
 
         function loadImage() {
+            imageEl.style.display = "block";
             imageEl.style.transform = "translate(-50%, 0)";
             imageEl.src = images[currentIndex].img;
             feedbackEl.textContent = "";
@@ -183,15 +186,19 @@
 
             if (chosen === correct) {
                 imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
+                e.currentTarget.classList.add("correct");
                 feedbackEl.textContent = "✅ Correct!";
+
+                setTimeout(() => {
+                    e.currentTarget.classList.remove("correct");
+                }, 500);
+
                 nextBtn.style.display = "inline-block";
             } else {
-                // Animate to wrong box
                 imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
                 e.currentTarget.classList.add("wrong");
                 feedbackEl.textContent = "❌ Try again.";
 
-                // After animation, return to start and remove red/shake
                 setTimeout(() => {
                     imageEl.style.transform = "translate(-50%, 0)";
                     e.currentTarget.classList.remove("wrong");
@@ -218,7 +225,6 @@
             zone.addEventListener("drop", handleDrop);
         });
 
-        // Load first image immediately
         loadImage();
     </script>
 
