@@ -12,10 +12,20 @@
             text-align: center;
             padding: 20px;
             margin: 0;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            /* Allows the game container to grow and center its content */
+            justify-content: center;
+            /* Centers content vertically */
         }
 
         #subject {
@@ -23,7 +33,6 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: #2563eb;
-            /* Blue */
         }
 
         img {
@@ -38,35 +47,34 @@
             font-size: 2.5rem;
             font-weight: 600;
             color: black;
-            /* Default black */
             margin: 20px 0;
             display: none;
         }
 
         .highlight {
             color: #2563eb;
-            /* Blue */
             font-weight: 700;
             text-decoration: none;
-            /* no underline */
         }
 
         .options {
-            margin-top: auto;
             padding: 15px 0;
-            background: #e0f0ff;
-            box-shadow: 0 -2px 6px rgb(0 0 0 / 0.1);
+            display: flex;
+            /* Ensures buttons are side-by-side */
+            justify-content: center;
+            gap: 30px;
+            /* Space between buttons */
+            margin-top: 20px;
+            /* Space below the picture */
         }
 
         .options button {
             font-size: 2.5rem;
             padding: 15px 40px;
-            margin: 0 20px;
             border-radius: 10px;
             border: none;
             cursor: pointer;
             background-color: #22c55e;
-            /* Green */
             color: white;
             font-weight: 600;
             transition: background-color 0.3s ease;
@@ -75,13 +83,12 @@
 
         .options button:hover {
             background-color: #16a34a;
-            /* Darker green */
         }
 
         #nextBtn {
             font-size: 2.5rem;
             padding: 15px 40px;
-            margin: 20px auto 0 auto;
+            margin-top: 20px;
             border-radius: 10px;
             border: none;
             cursor: pointer;
@@ -119,8 +126,12 @@
             #nextBtn {
                 font-size: 1.8rem;
                 padding: 12px 25px;
-                margin: 0 12px;
                 min-width: 100px;
+            }
+
+            .options {
+                flex-wrap: wrap;
+                /* Allows buttons to wrap on smaller screens */
             }
         }
     </style>
@@ -132,10 +143,9 @@
         <img id="image" src="" alt="Question Image" />
         <div class="question" id="question"></div>
         <div class="feedback" id="feedback"></div>
+        <div class="options" id="options"></div>
+        <button id="nextBtn" onclick="nextQuestion()">Next</button>
     </div>
-
-    <div class="options" id="options"></div>
-    <button id="nextBtn" onclick="nextQuestion()">Next</button>
 
     <script>
         const correctSound = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
@@ -194,8 +204,6 @@
 
             const optionsDiv = document.getElementById("options");
             optionsDiv.style.display = "flex";
-            optionsDiv.style.justifyContent = "center";
-            optionsDiv.style.gap = "30px";
             optionsDiv.innerHTML = '';
             ['he', 'she', 'it'].forEach(opt => {
                 const btn = document.createElement('button');
