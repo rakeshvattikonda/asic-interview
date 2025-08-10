@@ -150,6 +150,12 @@
         const imageEl = document.getElementById("image");
         const feedbackEl = document.getElementById("feedback");
         const nextBtn = document.getElementById("nextBtn");
+        const dropzones = document.querySelectorAll(".dropzone");
+
+        let originalX, originalY;
+        let isDragging = false;
+        let currentDragTarget = null;
+        let activeDropzone = null;
 
         function loadImage() {
             imageEl.style.display = "block";
@@ -159,8 +165,22 @@
             nextBtn.style.display = "none";
         }
 
+        function checkDropZone(x, y) {
+            let foundZone = null;
+            dropzones.forEach(zone => {
+                const rect = zone.getBoundingClientRect();
+                if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                    foundZone = zone;
+                }
+            });
+            return foundZone;
+        }
+
+        // --- Mouse Events ---
         function handleDragStart(e) {
             e.dataTransfer.setData("text/plain", "image");
+            isDragging = true;
+            currentDragTarget = e.target;
         }
 
         function handleDragOver(e) {
@@ -175,10 +195,13 @@
         function handleDrop(e) {
             e.preventDefault();
             e.currentTarget.classList.remove("over");
+            isDragging = false;
+            currentDragTarget = null;
 
             const correct = images[currentIndex].answer;
             const chosen = e.currentTarget.getAttribute("data-pronoun");
 
+            // Use the event's position to align the image
             const dropZoneRect = e.currentTarget.getBoundingClientRect();
             const imageRect = imageEl.getBoundingClientRect();
             const offsetX = dropZoneRect.left + dropZoneRect.width / 2 - (imageRect.left + imageRect.width / 2);
@@ -206,6 +229,63 @@
             }
         }
 
+        // --- Touch Events ---
+        function handleTouchStart(e) {
+            e.preventDefault();
+            isDragging = true;
+            const touch = e.touches[0];
+            const rect = imageEl.getBoundingClientRect();
+            originalX = touch.clientX - rect.left;
+            originalY = touch.clientY - rect.top;
+            imageEl.style.transition = 'none'; // Disable transition for smooth dragging
+        }
+
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const touch = e.touches[0];
+            const newX = touch.clientX - originalX;
+            const newY = touch.clientY - originalY;
+            imageEl.style.transform = `translate(${newX}px, ${newY}px)`;
+
+            // Check for dropzone highlight
+            const newActiveDropzone = checkDropZone(touch.clientX, touch.clientY);
+            if (newActiveDropzone && newActiveDropzone !== activeDropzone) {
+                if (activeDropzone) {
+                    activeDropzone.classList.remove('over');
+                }
+                newActiveDropzone.classList.add('over');
+                activeDropzone = newActiveDropzone;
+            } else if (!newActiveDropzone && activeDropzone) {
+                activeDropzone.classList.remove('over');
+                activeDropzone = null;
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            imageEl.style.transition = 'transform 0.5s ease';
+
+            const touch = e.changedTouches[0];
+            const dropZone = checkDropZone(touch.clientX, touch.clientY);
+
+            if (dropZone) {
+                // Simulate a drop on the touch-ended dropzone
+                const syntheticEvent = {
+                    preventDefault: () => { },
+                    currentTarget: dropZone,
+                    dataTransfer: {
+                        getData: () => "image"
+                    }
+                };
+                handleDrop(syntheticEvent);
+            } else {
+                // Snap back to original position
+                imageEl.style.transform = "translate(-50%, 0)";
+            }
+        }
+
         function nextImage() {
             currentIndex++;
             if (currentIndex < images.length) {
@@ -217,9 +297,13 @@
             }
         }
 
+        // --- Event Listener Setup ---
         imageEl.addEventListener("dragstart", handleDragStart);
+        imageEl.addEventListener("touchstart", handleTouchStart);
+        imageEl.addEventListener("touchmove", handleTouchMove);
+        imageEl.addEventListener("touchend", handleTouchEnd);
 
-        document.querySelectorAll(".dropzone").forEach(zone => {
+        dropzones.forEach(zone => {
             zone.addEventListener("dragover", handleDragOver);
             zone.addEventListener("dragleave", handleDragLeave);
             zone.addEventListener("drop", handleDrop);
@@ -227,7 +311,6 @@
 
         loadImage();
     </script>
-
 </body>
 
 </html>
