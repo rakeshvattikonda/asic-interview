@@ -229,10 +229,11 @@
                 correctSound.play();
                 document.getElementById("feedback").textContent = "✅ Correct!";
 
-                // Hide the buttons after a correct answer
-                document.getElementById("options").style.display = "none";
+                // Disable all buttons to prevent further clicks
+                Array.from(document.getElementById("options").children).forEach(button => {
+                    button.disabled = true;
+                });
 
-                // Use a timeout to delay showing the full sentence and next button
                 setTimeout(() => {
                     const fullText = questions[currentQuestion].text;
                     const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
@@ -251,7 +252,15 @@
 
                     document.getElementById("nextBtn").style.display = "inline-block";
                     document.getElementById("feedback").textContent = "";
-                }, 2000); // 2000 milliseconds (2 seconds) delay
+
+                    // Re-enable buttons for the next question
+                    Array.from(document.getElementById("options").children).forEach(button => {
+                        button.disabled = false;
+                    });
+
+                    document.getElementById("options").innerHTML = ''; // Clear buttons since the nextBtn is now available
+
+                }, 2000);
 
             } else {
                 incorrectSound.pause();
@@ -262,7 +271,7 @@
                     selectedButton.classList.add('incorrect');
                     setTimeout(() => {
                         selectedButton.classList.remove('incorrect');
-                    }, 2000);
+                    }, 1000);
                 }
             }
         }
