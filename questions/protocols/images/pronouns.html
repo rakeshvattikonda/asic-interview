@@ -5,10 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pronoun Learning Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f8ff;
+            /* Muted background color */
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
             text-align: center;
             padding: 20px;
             margin: 0;
@@ -28,9 +32,10 @@
 
         #subject {
             font-size: 3rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: #2563eb;
+            /* Softer accent color */
+            color: #1976d2;
         }
 
         .image-container {
@@ -53,17 +58,18 @@
             border-radius: 8px;
             border: none;
             cursor: pointer;
-            background-color: #10b981;
+            /* Muted green color */
+            background-color: #4CAF50;
             color: white;
             font-weight: 600;
             transition: background-color 0.3s ease;
             display: none;
             min-width: 100px;
-            box-shadow: 0 3px 6px rgb(16 185 129 / 0.5);
+            box-shadow: 0 3px 6px rgba(76, 175, 80, 0.5);
         }
 
         #nextBtn:hover {
-            background-color: #059669;
+            background-color: #388E3C;
         }
 
         #question {
@@ -75,7 +81,8 @@
         }
 
         .highlight {
-            color: #2563eb;
+            /* Softer accent color */
+            color: #1976d2;
             font-weight: 700;
             text-decoration: none;
         }
@@ -94,7 +101,8 @@
             border-radius: 10px;
             border: none;
             cursor: pointer;
-            background-color: #22c55e;
+            /* Softer green color */
+            background-color: #4CAF50;
             color: white;
             font-weight: 600;
             transition: background-color 0.3s ease;
@@ -102,7 +110,7 @@
         }
 
         .options button:hover {
-            background-color: #16a34a;
+            background-color: #388E3C;
         }
 
         .options button.incorrect {
@@ -205,7 +213,7 @@
 
             const subjectDiv = document.getElementById("subject");
             subjectDiv.textContent = capitalizedSubject;
-            subjectDiv.style.color = "#2563eb";
+            subjectDiv.style.color = "#1976d2";
 
             document.getElementById("image").src = questionObj.img;
             document.getElementById("image").style.display = "block";
@@ -259,7 +267,7 @@
 
                     const capitalizedSubject = subjectNoun.charAt(0).toUpperCase() + subjectNoun.slice(1);
                     document.getElementById("subject").textContent = capitalizedSubject;
-                    document.getElementById("subject").style.color = "#2563eb";
+                    document.getElementById("subject").style.color = "#1976d2";
 
                     document.getElementById("nextBtn").style.display = "inline-block";
                     document.getElementById("feedback").textContent = "";
