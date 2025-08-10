@@ -287,7 +287,8 @@
                     selectedButton.classList.add('incorrect');
                     setTimeout(() => {
                         selectedButton.classList.remove('incorrect');
-                    }, 1000);
+                        document.getElementById("feedback").textContent = "";
+                    }, 2000);
                 }
             }
         }
