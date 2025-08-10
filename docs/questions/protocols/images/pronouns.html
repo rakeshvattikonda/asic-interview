@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pronoun Learning Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .question {
+            font-size: 48px;
+            margin: 20px 0;
+            display: none;
+            /* hide sentence initially */
+        }
+
+        .correct-pronoun {
+            color: #2563eb;
+            /* Blue color */
+            font-weight: bold;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .options button {
+            font-size: 40px;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .options button:hover {
+            background-color: #45a049;
+        }
+
+        #nextBtn {
+            font-size: 40px;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            transition: 0.3s;
+            display: none;
+            /* hide initially */
+        }
+
+        #nextBtn:hover {
+            background-color: #45a049;
+        }
+
+        .feedback {
+            font-size: 20px;
+            margin-top: 15px;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game">
+        <img id="image" src="" alt="Question Image" />
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+        <button id="nextBtn" onclick="nextQuestion()">Next</button>
+        <div class="feedback" id="feedback"></div>
+    </div>
+    <script>
+        const correctSound = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
+        const incorrectSound = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
+
+        const questions = [
+            { text: "The boy is running. ___ is fast.", answer: "he", img: "https://i.imgur.com/TstLxpr.jpg" },
+            { text: "The girl is singing. ___ has a nice voice.", answer: "she", img: "https://imgur.com/IIobKlq.jpg" },
+            { text: "The cat is sleeping. ___ is on the mat.", answer: "it", img: "https://imgur.com/Irm0839.jpg" },
+            { text: "The father is reading. ___ likes books.", answer: "he", img: "https://imgur.com/tu0KHN0.jpg" },
+            { text: "The mother is cooking. ___ makes good food.", answer: "she", img: "https://i.imgur.com/9BW9SMh.jpg" },
+            { text: "The apple is red. ___ is a fruit.", answer: "it", img: "https://imgur.com/6zJwoKP.jpg" },
+            { text: "The dog is playing. ___ has a toy.", answer: "it", img: "https://imgur.com/mEC0rFk.jpg" },
+            { text: "The airplane is flying. ___ is in the sky.", answer: "it", img: "https://imgur.com/BxFLSmx.jpg" },
+            { text: "The teacher is smiling. ___ is happy.", answer: "she", img: "https://imgur.com/7vwjUTI.jpg" },
+            { text: "The book is open. ___ has many pages.", answer: "it", img: "https://imgur.com/gzLl08n.jpg" },
+            { text: "The grandpa is sitting. ___ is on a chair.", answer: "he", img: "https://imgur.com/dMamsbZ.jpg" },
+            { text: "The grandma is knitting. ___ is making a scarf.", answer: "she", img: "https://imgur.com/s1W5iSy.jpg" },
+            { text: "The car is blue. ___ is on the road.", answer: "it", img: "https://imgur.com/RcVjofX.jpg" },
+            { text: "The baker is working. ___ makes bread.", answer: "he", img: "https://imgur.com/tmSD9rQ.jpg" },
+            { text: "The nurse is helping. ___ is kind.", answer: "she", img: "https://imgur.com/04ZcFcT.jpg" },
+            { text: "The flower is blooming. ___ smells sweet.", answer: "it", img: "https://imgur.com/qsA2C5s.jpg" },
+            { text: "The policeman is talking. ___ is giving directions.", answer: "he", img: "https://imgur.com/kwZCr9Q.jpg" },
+            { text: "The sun is shining. ___ is bright.", answer: "it", img: "https://imgur.com/st3oaHz.jpg" },
+            { text: "The boy is crying. ___ wants toy car.", answer: "he", img: "https://imgur.com/6oB8y3T.jpg" },
+            { text: "The train is coming. ___ is long.", answer: "it", img: "https://imgur.com/zFzJSbH.jpg" }
+        ];
+
+        let currentQuestion = 0;
+
+        function loadQuestion() {
+            // Hide sentence initially
+            const questionDiv = document.getElementById("question");
+            questionDiv.style.display = "none";
+
+            // Set image src
+            document.getElementById("image").src = questions[currentQuestion].img;
+
+            // Clear feedback and hide next button
+            document.getElementById("feedback").textContent = "";
+            document.getElementById("nextBtn").style.display = "none";
+
+            // Show options buttons
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.style.display = "block";
+            optionsDiv.innerHTML = '';
+            ['he', 'she', 'it'].forEach(opt => {
+                const btn = document.createElement('button');
+                btn.textContent = opt.charAt(0).toUpperCase() + opt.slice(1);
+                btn.onclick = () => checkAnswer(opt);
+                optionsDiv.appendChild(btn);
+            });
+
+            // Make sure image visible
+            document.getElementById("image").style.display = "block";
+        }
+
+        function checkAnswer(choice) {
+            const correct = questions[currentQuestion].answer;
+            if (choice === correct) {
+                correctSound.play();
+                document.getElementById("feedback").textContent = "✅ Correct!";
+
+                // Show the full sentence with colored pronoun
+                const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
+                const newQuestionText = questions[currentQuestion].text.replace("___", `<span class="correct-pronoun">${pronoun}</span>`);
+                const questionDiv = document.getElementById("question");
+                questionDiv.innerHTML = newQuestionText;
+                questionDiv.style.display = "block"; // show sentence
+
+                // Show Next button
+                document.getElementById("nextBtn").style.display = "inline-block";
+
+                // Remove options buttons
+                document.getElementById("options").innerHTML = '';
+            } else {
+                incorrectSound.play();
+                document.getElementById("feedback").textContent = "❌ Try again.";
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById("question").textContent = "🎉 Great job! You finished all questions.";
+                document.getElementById("question").style.display = "block";
+                document.getElementById("image").style.display = "none";
+                document.getElementById("options").style.display = "none";
+                document.getElementById("nextBtn").style.display = "none";
+                document.getElementById("feedback").textContent = "";
+            }
+        }
+
+        // Start the game
+        loadQuestion();
+    </script>
+</body>
+
+</html>
