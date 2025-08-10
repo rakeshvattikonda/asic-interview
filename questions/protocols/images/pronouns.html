@@ -149,8 +149,8 @@
             <button id="nextBtn" onclick="nextQuestion()">Next</button>
         </div>
         <div class="question" id="question"></div>
-        <div class="options" id="options"></div>
         <div class="feedback" id="feedback"></div>
+        <div class="options" id="options"></div>
     </div>
 
     <script>
@@ -229,7 +229,6 @@
                 correctSound.play();
                 document.getElementById("feedback").textContent = "✅ Correct!";
 
-                // Disable all buttons to prevent further clicks
                 Array.from(document.getElementById("options").children).forEach(button => {
                     button.disabled = true;
                 });
@@ -253,12 +252,11 @@
                     document.getElementById("nextBtn").style.display = "inline-block";
                     document.getElementById("feedback").textContent = "";
 
-                    // Re-enable buttons for the next question
                     Array.from(document.getElementById("options").children).forEach(button => {
                         button.disabled = false;
                     });
 
-                    document.getElementById("options").innerHTML = ''; // Clear buttons since the nextBtn is now available
+                    document.getElementById("options").innerHTML = '';
 
                 }, 2000);
 
