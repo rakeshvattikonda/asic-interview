@@ -41,7 +41,7 @@ nav:
   - Protocols:
       - Overview: questions/protocols.md
       - APB (Advanced Peripheral Bus): questions/protocols/apb.md
-      - AHB (Advanced High-performance Bus): questions/protocols/ahb.md
+      - AHB (Advanced High-performance Bus): questions/protocols/pronouns.html
       - AXI (Advanced eXtensible Interface): questions/protocols/axi.md
       - PCIe (Peripheral Component Interconnect Express): questions/protocols/pcie.md
       - DDR (Double Data Rate Memory): questions/protocols/ddr.md
