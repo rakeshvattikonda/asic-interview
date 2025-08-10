@@ -149,8 +149,8 @@
             <button id="nextBtn" onclick="nextQuestion()">Next</button>
         </div>
         <div class="question" id="question"></div>
-        <div class="feedback" id="feedback"></div>
         <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
     </div>
 
     <script>
@@ -248,15 +248,15 @@
 
                 document.getElementById("options").innerHTML = '';
             } else {
-                incorrectSound.pause(); // Stop the current playback
-                incorrectSound.currentTime = 0; // Rewind to the beginning
-                incorrectSound.play(); // Play the sound again
+                incorrectSound.pause();
+                incorrectSound.currentTime = 0;
+                incorrectSound.play();
                 document.getElementById("feedback").textContent = "❌ Try again.";
                 if (selectedButton) {
                     selectedButton.classList.add('incorrect');
                     setTimeout(() => {
                         selectedButton.classList.remove('incorrect');
-                    }, 2000);
+                    }, 1000);
                 }
             }
         }
