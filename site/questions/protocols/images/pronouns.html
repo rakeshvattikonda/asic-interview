@@ -227,26 +227,32 @@
 
             if (choice === correct) {
                 correctSound.play();
-                document.getElementById("feedback").textContent = "";
+                document.getElementById("feedback").textContent = "✅ Correct!";
 
-                const fullText = questions[currentQuestion].text;
-                const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
+                // Hide the buttons after a correct answer
+                document.getElementById("options").style.display = "none";
 
-                let sentenceWithPronoun = fullText.replace("___", `<span class="highlight">${pronoun}</span>`);
-                const subjectRegex = new RegExp(`\\b${subjectNoun}\\b`, 'gi');
-                sentenceWithPronoun = sentenceWithPronoun.replace(subjectRegex, `<span class="highlight">${subjectNoun}</span>`);
+                // Use a timeout to delay showing the full sentence and next button
+                setTimeout(() => {
+                    const fullText = questions[currentQuestion].text;
+                    const pronoun = correct.charAt(0).toUpperCase() + correct.slice(1);
 
-                const questionDiv = document.getElementById("question");
-                questionDiv.innerHTML = sentenceWithPronoun;
-                questionDiv.style.color = "black";
-                questionDiv.style.display = "block";
+                    let sentenceWithPronoun = fullText.replace("___", `<span class="highlight">${pronoun}</span>`);
+                    const subjectRegex = new RegExp(`\\b${subjectNoun}\\b`, 'gi');
+                    sentenceWithPronoun = sentenceWithPronoun.replace(subjectRegex, `<span class="highlight">${subjectNoun}</span>`);
 
-                document.getElementById("subject").textContent = subjectNoun;
-                document.getElementById("subject").style.color = "#2563eb";
+                    const questionDiv = document.getElementById("question");
+                    questionDiv.innerHTML = sentenceWithPronoun;
+                    questionDiv.style.color = "black";
+                    questionDiv.style.display = "block";
 
-                document.getElementById("nextBtn").style.display = "inline-block";
+                    document.getElementById("subject").textContent = subjectNoun;
+                    document.getElementById("subject").style.color = "#2563eb";
 
-                document.getElementById("options").innerHTML = '';
+                    document.getElementById("nextBtn").style.display = "inline-block";
+                    document.getElementById("feedback").textContent = "";
+                }, 2000); // 2000 milliseconds (2 seconds) delay
+
             } else {
                 incorrectSound.pause();
                 incorrectSound.currentTime = 0;
@@ -256,7 +262,7 @@
                     selectedButton.classList.add('incorrect');
                     setTimeout(() => {
                         selectedButton.classList.remove('incorrect');
-                    }, 1000);
+                    }, 2000);
                 }
             }
         }
