@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pronoun Sorting Game (Drag and Drop)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #image {
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: grab;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dropzone {
+            width: 150px;
+            height: 150px;
+            border: 3px dashed #999;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .dropzone.over {
+            background-color: #cce5ff;
+        }
+
+        .feedback {
+            font-size: 20px;
+            margin-top: 15px;
+            min-height: 25px;
+        }
+
+        #nextBtn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Drag the Picture to "He", "She", or "It"</h1>
+
+    <img id="image" src="" draggable="true">
+
+    <div class="container">
+        <div class="dropzone" data-pronoun="he">He</div>
+        <div class="dropzone" data-pronoun="she">She</div>
+        <div class="dropzone" data-pronoun="it">It</div>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+    <button id="nextBtn" onclick="nextImage()">Next</button>
+
+    <script>
+        const images = [
+            { img: "https://i.imgur.com/TstLxpr.jpg", answer: "he" },
+            { img: "https://imgur.com/IIobKlq.jpg", answer: "she" },
+            { img: "https://imgur.com/Irm0839.jpg", answer: "it" },
+            { img: "https://imgur.com/tu0KHN0.jpg", answer: "he" },
+            { img: "https://i.imgur.com/9BW9SMh.jpg", answer: "she" },
+            { img: "https://imgur.com/6zJwoKP.jpg", answer: "it" }
+        ];
+
+        let currentIndex = 0;
+        const imageEl = document.getElementById("image");
+        const feedbackEl = document.getElementById("feedback");
+        const nextBtn = document.getElementById("nextBtn");
+
+        function loadImage() {
+            imageEl.src = images[currentIndex].img;
+            feedbackEl.textContent = "";
+            nextBtn.style.display = "none";
+        }
+
+        function handleDragStart(e) {
+            e.dataTransfer.setData("text/plain", "image");
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add("over");
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove("over");
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove("over");
+
+            const correct = images[currentIndex].answer;
+            const chosen = e.currentTarget.getAttribute("data-pronoun");
+
+            if (chosen === correct) {
+                feedbackEl.textContent = "✅ Correct!";
+                nextBtn.style.display = "inline-block";
+            } else {
+                feedbackEl.textContent = "❌ Try again.";
+            }
+        }
+
+        function nextImage() {
+            currentIndex++;
+            if (currentIndex < images.length) {
+                loadImage();
+            } else {
+                imageEl.style.display = "none";
+                feedbackEl.textContent = "🎉 Great job! You sorted all images!";
+                nextBtn.style.display = "none";
+            }
+        }
+
+        imageEl.addEventListener("dragstart", handleDragStart);
+
+        document.querySelectorAll(".dropzone").forEach(zone => {
+            zone.addEventListener("dragover", handleDragOver);
+            zone.addEventListener("dragleave", handleDragLeave);
+            zone.addEventListener("drop", handleDrop);
+        });
+
+        // Start the game
+        loadImage();
+    </script>
+
+</body>
+
+</html>
