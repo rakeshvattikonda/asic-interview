@@ -40,15 +40,6 @@
             background-color: #ffe4b5;
         }
 
-        .dropzone.correct {
-            background-color: #90ee90;
-        }
-
-        .dropzone.wrong {
-            background-color: #ffb3b3 !important;
-            animation: shake 0.4s;
-        }
-
         .label {
             font-size: 28px;
             font-weight: bold;
@@ -83,28 +74,6 @@
             padding: 10px 20px;
             margin-top: 15px;
             display: none;
-        }
-
-        @keyframes shake {
-            0% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-10px);
-            }
-
-            50% {
-                transform: translateX(10px);
-            }
-
-            75% {
-                transform: translateX(-10px);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
         }
     </style>
 </head>
@@ -205,26 +174,11 @@
 
             if (chosen === correct) {
                 imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
-                e.currentTarget.classList.add("correct");
                 feedbackEl.textContent = "✅ Correct!";
-
-                // Show the button immediately on correct answer
                 nextBtn.style.display = "inline-block";
-
-                // Only the green color will fade away after 800ms
-                setTimeout(() => {
-                    e.currentTarget.classList.remove("correct");
-                }, 800);
-
             } else {
-                imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
-                e.currentTarget.classList.add("wrong");
+                imageEl.style.transform = "translate(-50%, 0)";
                 feedbackEl.textContent = "❌ Try again.";
-
-                setTimeout(() => {
-                    imageEl.style.transform = "translate(-50%, 0)";
-                    e.currentTarget.classList.remove("wrong");
-                }, 1000);
             }
         }
 
