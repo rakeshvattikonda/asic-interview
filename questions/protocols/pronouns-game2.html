@@ -33,23 +33,19 @@
             align-items: center;
             justify-content: flex-start;
             background-color: #fff8dc;
-            /* default yellow */
             transition: background-color 0.3s;
         }
 
         .dropzone.over {
             background-color: #ffe4b5;
-            /* darker yellow on hover */
         }
 
         .dropzone.correct {
             background-color: #90ee90;
-            /* light green */
         }
 
         .dropzone.wrong {
             background-color: #ffb3b3 !important;
-            /* light red */
             animation: shake 0.4s;
         }
 
@@ -214,9 +210,8 @@
 
                 setTimeout(() => {
                     e.currentTarget.classList.remove("correct");
-                }, 500);
-
-                nextBtn.style.display = "inline-block";
+                    nextBtn.style.display = "inline-block";
+                }, 800);
             } else {
                 imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
                 e.currentTarget.classList.add("wrong");
@@ -225,7 +220,7 @@
                 setTimeout(() => {
                     imageEl.style.transform = "translate(-50%, 0)";
                     e.currentTarget.classList.remove("wrong");
-                }, 700);
+                }, 1000);
             }
         }
 
@@ -237,7 +232,7 @@
             const rect = imageEl.getBoundingClientRect();
             originalX = touch.clientX - rect.left;
             originalY = touch.clientY - rect.top;
-            imageEl.style.transition = 'none'; // Disable transition for smooth dragging
+            imageEl.style.transition = 'none';
         }
 
         function handleTouchMove(e) {
@@ -248,7 +243,6 @@
             const newY = touch.clientY - originalY;
             imageEl.style.transform = `translate(${newX}px, ${newY}px)`;
 
-            // Check for dropzone highlight
             const newActiveDropzone = checkDropZone(touch.clientX, touch.clientY);
             if (newActiveDropzone && newActiveDropzone !== activeDropzone) {
                 if (activeDropzone) {
@@ -271,7 +265,6 @@
             const dropZone = checkDropZone(touch.clientX, touch.clientY);
 
             if (dropZone) {
-                // Simulate a drop on the touch-ended dropzone
                 const syntheticEvent = {
                     preventDefault: () => { },
                     currentTarget: dropZone,
@@ -281,7 +274,6 @@
                 };
                 handleDrop(syntheticEvent);
             } else {
-                // Snap back to original position
                 imageEl.style.transform = "translate(-50%, 0)";
             }
         }
