@@ -208,10 +208,14 @@
                 e.currentTarget.classList.add("correct");
                 feedbackEl.textContent = "✅ Correct!";
 
+                // Show the button immediately on correct answer
+                nextBtn.style.display = "inline-block";
+
+                // Only the green color will fade away after 800ms
                 setTimeout(() => {
                     e.currentTarget.classList.remove("correct");
-                    nextBtn.style.display = "inline-block";
                 }, 800);
+
             } else {
                 imageEl.style.transform = `translate(calc(-50% + ${offsetX}px), ${offsetY}px)`;
                 e.currentTarget.classList.add("wrong");
