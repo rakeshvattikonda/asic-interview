@@ -65,6 +65,7 @@
         #heBtn {
             background-color: #007bff;
             /* Blue */
+            color: white;
         }
 
         #heBtn:hover {
@@ -72,12 +73,13 @@
         }
 
         #sheBtn {
-            background-color: #28a745;
-            /* Green */
+            background-color: #6f42c1;
+            /* Light Purple */
+            color: white;
         }
 
         #sheBtn:hover {
-            background-color: #218838;
+            background-color: #563891;
         }
 
         #itBtn {
@@ -90,8 +92,14 @@
             background-color: #e0a800;
         }
 
+        /* Correct and incorrect feedback colors */
+        .options button.correct {
+            background-color: #28a745 !important;
+            /* Green */
+        }
+
         .options button.incorrect {
-            background-color: #dc3545;
+            background-color: #dc3545 !important;
             /* Red */
         }
 
@@ -204,12 +212,13 @@
             optionsDiv.innerHTML = '';
 
             const pronouns = ['he', 'she', 'it'];
-            shuffle(pronouns); // Shuffle the buttons
+            const pronounIds = { 'he': 'heBtn', 'she': 'sheBtn', 'it': 'itBtn' };
+            shuffle(pronouns);
 
             pronouns.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.textContent = opt.charAt(0).toUpperCase() + opt.slice(1);
-                btn.id = opt + 'Btn';
+                btn.id = pronounIds[opt];
                 btn.onclick = () => checkAnswer(opt, btn);
                 optionsDiv.appendChild(btn);
             });
@@ -221,20 +230,21 @@
             const feedbackDiv = document.getElementById("feedback");
 
             if (choice === correct) {
-                // Play sound
                 correctSound.pause();
                 correctSound.currentTime = 0;
                 correctSound.play();
 
                 feedbackDiv.textContent = "✅ Correct!";
                 feedbackDiv.className = 'feedback correct-feedback';
-                // Disable all buttons to prevent multiple clicks
+
+                button.classList.add('correct');
+
                 Array.from(document.getElementById("options").children).forEach(btn => btn.disabled = true);
 
                 currentQuestion++;
                 setTimeout(() => {
                     loadQuestion();
-                }, 1000); // 1s delay to move to the next question
+                }, 1000);
             } else {
                 feedbackDiv.textContent = "❌ Try again.";
                 feedbackDiv.className = 'feedback incorrect-feedback';
@@ -243,7 +253,7 @@
                     button.classList.remove('incorrect');
                     feedbackDiv.textContent = "";
                     feedbackDiv.className = 'feedback';
-                }, 1000); // 1s delay to remove incorrect feedback
+                }, 2000);
             }
         }
 
