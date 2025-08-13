@@ -95,6 +95,21 @@
             /* Red */
         }
 
+        .feedback {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            height: 30px;
+        }
+
+        .correct-feedback {
+            color: #28a745;
+        }
+
+        .incorrect-feedback {
+            color: #dc3545;
+        }
+
         @media (max-width: 700px) {
             #subject {
                 font-size: 2rem;
@@ -117,6 +132,7 @@
     <div class="game">
         <div id="subject"></div>
         <img id="image" src="" alt="Question Image" />
+        <div id="feedback" class="feedback"></div>
         <div class="options" id="options"></div>
     </div>
 
@@ -169,6 +185,7 @@
                 document.getElementById("subject").textContent = "🎉 Great job! You finished all questions.";
                 document.getElementById("image").style.display = "none";
                 document.getElementById("options").style.display = "none";
+                document.getElementById("feedback").textContent = "";
                 return;
             }
 
@@ -178,6 +195,7 @@
             document.getElementById("subject").textContent = capitalizedSubject;
             document.getElementById("image").src = questionObj.img;
             document.getElementById("image").style.display = "block";
+            document.getElementById("feedback").textContent = "";
 
             const optionsDiv = document.getElementById("options");
             optionsDiv.style.display = "flex";
@@ -198,14 +216,26 @@
         function checkAnswer(choice, button) {
             const currentObj = questions[currentQuestion];
             const correct = currentObj.answer;
+            const feedbackDiv = document.getElementById("feedback");
 
             if (choice === correct) {
+                feedbackDiv.textContent = "✅ Correct!";
+                feedbackDiv.className = 'feedback correct-feedback';
+                // Disable all buttons to prevent multiple clicks
+                Array.from(document.getElementById("options").children).forEach(btn => btn.disabled = true);
+
                 currentQuestion++;
-                setTimeout(loadQuestion, 500); // 0.5s delay to move to the next question
+                setTimeout(() => {
+                    loadQuestion();
+                }, 1000); // 1s delay to move to the next question
             } else {
+                feedbackDiv.textContent = "❌ Try again.";
+                feedbackDiv.className = 'feedback incorrect-feedback';
                 button.classList.add('incorrect');
                 setTimeout(() => {
                     button.classList.remove('incorrect');
+                    feedbackDiv.textContent = "";
+                    feedbackDiv.className = 'feedback';
                 }, 1000); // 1s delay to remove incorrect feedback
             }
         }
